@@ -1,48 +1,117 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BILIZ GLOBAL | Plateforme Automatisée</title>
+    <title>BILIZ GLOBAL | Importation Chine-Afrique PRO</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        :root { --orange: #f56e18; --black: #111; --gray: #f4f4f4; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
-        body { background: var(--gray); color: #333; }
-        header { background: white; padding: 15px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        :root { --orange: #f56e18; --dark: #1a1a1a; --gray: #f4f4f4; --text: #333; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: var(--gray); color: var(--text); line-height: 1.6; }
+
+        /* EN-TÊTE PRO (Style Photo) */
+        header { background: white; padding: 10px 5%; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .nav-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
         .logo { font-size: 24px; font-weight: 900; }
         .logo span { color: var(--orange); }
-        
-        .search-bar { display: flex; margin-top: 15px; }
-        .search-bar input { flex: 1; padding: 12px; border: 2px solid var(--orange); border-radius: 5px 0 0 5px; outline: none; }
-        .search-bar button { background: var(--orange); border: none; color: white; padding: 0 20px; border-radius: 0 5px 5px 0; }
+        .contact-info { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: bold; }
+        .guinea-flag { width: 25px; margin-right: 5px; }
 
-        .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 15px; }
-        .card { background: white; border-radius: 10px; padding: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .card img { width: 100%; height: 120px; object-fit: contain; }
-        .card h3 { font-size: 14px; margin: 10px 0; height: 35px; overflow: hidden; }
-        
-        .price-tag { background: #fff3e0; border-left: 4px solid var(--orange); padding: 5px; margin-bottom: 10px; }
-        .price-label { font-size: 10px; color: #666; display: block; }
-        .price-value { font-weight: bold; font-size: 15px; color: var(--black); }
+        /* BARRE DE RECHERCHE */
+        .search-container { display: flex; width: 100%; max-width: 800px; margin: 0 auto; }
+        .search-bar { flex: 1; padding: 12px 20px; border: 2px solid #ddd; border-radius: 5px 0 0 5px; outline: none; transition: 0.3s; }
+        .search-bar:focus { border-color: var(--orange); }
+        .search-btn { background-color: var(--orange); color: white; border: none; padding: 0 25px; border-radius: 0 5px 5px 0; cursor: pointer; font-weight: bold; }
 
-        .btn-order { background: var(--orange); color: white; border: none; width: 100%; padding: 10px; border-radius: 5px; font-weight: bold; cursor: pointer; }
-        
-        /* Modal pour options */
-        .modal { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: white; z-index: 1000; padding: 20px; border-radius: 20px 20px 0 0; box-shadow: 0 -5px 20px rgba(0,0,0,0.2); }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; }
+        /* BANNIÈRE HERO (Style Photo) */
+        .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1571011405102-f5a844f59509?q=80&w=1200') no-repeat center center/cover; 
+                height: 350px; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+        .hero h1 { font-size: 2.2rem; margin-bottom: 10px; }
+        .hero h1 span { color: var(--orange); }
+
+        /* LES 3 MARCHÉS (Style Photo) */
+        .section-title { text-align: center; margin: 30px 0; font-size: 1.5rem; text-transform: uppercase; font-weight: bold; }
+        .markets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 0 5%; }
+        .market-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; transition: 0.3s; }
+        .market-card:hover { transform: translateY(-5px); }
+        .market-card img { width: 100%; height: 200px; object-fit: cover; }
+        .market-card h3 { color: var(--orange); margin: 15px 0 5px; }
+        .btn-explore { background-color: var(--orange); color: white; border: none; padding: 8px 25px; border-radius: 5px; cursor: pointer; margin-bottom: 15px; font-weight: bold; }
+
+        /* CATÉGORIES (Style Icônes Photo) */
+        .categories-nav { display: flex; overflow-x: auto; gap: 20px; padding: 20px 5%; background: white; margin: 20px 0; border-bottom: 1px solid #eee; }
+        .cat-item { text-align: center; min-width: 90px; cursor: pointer; color: #666; transition: 0.3s; padding: 10px; border-radius: 8px;}
+        .cat-item i { font-size: 1.5rem; display: block; margin-bottom: 8px; }
+        .cat-item:hover, .cat-item.active { color: var(--orange); background-color: #fff3e0; }
+        .cat-item p { font-size: 0.75rem; font-weight: 600; }
+
+        /* GRILLE DES PRODUITS */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; padding: 15px; }
+        .product-card { background: white; border-radius: 10px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: center; }
+        .product-card img { width: 100%; height: 130px; object-fit: contain; }
+        .product-card h4 { font-size: 0.9rem; height: 40px; overflow: hidden; margin: 10px 0; color: #444; }
+        .price-final { color: var(--orange); font-weight: 800; font-size: 1.2rem; }
+        .btn-order { background-color: var(--orange); color: white; border: none; width: 100%; padding: 10px; border-radius: 5px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+
+        /* MODAL POUR OPTIONS (Standard / Éco) */
+        .modal { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: white; z-index: 1001; padding: 20px; border-radius: 20px 20px 0 0; box-shadow: 0 -5px 20px rgba(0,0,0,0.2); animation: slideUp 0.3s ease-out; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+        /* WHATSAPP FLOAT */
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 1000; }
+
+        /* FOOTER PRO (Style Photo) */
+        footer { background-color: var(--dark); color: white; text-align: center; padding: 40px 5%; margin-top: 40px; }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">BILIZ <span>GLOBAL</span></div>
-    <div class="search-bar">
-        <input type="text" id="q" placeholder="Chercher un produit..." onkeyup="filter()">
-        <button><i class="fa fa-search"></i></button>
+    <div class="nav-top">
+        <div class="logo">BILIZ <span>GLOBAL</span></div>
+        <div class="contact-info">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Flag_of_Guinea.svg" class="guinea-flag" alt="Guinée">
+            +224 612 07 34 39
+        </div>
+    </div>
+    <div class="search-container">
+        <input type="text" id="q" class="search-bar" placeholder="Rechercher un produit, une catégorie..." onkeyup="filter()">
+        <button class="search-btn">Rechercher</button>
     </div>
 </header>
 
+<section class="hero">
+    <h1>VOTRE PASSERELLE <span>VERS LA CHINE</span></h1>
+    <p>NOUS IMPORTONS, VOUS GAGNEZ !</p>
+</section>
+
+<div class="section-title">LES 3 GRANDS MARCHÉS</div>
+<div class="markets-grid">
+    <div class="market-card">
+        <img src="https://images.unsplash.com/photo-1540959733332-e94e1b3f1081?q=80&w=400" alt="Yiwu">
+        <h3>YIWU</h3>
+        <p>Le plus grand marché de gros</p>
+        <button class="btn-explore">Explorer Yiwu</button>
+    </div>
+    <div class="market-card">
+        <img src="https://images.unsplash.com/photo-1555529771-835f59fc5efe?q=80&w=400" alt="Shenzhen">
+        <h3>SHENZHEN</h3>
+        <p>La capitale mondiale de la tech</p>
+        <button class="btn-explore">Explorer Shenzhen</button>
+    </div>
+</div>
+
+<div class="categories-nav">
+    <div class="cat-item active" onclick="filterCat('all')"><i class="fa fa-th-large"></i><p>Tous</p></div>
+    <div class="cat-item" onclick="filterCat('phone')"><i class="fa fa-mobile-alt"></i><p>Électronique</p></div>
+    <div class="cat-item" onclick="filterCat('mode')"><i class="fa fa-tshirt"></i><p>Vêtements</p></div>
+    <div class="cat-item" onclick="filterCat('mode')"><i class="fa fa-shoe-prints"></i><p>Chaussures</p></div>
+</div>
+
+<div class="section-title">PRODUITS POPULAIRES</div>
 <div class="products-grid" id="grid"></div>
 
 <div class="overlay" id="overlay" onclick="closeModal()"></div>
@@ -52,38 +121,47 @@
     <button class="btn-order" onclick="closeModal()">Fermer</button>
 </div>
 
+<a href="https://wa.me/224612073439" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+
+<footer>
+    <div class="logo">BILIZ <span>GLOBAL</span></div>
+    <p>Votre partenaire de confiance pour tous vos besoins d'importation depuis la Chine vers l'Afrique.</p>
+    <p style="font-size: 0.8rem; margin-top: 15px; opacity: 0.7;">© 2026 Biliz Global - Conakry, Guinée. All Rights Reserved.</p>
+</footer>
+
 <script>
     // PARAMÈTRES DU DG (MODIFIEZ ICI)
     const frais_douane = 50; // $ fixe par produit high-tech
     const frais_fret = 25;   // $ transport
     const ma_marge_pct = 0.20; // 20% de bénéfice
 
+    // BASE DE DONNÉES DES PRODUITS (Mêmes photos que la photo HD)
     const items = [
-        { name: "iPhone 15 Pro Max", factory: 1100, img: "https://m.media-amazon.com/images/I/61eDXs9QFNL.jpg", type: "tech" },
-        { name: "Chaussures Sport", factory: 20, img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff", type: "mode" },
-        { name: "Montre Connectée", factory: 40, img: "https://m.media-amazon.com/images/I/61ZjlBOp+rL.jpg", type: "tech" }
+        { name: "iPhone 15 Pro Max - 1TB", factory: 1100, img: "https://m.media-amazon.com/images/I/61eDXs9QFNL.jpg", type: "phone" },
+        { name: "iPhone 13 Pro (Grade A)", factory: 650, img: "https://m.media-amazon.com/images/I/61eDXs9QFNL.jpg", type: "phone" },
+        { name: "Pack Nouilles Importées Authentiques", factory: 15, img: "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?q=80&w=400", type: "food" },
+        { name: "Montre Connectée Série 9", factory: 35, img: "https://m.media-amazon.com/images/I/61ZjlBOp+rL.jpg", type: "tech" },
+        { name: "Chaussures de Sport Haute Qualité", factory: 22, img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff", type: "mode" },
+        { name: "Enceinte Bluetooth Portable JBL", factory: 18, img: "https://m.media-amazon.com/images/I/51A9b5BvJ5L._AC_UL400_.jpg", type: "tech" }
     ];
 
     function calculateFinal(factoryPrice) {
-        // Formule: (Prix + Fret + Douane) + Marge
         let base = factoryPrice + frais_fret + frais_douane;
         let final = base + (base * ma_marge_pct);
         return final.toFixed(2);
     }
 
-    function render() {
+    function render(data) {
         let html = "";
-        items.forEach((p, index) => {
+        data.forEach((p, index) => {
             let prixFinal = calculateFinal(p.factory);
             html += `
-                <div class="card">
-                    <img src="${p.img}">
-                    <h3>${p.name}</h3>
-                    <div class="price-tag">
-                        <span class="price-label">Prix Total (Livré + Douane)</span>
-                        <span class="price-value">${prixFinal} $</span>
-                    </div>
-                    <button class="btn-order" onclick="openOptions(${index})">VOIR OPTIONS</button>
+                <div class="card product-card">
+                    <img src="${p.img}" alt="${p.name}">
+                    <h4>${p.name}</h4>
+                    <p class="price-final">${prixFinal} $</p>
+                    <p style="font-size:10px; color:#666;">(Standard - Tout Inclus)</p>
+                    <button class="btn-order" onclick="openOptions(${index})">COMMANDER</button>
                 </div>
             `;
         });
@@ -93,15 +171,17 @@
     function openOptions(index) {
         let p = items[index];
         let p1 = calculateFinal(p.factory); // Prix Standard
-        let p2 = (parseFloat(p1) * 1.15).toFixed(2); // Option Premium (+15%)
+        let p2 = (parseFloat(p.factory) * 0.90 + frais_fret + (frais_douane * 0.8) + ( (parseFloat(p.factory) * 0.9) * 0.15) ).toFixed(2); // Prix Éco simplifié
 
         document.getElementById("m-title").innerText = p.name;
         document.getElementById("m-options").innerHTML = `
-            <div style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 5px;" onclick="whatsapp('${p.name}', '${p1}')">
-                <strong>Option STANDARD : ${p1}$</strong><br><small>Livraison normale incluse</small>
+            <div style="border: 2px solid var(--orange); background:#fff3e0; padding: 15px; margin-bottom: 12px; border-radius: 8px; cursor:pointer;" onclick="whatsapp('${p.name}', '${p1}', 'Standard')">
+                <strong style="font-size:1.1rem; color:var(--orange);">Option STANDARD : ${p1}$</strong><br>
+                <small style="color:#666;">Produit Premium + Livraison Normale</small>
             </div>
-            <div style="border: 1px solid #ddd; padding: 10px; border-radius: 5px;" onclick="whatsapp('${p.name}', '${p2}')">
-                <strong>Option PREMIUM : ${p2}$</strong><br><small>Livraison Express + Garantie</small>
+            <div style="border: 2px solid #ddd; padding: 15px; border-radius: 8px; cursor:pointer;" onclick="whatsapp('${p.name}', '${p2}', 'Économie')">
+                <strong style="font-size:1.1rem; color:#444;">Option ÉCONOMIE : ${p2}$</strong><br>
+                <small style="color:#666;">Grade B/Occasion + Livraison Groupée</small>
             </div>
         `;
         document.getElementById("modal").style.display = "block";
@@ -113,12 +193,30 @@
         document.getElementById("overlay").style.display = "none";
     }
 
-    function whatsapp(name, price) {
-        let msg = `Bonjour Biliz Global, je commande ${name} au prix de ${price}$ (Tout inclus).`;
+    function whatsapp(name, price, type) {
+        let msg = `Bonjour Biliz Global, je commande ${name} au prix de ${price}$ (Option ${type} - Tout inclus).`;
         window.open("https://wa.me/224612073439?text=" + encodeURIComponent(msg));
     }
 
-    render();
+    function filter() {
+        let q = document.getElementById('q').value.toLowerCase();
+        let res = items.filter(p => p.name.toLowerCase().includes(q));
+        render(res);
+    }
+
+    function filterCat(cat) {
+        // Mise à jour de la classe active
+        document.querySelectorAll('.cat-item').forEach(el => el.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+
+        if(cat === 'all') render(items);
+        else {
+            let res = items.filter(p => p.type === cat);
+            render(res);
+        }
+    }
+
+    render(items); // Initial render
 </script>
 
 </body>
