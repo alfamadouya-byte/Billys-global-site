@@ -1,88 +1,156 @@
-// BILIZ GLOBAL - Full Stack Starter (Next.js 14 + Tailwind + Simple API) // Deployable on Render (Node server) or Vercel
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BILIZ GLOBAL | Importation Chine-Afrique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Poppins', sans-serif; background-color: #f8f9fa; }
+        .orange-btn { background-color: #FF5722; transition: 0.3s; }
+        .orange-btn:hover { background-color: #E64A19; }
+        .text-orange { color: #FF5722; }
+    </style>
+</head>
+<body>
 
-// ============================ // 1. PACKAGE.JSON // ============================ { "name": "biliz-global", "version": "1.0.0", "private": true, "scripts": { "dev": "next dev", "build": "next build", "start": "next start" }, "dependencies": { "next": "14.2.3", "react": "18.2.0", "react-dom": "18.2.0", "axios": "1.6.8", "lucide-react": "latest" } }
+    <header class="bg-white border-b sticky top-0 z-50 py-2">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold">BG</div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-orange-600 leading-none">BILIZ GLOBAL</h1>
+                    <p class="text-[8px] font-bold text-gray-500 uppercase tracking-tighter">Importation Chine-Afrique</p>
+                </div>
+            </div>
+            
+            <div class="hidden lg:flex flex-1 mx-10 border rounded-md overflow-hidden">
+                <input type="text" placeholder="Rechercher un produit, une catégorie..." class="w-full px-4 py-2 outline-none text-sm">
+                <button class="orange-btn text-white px-6 font-bold text-sm">Rechercher</button>
+            </div>
 
-// ============================ // 2. NEXT CONFIG // ============================ module.exports = { images: { domains: ['images.unsplash.com'], }, };
-
-// ============================ // 3. GLOBAL CSS (app/globals.css) // ============================ @tailwind base; @tailwind components; @tailwind utilities;
-
-body { background:#f5f5f5 }
-
-// ============================ // 4. MAIN PAGE (app/page.js) // ============================ import Image from "next/image"; import { ShoppingCart, Phone, Search } from "lucide-react";
-
-const products = [ { name: "iPhone 15 Pro Max", price: "$1499", img: "https://images.unsplash.com/photo-1695048133142-1a20484a3c02" }, { name: "Chaussures Sport", price: "$39", img: "https://images.unsplash.com/photo-1528701800489-20be9c1f7fdb" }, { name: "Montre connectée", price: "$45", img: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b" } ];
-
-export default function Home() { return ( <div>
-
-{/* HEADER */}
-  <header className="bg-white shadow p-4 flex justify-between items-center">
-    <h1 className="text-orange-600 font-bold text-xl">BILIZ GLOBAL</h1>
-
-    <div className="flex items-center gap-2 w-1/2">
-      <input className="border p-2 w-full rounded" placeholder="Rechercher produit..." />
-      <button className="bg-orange-600 text-white px-4 py-2 rounded">
-        <Search size={18} />
-      </button>
-    </div>
-
-    <div className="flex items-center gap-2 text-green-600">
-      <Phone size={18}/> +224 612 07 34 39
-    </div>
-  </header>
-
-  {/* HERO */}
-  <section className="relative h-[400px]">
-    <Image
-      src="/hero.jpg"
-      fill
-      className="object-cover"
-      alt="hero"
-    />
-
-    <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white">
-      <h2 className="text-3xl font-bold">Votre passerelle vers la Chine</h2>
-      <p>Nous importons, vous gagnez</p>
-    </div>
-  </section>
-
-  {/* MARKETS */}
-  <section className="p-6 grid md:grid-cols-3 gap-4">
-    {["Yiwu","Shenzhen","Guangzhou"].map((city)=> (
-      <div key={city} className="bg-white p-4 rounded shadow text-center">
-        <h3 className="text-orange-600 font-bold">{city}</h3>
-        <p>Explorer marché</p>
-      </div>
-    ))}
-  </section>
-
-  {/* PRODUCTS */}
-  <section className="p-6">
-    <h2 className="text-xl font-bold mb-4">Produits populaires</h2>
-    <div className="grid md:grid-cols-3 gap-4">
-      {products.map((p,i)=>(
-        <div key={i} className="bg-white p-4 rounded shadow">
-          <img src={p.img} className="h-40 w-full object-cover"/>
-          <h3>{p.name}</h3>
-          <p className="text-orange-600">{p.price}</p>
-          <button className="bg-orange-600 text-white px-3 py-1 mt-2 rounded flex items-center gap-2">
-            <ShoppingCart size={16}/> Commander
-          </button>
+            <div class="flex items-center space-x-4">
+                <div class="text-right leading-none hidden sm:block">
+                    <p class="text-xs font-bold text-gray-800">+224 612 07 34 39</p>
+                    <p class="text-[10px] text-gray-500">Conakry, Guinée</p>
+                </div>
+                <img src="https://flagcdn.com/w40/gn.png" class="w-6 border shadow-sm" alt="GN">
+                <i class="fa-brands fa-whatsapp text-2xl text-green-500"></i>
+            </div>
         </div>
-      ))}
-    </div>
-  </section>
+    </header>
 
-  {/* FOOTER */}
-  <footer className="bg-black text-white p-6 text-center">
-    Biliz Global - Import Chine → Afrique
-  </footer>
+    <section class="relative bg-white pt-6 pb-12">
+        <div class="container mx-auto px-4">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl bg-zinc-900 min-h-[450px] flex items-center">
+                <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200" class="absolute inset-0 w-full h-full object-cover opacity-60">
+                <div class="relative z-10 p-8 md:p-16 text-white max-w-2xl">
+                    <h2 class="text-4xl md:text-6xl font-black uppercase leading-tight mb-4">
+                        Votre passerelle <br><span class="text-orange-500">Vers la Chine</span>
+                    </h2>
+                    <p class="text-xl font-bold italic mb-8">"Nous importons, vous gagnez !"</p>
+                    
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 text-center">
+                            <i class="fa-solid fa-tags text-orange-500 text-xl mb-1"></i>
+                            <p class="text-[9px] font-bold uppercase">Meilleurs Prix</p>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 text-center">
+                            <i class="fa-solid fa-truck-fast text-orange-500 text-xl mb-1"></i>
+                            <p class="text-[9px] font-bold uppercase">Livraison Sécurisée</p>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 text-center">
+                            <i class="fa-solid fa-award text-orange-500 text-xl mb-1"></i>
+                            <p class="text-[9px] font-bold uppercase">Qualité Garantie</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-</div>
+    <section class="py-10 container mx-auto px-4">
+        <h3 class="font-bold text-lg mb-8 uppercase border-l-4 border-orange-600 pl-4">Les 3 plus grands marchés de Chine</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden group">
+                <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400" class="w-full h-full object-cover group-hover:scale-110 transition duration-500"></div>
+                <div class="p-6 text-center">
+                    <h4 class="font-black text-orange-600 text-xl">YIWU</h4>
+                    <p class="text-xs text-gray-500 mb-4">Le plus grand marché de gros du monde</p>
+                    <button class="orange-btn text-white w-full py-3 rounded-xl font-bold uppercase text-xs">Explorer Yiwu</button>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden group">
+                <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400" class="w-full h-full object-cover group-hover:scale-110 transition duration-500"></div>
+                <div class="p-6 text-center">
+                    <h4 class="font-black text-orange-600 text-xl">SHENZHEN</h4>
+                    <p class="text-xs text-gray-500 mb-4">La capitale mondiale de la technologie</p>
+                    <button class="orange-btn text-white w-full py-3 rounded-xl font-bold uppercase text-xs">Explorer Shenzhen</button>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden group">
+                <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1583146395822-db1995220c70?w=400" class="w-full h-full object-cover group-hover:scale-110 transition duration-500"></div>
+                <div class="p-6 text-center">
+                    <h4 class="font-black text-orange-600 text-xl">GUANGZHOU</h4>
+                    <p class="text-xs text-gray-500 mb-4">Le centre névralgique du commerce</p>
+                    <button class="orange-btn text-white w-full py-3 rounded-xl font-bold uppercase text-xs">Explorer Guangzhou</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-); }
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h3 class="font-bold text-lg mb-8 uppercase">Produits Populaires</h3>
+            <div id="product-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                </div>
+        </div>
+    </section>
 
-// ============================ // 5. API ROUTE (app/api/products/route.js) // ============================ import { NextResponse } from 'next/server';
+    <footer class="bg-zinc-900 text-white py-12 mt-10">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-black mb-4">BILIZ GLOBAL</h2>
+            <div class="flex justify-center items-center space-x-4 text-xs font-bold text-gray-400 uppercase">
+                <span>Paiement Sécurisé</span>
+                <span>•</span>
+                <span>Meilleurs Prix Garantis</span>
+                <span>•</span>
+                <span>Livraison Rapide</span>
+            </div>
+            <p class="mt-8 text-[10px] text-gray-600">© 2026 BILIZ GLOBAL - TOUS DROITS RÉSERVÉS</p>
+        </div>
+    </footer>
 
-export async function GET() { return NextResponse.json([ { name: "iPhone", price: 1000 }, { name: "Chaussure", price: 50 } ]); }
+    <script>
+        // Logique de marge : 7% fournisseur + 5% client = Total 1.12
+        function calcPrice(base) { return (base * 1.12).toFixed(2); }
 
-// ============================ // 6. INSTRUCTIONS DEPLOY RENDER // ============================ // 1. Crée repo GitHub // 2. Upload ce projet // 3. Sur Render : //    - New Web Service //    - Build: npm install && npm run build //    - Start: npm start // // ============================ // 7. A FAIRE (PRO VERSION) // ============================ // - Connexion fournisseurs Chine API // - Paiement Mobile Money // - Dashboard admin // - Upload produits automatique // - Tracking commande // - WhatsApp API intégré
+        const products = [
+            { name: "iPhone 15 Pro Max - 1TB", base: 1338.40, img: "https://images.unsplash.com/photo-1696446701796-da61225697cc?w=300" },
+            { name: "iPhone 13 Pro (256GB)", base: 802.68, img: "https://images.unsplash.com/photo-1633114128174-2f8aa49759b0?w=300" },
+            { name: "Pack Nouilles Importées", base: 21.87, img: "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=300" },
+            { name: "Montre Connectée Série 9", base: 40.18, img: "https://images.unsplash.com/photo-1508685096489-77a46807f0ec?w=300" },
+            { name: "Chaussures Sport Pro", base: 35.62, img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300" },
+            { name: "Enceinte Bluetooth", base: 16.74, img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300" }
+        ];
+
+        const grid = document.getElementById('product-grid');
+        products.forEach(p => {
+            const finalP = calcPrice(p.base);
+            grid.innerHTML += `
+                <div class="border rounded-2xl p-4 bg-white hover:shadow-2xl transition group flex flex-col">
+                    <div class="h-40 flex items-center justify-center mb-4 overflow-hidden rounded-xl">
+                        <img src="${p.img}" class="h-full object-contain group-hover:scale-110 transition">
+                    </div>
+                    <h4 class="text-[10px] font-bold text-gray-700 h-8 line-clamp-2">${p.name}</h4>
+                    <p class="text-orange-600 font-black text-lg my-3">$${finalP}</p>
+                    <a href="https://wa.me/224612073439?text=Je commande : ${encodeURIComponent(p.name)} ($${finalP})" 
+                       class="orange-btn text-white text-[10px] font-black py-3 rounded-xl text-center uppercase shadow-md">Commander</a>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
