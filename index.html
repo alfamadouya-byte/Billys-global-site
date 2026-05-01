@@ -1,291 +1,124 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BILIZ GLOBAL</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BILIZ GLOBAL | Plateforme Automatisée</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root { --orange: #f56e18; --black: #111; --gray: #f4f4f4; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+        body { background: var(--gray); color: #333; }
+        header { background: white; padding: 15px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .logo { font-size: 24px; font-weight: 900; }
+        .logo span { color: var(--orange); }
+        
+        .search-bar { display: flex; margin-top: 15px; }
+        .search-bar input { flex: 1; padding: 12px; border: 2px solid var(--orange); border-radius: 5px 0 0 5px; outline: none; }
+        .search-bar button { background: var(--orange); border: none; color: white; padding: 0 20px; border-radius: 0 5px 5px 0; }
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+        .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 15px; }
+        .card { background: white; border-radius: 10px; padding: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .card img { width: 100%; height: 120px; object-fit: contain; }
+        .card h3 { font-size: 14px; margin: 10px 0; height: 35px; overflow: hidden; }
+        
+        .price-tag { background: #fff3e0; border-left: 4px solid var(--orange); padding: 5px; margin-bottom: 10px; }
+        .price-label { font-size: 10px; color: #666; display: block; }
+        .price-value { font-weight: bold; font-size: 15px; color: var(--black); }
 
-<style>
-:root{
---orange:#f56e18;
---dark:#111;
---light:#f5f5f5;
-}
-
-body{margin:0;font-family:Arial;background:var(--light);}
-
-/* HEADER */
-header{
-background:white;
-padding:10px 5%;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
-
-.top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.logo{font-size:22px;font-weight:900;}
-.logo span{color:var(--orange);}
-
-.search{
-display:flex;margin-top:10px;
-}
-.search input{
-flex:1;padding:12px;border:1px solid #ccc;
-}
-.search button{
-background:var(--orange);color:white;border:none;padding:0 20px;
-}
-
-/* HERO */
-.hero{
-background:url('https://images.unsplash.com/photo-1505765050516-f72dcac9c60b?q=80&w=1200');
-background-size:cover;
-color:white;text-align:center;
-padding:80px 20px;
-}
-
-.hero h1{font-size:28px;}
-.hero span{color:var(--orange);}
-
-.features{
-display:flex;
-justify-content:center;
-gap:40px;
-margin-top:20px;
-}
-
-.features i{color:var(--orange);font-size:22px;}
-
-/* MARKETS */
-.section{padding:30px 5%;}
-.title{text-align:center;font-weight:bold;margin-bottom:20px;}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.card{
-background:white;border-radius:10px;
-overflow:hidden;text-align:center;
-}
-
-.card img{width:100%;height:180px;object-fit:cover;}
-
-.btn{
-background:var(--orange);
-color:white;border:none;
-padding:10px 15px;margin:10px;
-}
-
-/* CATEGORIES */
-.categories{
-display:flex;
-overflow-x:auto;
-gap:15px;
-padding:20px;
-background:white;
-}
-
-.cat{
-text-align:center;
-min-width:90px;
-cursor:pointer;
-}
-
-/* PRODUCTS */
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-gap:15px;
-padding:20px;
-}
-
-.product{
-background:white;
-padding:10px;
-border-radius:10px;
-text-align:center;
-}
-
-.product img{
-width:100%;
-height:140px;
-object-fit:contain;
-}
-
-.price{
-font-weight:bold;
-margin:10px 0;
-}
-
-/* CTA */
-.cta{
-background:#ffe7d6;
-padding:20px;
-text-align:center;
-}
-
-/* FOOTER */
-footer{
-background:#111;
-color:white;
-padding:30px;
-text-align:center;
-}
-
-/* WHATSAPP */
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25d366;
-color:white;
-width:60px;
-height:60px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:30px;
-text-decoration:none;
-}
-</style>
+        .btn-order { background: var(--orange); color: white; border: none; width: 100%; padding: 10px; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        
+        /* Modal pour options */
+        .modal { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: white; z-index: 1000; padding: 20px; border-radius: 20px 20px 0 0; box-shadow: 0 -5px 20px rgba(0,0,0,0.2); }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; }
+    </style>
 </head>
-
 <body>
 
 <header>
-<div class="top">
-<div class="logo">BILIZ <span>GLOBAL</span></div>
-<div>+224 612 07 34 39</div>
-</div>
-
-<div class="search">
-<input type="text" id="search" placeholder="Rechercher un produit...">
-<button onclick="search()">RECHERCHER</button>
-</div>
+    <div class="logo">BILIZ <span>GLOBAL</span></div>
+    <div class="search-bar">
+        <input type="text" id="q" placeholder="Chercher un produit..." onkeyup="filter()">
+        <button><i class="fa fa-search"></i></button>
+    </div>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-<h1>VOTRE PASSERELLE <span>VERS LA CHINE</span></h1>
-<p>NOUS IMPORTONS, VOUS GAGNEZ !</p>
+<div class="products-grid" id="grid"></div>
 
-<div class="features">
-<div><i class="fa fa-dollar"></i><br>MEILLEUR PRIX</div>
-<div><i class="fa fa-lock"></i><br>LIVRAISON SÉCURISÉE</div>
-<div><i class="fa fa-check"></i><br>QUALITÉ GARANTIE</div>
+<div class="overlay" id="overlay" onclick="closeModal()"></div>
+<div class="modal" id="modal">
+    <h2 id="m-title"></h2>
+    <div id="m-options" style="margin: 20px 0;"></div>
+    <button class="btn-order" onclick="closeModal()">Fermer</button>
 </div>
-</section>
-
-<!-- MARKETS -->
-<section class="section">
-<div class="title">LES 3 PLUS GRANDS MARCHÉS DE CHINE</div>
-
-<div class="grid">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1540959733332-e94e1b3f1081">
-<h3>YIWU</h3>
-<p>Le plus grand marché de gros</p>
-<button class="btn">Explorer Yiwu</button>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1555529771-835f59fc5efe">
-<h3>SHENZHEN</h3>
-<p>Capitale technologique</p>
-<button class="btn">Explorer Shenzhen</button>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1548100820-21873130983d">
-<h3>GUANGZHOU</h3>
-<p>Centre du commerce</p>
-<button class="btn">Explorer Guangzhou</button>
-</div>
-</div>
-</section>
-
-<!-- CATEGORIES -->
-<div class="categories">
-<div class="cat" onclick="filter('all')">Tous</div>
-<div class="cat" onclick="filter('electro')">Électronique</div>
-<div class="cat" onclick="filter('mode')">Vêtements</div>
-<div class="cat" onclick="filter('maison')">Maison</div>
-<div class="cat" onclick="filter('auto')">Véhicules</div>
-</div>
-
-<!-- PRODUCTS -->
-<section>
-<div class="title">PRODUITS POPULAIRES</div>
-<div class="products" id="products"></div>
-</section>
-
-<!-- CTA -->
-<div class="cta">
-+100 000 produits disponibles sur demande !
-<button class="btn">DEMANDER UN PRODUIT</button>
-</div>
-
-<footer>
-<h2>BILIZ GLOBAL</h2>
-<p>Importation Chine → Afrique</p>
-<p>Livraison rapide | Support 24/7</p>
-</footer>
-
-<a href="https://wa.me/224612073439" class="whatsapp">
-<i class="fab fa-whatsapp"></i>
-</a>
 
 <script>
-const data = [
-{name:"iPhone 15 Pro Max",cat:"electro",price:1499,img:"https://m.media-amazon.com/images/I/61eDXs9QFNL.jpg"},
-{name:"iPhone 13 Pro",cat:"electro",price:899,img:"https://m.media-amazon.com/images/I/61eDXs9QFNL.jpg"},
-{name:"Nouilles Importées",cat:"maison",price:24,img:"https://m.media-amazon.com/images/I/71m67Y0tE+L.jpg"},
-{name:"Montre connectée",cat:"electro",price:45,img:"https://m.media-amazon.com/images/I/61ZjlBOp+rL.jpg"},
-{name:"Chaussures sport",cat:"mode",price:39,img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff"},
-{name:"Enceinte Bluetooth",cat:"electro",price:18,img:"https://m.media-amazon.com/images/I/718Vv8S99RL.jpg"}
-];
+    // PARAMÈTRES DU DG (MODIFIEZ ICI)
+    const frais_douane = 50; // $ fixe par produit high-tech
+    const frais_fret = 25;   // $ transport
+    const ma_marge_pct = 0.20; // 20% de bénéfice
 
-function show(list){
-let html="";
-list.forEach(p=>{
-html+=`
-<div class="product">
-<img src="${p.img}">
-<h4>${p.name}</h4>
-<div class="price">${p.price}$</div>
-<button onclick="order('${p.name}')">COMMANDER</button>
-</div>`;
-});
-document.getElementById("products").innerHTML=html;
-}
+    const items = [
+        { name: "iPhone 15 Pro Max", factory: 1100, img: "https://m.media-amazon.com/images/I/61eDXs9QFNL.jpg", type: "tech" },
+        { name: "Chaussures Sport", factory: 20, img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff", type: "mode" },
+        { name: "Montre Connectée", factory: 40, img: "https://m.media-amazon.com/images/I/61ZjlBOp+rL.jpg", type: "tech" }
+    ];
 
-function search(){
-let q=document.getElementById("search").value.toLowerCase();
-let res=data.filter(p=>p.name.toLowerCase().includes(q));
-show(res);
-}
+    function calculateFinal(factoryPrice) {
+        // Formule: (Prix + Fret + Douane) + Marge
+        let base = factoryPrice + frais_fret + frais_douane;
+        let final = base + (base * ma_marge_pct);
+        return final.toFixed(2);
+    }
 
-function filter(cat){
-if(cat=="all") show(data);
-else show(data.filter(p=>p.cat==cat));
-}
+    function render() {
+        let html = "";
+        items.forEach((p, index) => {
+            let prixFinal = calculateFinal(p.factory);
+            html += `
+                <div class="card">
+                    <img src="${p.img}">
+                    <h3>${p.name}</h3>
+                    <div class="price-tag">
+                        <span class="price-label">Prix Total (Livré + Douane)</span>
+                        <span class="price-value">${prixFinal} $</span>
+                    </div>
+                    <button class="btn-order" onclick="openOptions(${index})">VOIR OPTIONS</button>
+                </div>
+            `;
+        });
+        document.getElementById("grid").innerHTML = html;
+    }
 
-function order(name){
-let msg="Bonjour, je veux commander : "+name;
-window.open("https://wa.me/224612073439?text="+encodeURIComponent(msg));
-}
+    function openOptions(index) {
+        let p = items[index];
+        let p1 = calculateFinal(p.factory); // Prix Standard
+        let p2 = (parseFloat(p1) * 1.15).toFixed(2); // Option Premium (+15%)
 
-show(data);
+        document.getElementById("m-title").innerText = p.name;
+        document.getElementById("m-options").innerHTML = `
+            <div style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 5px;" onclick="whatsapp('${p.name}', '${p1}')">
+                <strong>Option STANDARD : ${p1}$</strong><br><small>Livraison normale incluse</small>
+            </div>
+            <div style="border: 1px solid #ddd; padding: 10px; border-radius: 5px;" onclick="whatsapp('${p.name}', '${p2}')">
+                <strong>Option PREMIUM : ${p2}$</strong><br><small>Livraison Express + Garantie</small>
+            </div>
+        `;
+        document.getElementById("modal").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById("modal").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+    }
+
+    function whatsapp(name, price) {
+        let msg = `Bonjour Biliz Global, je commande ${name} au prix de ${price}$ (Tout inclus).`;
+        window.open("https://wa.me/224612073439?text=" + encodeURIComponent(msg));
+    }
+
+    render();
 </script>
 
 </body>
