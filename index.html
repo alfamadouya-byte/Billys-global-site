@@ -1,222 +1,96 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BILIZ GLOBAL | Importation Chine-Afrique PRO</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        :root { --orange: #f56e18; --dark: #1a1a1a; --gray: #f4f4f4; --text: #333; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
-        body { background-color: var(--gray); color: var(--text); line-height: 1.6; }
+import React, { useState } from 'react';
+import { ShoppingCart, Smartphone, Shirt, Home, Utensils, Search, Phone } from 'lucide-react';
 
-        /* EN-TÊTE PRO (Style Photo) */
-        header { background: white; padding: 10px 5%; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .nav-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .logo { font-size: 24px; font-weight: 900; }
-        .logo span { color: var(--orange); }
-        .contact-info { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: bold; }
-        .guinea-flag { width: 25px; margin-right: 5px; }
+const BillysGlobalApp = () => {
+  const [cartCount, setCartCount] = useState(0);
 
-        /* BARRE DE RECHERCHE */
-        .search-container { display: flex; width: 100%; max-width: 800px; margin: 0 auto; }
-        .search-bar { flex: 1; padding: 12px 20px; border: 2px solid #ddd; border-radius: 5px 0 0 5px; outline: none; transition: 0.3s; }
-        .search-bar:focus { border-color: var(--orange); }
-        .search-btn { background-color: var(--orange); color: white; border: none; padding: 0 25px; border-radius: 0 5px 5px 0; cursor: pointer; font-weight: bold; }
+  const produits = [
+    { id: 1, name: "iPhone 15 Pro Max - 1 To", price: 1499.00, img: "https://via.placeholder.com/150", categorie: "Électronique" },
+    { id: 2, name: "Packs Nouilles Importées (x12)", price: 24.50, img: "https://via.placeholder.com/150", categorie: "Alimentation" },
+    { id: 3, name: "Chaussures de Sport Haute Qualité", price: 39.90, img: "https://via.placeholder.com/150", categorie: "Mode" },
+    { id: 4, name: "Montre Connectée Série 9", price: 45.00, img: "https://via.placeholder.com/150", categorie: "Électronique" }
+  ];
 
-        /* BANNIÈRE HERO (Style Photo) */
-        .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1571011405102-f5a844f59509?q=80&w=1200') no-repeat center center/cover; 
-                height: 350px; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
-        .hero h1 { font-size: 2.2rem; margin-bottom: 10px; }
-        .hero h1 span { color: var(--orange); }
+  return (
+    <div className="bg-gray-50 min-h-screen font-sans">
+      {/* EN-TÊTE HAUT */}
+      <header className="bg-white border-b sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            {/* Logo avec le nouveau nom */}
+            <div className="bg-orange-600 text-white p-2 rounded-full font-bold">BG</div>
+            <h1 className="text-2xl font-bold text-gray-800 uppercase tracking-tighter">
+              Billy's <span className="text-orange-600">Global</span>
+            </h1>
+          </div>
+          
+          <div className="hidden md:flex flex-1 mx-10">
+            <div className="relative w-full">
+              <input type="text" placeholder="Rechercher un produit, une catégorie..." className="w-full border rounded-l-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+              <button className="bg-orange-600 text-white px-6 py-2 rounded-r-md hover:bg-orange-700 transition font-bold">Rechercher</button>
+            </div>
+          </div>
 
-        /* LES 3 MARCHÉS (Style Photo) */
-        .section-title { text-align: center; margin: 30px 0; font-size: 1.5rem; text-transform: uppercase; font-weight: bold; }
-        .markets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 0 5%; }
-        .market-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; transition: 0.3s; }
-        .market-card:hover { transform: translateY(-5px); }
-        .market-card img { width: 100%; height: 200px; object-fit: cover; }
-        .market-card h3 { color: var(--orange); margin: 15px 0 5px; }
-        .btn-explore { background-color: var(--orange); color: white; border: none; padding: 8px 25px; border-radius: 5px; cursor: pointer; margin-bottom: 15px; font-weight: bold; }
-
-        /* CATÉGORIES (Style Icônes Photo) */
-        .categories-nav { display: flex; overflow-x: auto; gap: 20px; padding: 20px 5%; background: white; margin: 20px 0; border-bottom: 1px solid #eee; }
-        .cat-item { text-align: center; min-width: 90px; cursor: pointer; color: #666; transition: 0.3s; padding: 10px; border-radius: 8px;}
-        .cat-item i { font-size: 1.5rem; display: block; margin-bottom: 8px; }
-        .cat-item:hover, .cat-item.active { color: var(--orange); background-color: #fff3e0; }
-        .cat-item p { font-size: 0.75rem; font-weight: 600; }
-
-        /* GRILLE DES PRODUITS */
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; padding: 15px; }
-        .product-card { background: white; border-radius: 10px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: center; }
-        .product-card img { width: 100%; height: 130px; object-fit: contain; }
-        .product-card h4 { font-size: 0.9rem; height: 40px; overflow: hidden; margin: 10px 0; color: #444; }
-        .price-final { color: var(--orange); font-weight: 800; font-size: 1.2rem; }
-        .btn-order { background-color: var(--orange); color: white; border: none; width: 100%; padding: 10px; border-radius: 5px; font-weight: bold; cursor: pointer; margin-top: 10px; }
-
-        /* MODAL POUR OPTIONS (Standard / Éco) */
-        .modal { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: white; z-index: 1001; padding: 20px; border-radius: 20px 20px 0 0; box-shadow: 0 -5px 20px rgba(0,0,0,0.2); animation: slideUp 0.3s ease-out; }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
-        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-
-        /* WHATSAPP FLOAT */
-        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 1000; }
-
-        /* FOOTER PRO (Style Photo) */
-        footer { background-color: var(--dark); color: white; text-align: center; padding: 40px 5%; margin-top: 40px; }
-    </style>
-</head>
-<body>
-
-<header>
-    <div class="nav-top">
-        <div class="logo">BILIZ <span>GLOBAL</span></div>
-        <div class="contact-info">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Flag_of_Guinea.svg" class="guinea-flag" alt="Guinée">
-            +224 612 07 34 39
+          <div className="flex items-center space-x-6 text-gray-700">
+            <div className="text-sm font-semibold flex items-center">
+              <span className="text-green-600 mr-2">●</span> +224 612 07 34 39
+            </div>
+            <div className="relative cursor-pointer hover:text-orange-600 transition" onClick={() => alert('Panier ouvert')}>
+              <ShoppingCart size={24} />
+              <span className="absolute -top-2 -right-2 bg-orange-600 text-white text-[10px] rounded-full h-5 w-5 flex items-center justify-center font-bold">{cartCount}</span>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="search-container">
-        <input type="text" id="q" class="search-bar" placeholder="Rechercher un produit, une catégorie..." onkeyup="filter()">
-        <button class="search-btn">Rechercher</button>
-    </div>
-</header>
+      </header>
 
-<section class="hero">
-    <h1>VOTRE PASSERELLE <span>VERS LA CHINE</span></h1>
-    <p>NOUS IMPORTONS, VOUS GAGNEZ !</p>
-</section>
-
-<div class="section-title">LES 3 GRANDS MARCHÉS</div>
-<div class="markets-grid">
-    <div class="market-card">
-        <img src="https://images.unsplash.com/photo-1540959733332-e94e1b3f1081?q=80&w=400" alt="Yiwu">
-        <h3>YIWU</h3>
-        <p>Le plus grand marché de gros</p>
-        <button class="btn-explore">Explorer Yiwu</button>
-    </div>
-    <div class="market-card">
-        <img src="https://images.unsplash.com/photo-1555529771-835f59fc5efe?q=80&w=400" alt="Shenzhen">
-        <h3>SHENZHEN</h3>
-        <p>La capitale mondiale de la tech</p>
-        <button class="btn-explore">Explorer Shenzhen</button>
-    </div>
-</div>
-
-<div class="categories-nav">
-    <div class="cat-item active" onclick="filterCat('all')"><i class="fa fa-th-large"></i><p>Tous</p></div>
-    <div class="cat-item" onclick="filterCat('phone')"><i class="fa fa-mobile-alt"></i><p>Électronique</p></div>
-    <div class="cat-item" onclick="filterCat('mode')"><i class="fa fa-tshirt"></i><p>Vêtements</p></div>
-    <div class="cat-item" onclick="filterCat('mode')"><i class="fa fa-shoe-prints"></i><p>Chaussures</p></div>
-</div>
-
-<div class="section-title">PRODUITS POPULAIRES</div>
-<div class="products-grid" id="grid"></div>
-
-<div class="overlay" id="overlay" onclick="closeModal()"></div>
-<div class="modal" id="modal">
-    <h2 id="m-title"></h2>
-    <div id="m-options" style="margin: 20px 0;"></div>
-    <button class="btn-order" onclick="closeModal()">Fermer</button>
-</div>
-
-<a href="https://wa.me/224612073439" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
-
-<footer>
-    <div class="logo">BILIZ <span>GLOBAL</span></div>
-    <p>Votre partenaire de confiance pour tous vos besoins d'importation depuis la Chine vers l'Afrique.</p>
-    <p style="font-size: 0.8rem; margin-top: 15px; opacity: 0.7;">© 2026 Biliz Global - Conakry, Guinée. All Rights Reserved.</p>
-</footer>
-
-<script>
-    // PARAMÈTRES DU DG (MODIFIEZ ICI)
-    const frais_douane = 50; // $ fixe par produit high-tech
-    const frais_fret = 25;   // $ transport
-    const ma_marge_pct = 0.20; // 20% de bénéfice
-
-    // BASE DE DONNÉES DES PRODUITS (Mêmes photos que la photo HD)
-    const items = [
-        { name: "iPhone 15 Pro Max - 1TB", factory: 1100, img: "https://m.media-amazon.com/images/I/61eDXs9QFNL.jpg", type: "phone" },
-        { name: "iPhone 13 Pro (Grade A)", factory: 650, img: "https://m.media-amazon.com/images/I/61eDXs9QFNL.jpg", type: "phone" },
-        { name: "Pack Nouilles Importées Authentiques", factory: 15, img: "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?q=80&w=400", type: "food" },
-        { name: "Montre Connectée Série 9", factory: 35, img: "https://m.media-amazon.com/images/I/61ZjlBOp+rL.jpg", type: "tech" },
-        { name: "Chaussures de Sport Haute Qualité", factory: 22, img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff", type: "mode" },
-        { name: "Enceinte Bluetooth Portable JBL", factory: 18, img: "https://m.media-amazon.com/images/I/51A9b5BvJ5L._AC_UL400_.jpg", type: "tech" }
-    ];
-
-    function calculateFinal(factoryPrice) {
-        let base = factoryPrice + frais_fret + frais_douane;
-        let final = base + (base * ma_marge_pct);
-        return final.toFixed(2);
-    }
-
-    function render(data) {
-        let html = "";
-        data.forEach((p, index) => {
-            let prixFinal = calculateFinal(p.factory);
-            html += `
-                <div class="card product-card">
-                    <img src="${p.img}" alt="${p.name}">
-                    <h4>${p.name}</h4>
-                    <p class="price-final">${prixFinal} $</p>
-                    <p style="font-size:10px; color:#666;">(Standard - Tout Inclus)</p>
-                    <button class="btn-order" onclick="openOptions(${index})">COMMANDER</button>
-                </div>
-            `;
-        });
-        document.getElementById("grid").innerHTML = html;
-    }
-
-    function openOptions(index) {
-        let p = items[index];
-        let p1 = calculateFinal(p.factory); // Prix Standard
-        let p2 = (parseFloat(p.factory) * 0.90 + frais_fret + (frais_douane * 0.8) + ( (parseFloat(p.factory) * 0.9) * 0.15) ).toFixed(2); // Prix Éco simplifié
-
-        document.getElementById("m-title").innerText = p.name;
-        document.getElementById("m-options").innerHTML = `
-            <div style="border: 2px solid var(--orange); background:#fff3e0; padding: 15px; margin-bottom: 12px; border-radius: 8px; cursor:pointer;" onclick="whatsapp('${p.name}', '${p1}', 'Standard')">
-                <strong style="font-size:1.1rem; color:var(--orange);">Option STANDARD : ${p1}$</strong><br>
-                <small style="color:#666;">Produit Premium + Livraison Normale</small>
+      {/* BANNIÈRE DE HÉROS */}
+      <section className="bg-blue-900 text-white py-12 px-4 relative overflow-hidden">
+        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
+          <div className="z-10 max-w-2xl">
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-4 uppercase leading-tight">
+              Votre passerelle <br/><span className="text-orange-500">Vers la Chine</span>
+            </h2>
+            <p className="text-xl mb-8 font-light italic">"Chez Billy's Global, nous importons, vous gagnez !"</p>
+            <div className="grid grid-cols-3 gap-4">
+              <div className="bg-white/10 border border-white/20 p-3 rounded-lg text-center text-sm">💰 Meilleurs Prix</div>
+              <div className="bg-white/10 border border-white/20 p-3 rounded-lg text-center text-sm">🚚 Livraison 5-15j</div>
+              <div className="bg-white/10 border border-white/20 p-3 rounded-lg text-center text-sm">✔️ Qualité Top</div>
             </div>
-            <div style="border: 2px solid #ddd; padding: 15px; border-radius: 8px; cursor:pointer;" onclick="whatsapp('${p.name}', '${p2}', 'Économie')">
-                <strong style="font-size:1.1rem; color:#444;">Option ÉCONOMIE : ${p2}$</strong><br>
-                <small style="color:#666;">Grade B/Occasion + Livraison Groupée</small>
-            </div>
-        `;
-        document.getElementById("modal").style.display = "block";
-        document.getElementById("overlay").style.display = "block";
-    }
+          </div>
+          <div className="mt-10 md:mt-0 relative">
+             <div className="absolute -inset-4 bg-orange-500/20 blur-3xl rounded-full"></div>
+             <img src="https://via.placeholder.com/450x250" alt="Logistique Billy's Global" className="relative rounded-xl shadow-2xl border-2 border-white/30" />
+          </div>
+        </div>
+      </section>
 
-    function closeModal() {
-        document.getElementById("modal").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
-    }
-
-    function whatsapp(name, price, type) {
-        let msg = `Bonjour Biliz Global, je commande ${name} au prix de ${price}$ (Option ${type} - Tout inclus).`;
-        window.open("https://wa.me/224612073439?text=" + encodeURIComponent(msg));
-    }
-
-    function filter() {
-        let q = document.getElementById('q').value.toLowerCase();
-        let res = items.filter(p => p.name.toLowerCase().includes(q));
-        render(res);
-    }
-
-    function filterCat(cat) {
-        // Mise à jour de la classe active
-        document.querySelectorAll('.cat-item').forEach(el => el.classList.remove('active'));
-        event.currentTarget.classList.add('active');
-
-        if(cat === 'all') render(items);
-        else {
-            let res = items.filter(p => p.type === cat);
-            render(res);
-        }
-    }
-
-    render(items); // Initial render
-</script>
-
-</body>
-</html>
+      {/* FOOTER */}
+      <footer className="bg-zinc-900 text-white py-12 mt-12">
+        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div>
+            <h2 className="text-2xl font-bold mb-4 uppercase">Billy's <span className="text-orange-600">Global</span></h2>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Votre partenaire de confiance pour tous vos besoins d'importation depuis la Chine vers l'Afrique. 
+              Spécialiste du marché guinéen à Conakry.
+            </p>
+          </div>
+          <div className="flex flex-col space-y-3">
+            <h4 className="font-bold text-orange-500 uppercase text-sm tracking-widest">Contact Direct</h4>
+            <span className="flex items-center text-sm"><Phone size={16} className="mr-2 text-orange-500" /> Conakry, Guinée</span>
+            <span className="flex items-center text-sm"><span className="text-green-500 font-bold mr-2">WA</span> WhatsApp 24/7 disponible</span>
+          </div>
+          <div className="flex flex-col justify-center">
+             <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-md font-bold transition flex items-center justify-center shadow-lg uppercase text-sm">
+               Commander sur WhatsApp
+             </button>
+          </div>
+        </div>
+        <div className="container mx-auto px-4 mt-10 pt-6 border-t border-white/10 text-center text-xs text-gray-500">
+          © 2026 Billy's Global - Importation Chine-Afrique. Tous droits réservés.
+        </div>
+      </footer>
+    </div>
+  );
+};
+html
+export default BillysGlobalApp;
