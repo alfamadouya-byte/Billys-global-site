@@ -3,154 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BILIZ GLOBAL | Importation Chine-Afrique</title>
+    <title>Billy's Global | Import-Export Chine-Afrique</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
-        body { font-family: 'Poppins', sans-serif; background-color: #f8f9fa; }
-        .orange-btn { background-color: #FF5722; transition: 0.3s; }
-        .orange-btn:hover { background-color: #E64A19; }
-        .text-orange { color: #FF5722; }
+        :root { --gold: #D4AF37; --dark-bg: #1a1a1a; }
+        body { background-color: #f8f9fa; font-family: 'Segoe UI', Roboto, sans-serif; }
+        .hero-gradient { background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); }
+        .product-card { transition: all 0.3s ease; border: 1px solid #eee; }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .btn-tata { background-color: #25D366; color: white; }
     </style>
 </head>
 <body>
 
-    <header class="bg-white border-b sticky top-0 z-50 py-2">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <div class="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold">BG</div>
-                <div>
-                    <h1 class="text-xl font-extrabold text-orange-600 leading-none">BILIZ GLOBAL</h1>
-                    <p class="text-[8px] font-bold text-gray-500 uppercase tracking-tighter">Importation Chine-Afrique</p>
-                </div>
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white font-bold">B</div>
+                <span class="text-2xl font-bold text-gray-800">BILLY'S GLOBAL</span>
             </div>
-            
-            <div class="hidden lg:flex flex-1 mx-10 border rounded-md overflow-hidden">
-                <input type="text" placeholder="Rechercher un produit, une catégorie..." class="w-full px-4 py-2 outline-none text-sm">
-                <button class="orange-btn text-white px-6 font-bold text-sm">Rechercher</button>
+            <div class="hidden md:flex space-x-8 font-medium text-gray-600">
+                <a href="#" class="hover:text-orange-500">Marchés</a>
+                <a href="#" class="hover:text-orange-500">Catégories</a>
+                <a href="#" class="hover:text-orange-500">Suivi</a>
+                <a href="#" class="hover:text-orange-500">Contact</a>
             </div>
-
-            <div class="flex items-center space-x-4">
-                <div class="text-right leading-none hidden sm:block">
-                    <p class="text-xs font-bold text-gray-800">+224 612 07 34 39</p>
-                    <p class="text-[10px] text-gray-500">Conakry, Guinée</p>
-                </div>
-                <img src="https://flagcdn.com/w40/gn.png" class="w-6 border shadow-sm" alt="GN">
-                <i class="fa-brands fa-whatsapp text-2xl text-green-500"></i>
+            <div class="flex items-center gap-4">
+                <i class="fa fa-search text-xl text-gray-500 cursor-pointer"></i>
+                <i class="fa fa-shopping-cart text-xl text-gray-500 cursor-pointer"></i>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <section class="relative bg-white pt-6 pb-12">
-        <div class="container mx-auto px-4">
-            <div class="relative rounded-3xl overflow-hidden shadow-2xl bg-zinc-900 min-h-[450px] flex items-center">
-                <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200" class="absolute inset-0 w-full h-full object-cover opacity-60">
-                <div class="relative z-10 p-8 md:p-16 text-white max-w-2xl">
-                    <h2 class="text-4xl md:text-6xl font-black uppercase leading-tight mb-4">
-                        Votre passerelle <br><span class="text-orange-500">Vers la Chine</span>
-                    </h2>
-                    <p class="text-xl font-bold italic mb-8">"Nous importons, vous gagnez !"</p>
-                    
-                    <div class="grid grid-cols-3 gap-4">
-                        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 text-center">
-                            <i class="fa-solid fa-tags text-orange-500 text-xl mb-1"></i>
-                            <p class="text-[9px] font-bold uppercase">Meilleurs Prix</p>
-                        </div>
-                        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 text-center">
-                            <i class="fa-solid fa-truck-fast text-orange-500 text-xl mb-1"></i>
-                            <p class="text-[9px] font-bold uppercase">Livraison Sécurisée</p>
-                        </div>
-                        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 text-center">
-                            <i class="fa-solid fa-award text-orange-500 text-xl mb-1"></i>
-                            <p class="text-[9px] font-bold uppercase">Qualité Garantie</p>
-                        </div>
-                    </div>
-                </div>
+    <section class="hero-gradient text-white py-16 px-6 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 uppercase tracking-wider">Votre Passerelle vers la Chine</h1>
+        <p class="text-xl text-gray-300 mb-8">Nous importons, vous gagnez ! Qualité 1:1 certifiée Billy's Global.</p>
+        <div class="flex justify-center gap-4">
+            <div class="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
+                <p class="text-sm uppercase text-orange-400">Shenzhen</p>
+                <p class="font-bold">Technologie</p>
+            </div>
+            <div class="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
+                <p class="text-sm uppercase text-orange-400">Guangzhou</p>
+                <p class="font-bold">Commerce</p>
+            </div>
+            <div class="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
+                <p class="text-sm uppercase text-orange-400">Putian</p>
+                <p class="font-bold">Sneakers</p>
             </div>
         </div>
     </section>
 
-    <section class="py-10 container mx-auto px-4">
-        <h3 class="font-bold text-lg mb-8 uppercase border-l-4 border-orange-600 pl-4">Les 3 plus grands marchés de Chine</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden group">
-                <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400" class="w-full h-full object-cover group-hover:scale-110 transition duration-500"></div>
-                <div class="p-6 text-center">
-                    <h4 class="font-black text-orange-600 text-xl">YIWU</h4>
-                    <p class="text-xs text-gray-500 mb-4">Le plus grand marché de gros du monde</p>
-                    <button class="orange-btn text-white w-full py-3 rounded-xl font-bold uppercase text-xs">Explorer Yiwu</button>
-                </div>
+    <main class="max-w-7xl mx-auto px-4 py-12">
+        <h2 class="text-2xl font-bold text-gray-800 mb-8 border-l-4 border-orange-500 pl-4 uppercase">Produits Populaires</h2>
+        
+        <div id="product-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             </div>
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden group">
-                <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400" class="w-full h-full object-cover group-hover:scale-110 transition duration-500"></div>
-                <div class="p-6 text-center">
-                    <h4 class="font-black text-orange-600 text-xl">SHENZHEN</h4>
-                    <p class="text-xs text-gray-500 mb-4">La capitale mondiale de la technologie</p>
-                    <button class="orange-btn text-white w-full py-3 rounded-xl font-bold uppercase text-xs">Explorer Shenzhen</button>
-                </div>
-            </div>
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden group">
-                <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1583146395822-db1995220c70?w=400" class="w-full h-full object-cover group-hover:scale-110 transition duration-500"></div>
-                <div class="p-6 text-center">
-                    <h4 class="font-black text-orange-600 text-xl">GUANGZHOU</h4>
-                    <p class="text-xs text-gray-500 mb-4">Le centre névralgique du commerce</p>
-                    <button class="orange-btn text-white w-full py-3 rounded-xl font-bold uppercase text-xs">Explorer Guangzhou</button>
-                </div>
-            </div>
-        </div>
-    </section>
+    </main>
 
-    <section class="py-12 bg-white">
-        <div class="container mx-auto px-4">
-            <h3 class="font-bold text-lg mb-8 uppercase">Produits Populaires</h3>
-            <div id="product-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                </div>
-        </div>
-    </section>
-
-    <footer class="bg-zinc-900 text-white py-12 mt-10">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-2xl font-black mb-4">BILIZ GLOBAL</h2>
-            <div class="flex justify-center items-center space-x-4 text-xs font-bold text-gray-400 uppercase">
-                <span>Paiement Sécurisé</span>
-                <span>•</span>
-                <span>Meilleurs Prix Garantis</span>
-                <span>•</span>
-                <span>Livraison Rapide</span>
-            </div>
-            <p class="mt-8 text-[10px] text-gray-600">© 2026 BILIZ GLOBAL - TOUS DROITS RÉSERVÉS</p>
-        </div>
-    </footer>
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/224612073439" class="btn-tata p-4 rounded-full shadow-2xl flex items-center gap-3 hover:scale-110 transition-transform">
+            <span class="font-bold">Besoin d'aide ? Tata est là</span>
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+    </div>
 
     <script>
-        // Logique de marge : 7% fournisseur + 5% client = Total 1.12
-        function calcPrice(base) { return (base * 1.12).toFixed(2); }
+        const config = {
+            taux: 8600, // 1 USD = 8600 GNF
+            marge: 1.23, // Vos 23% de profit
+            fraisAir: 15, // 15$ par unité pour iPhone/Mèches
+            fraisMer: 100000 // Forfait 100.000 GNF pour Jordan
+        };
 
-        const products = [
-            { name: "iPhone 15 Pro Max - 1TB", base: 1338.40, img: "https://images.unsplash.com/photo-1696446701796-da61225697cc?w=300" },
-            { name: "iPhone 13 Pro (256GB)", base: 802.68, img: "https://images.unsplash.com/photo-1633114128174-2f8aa49759b0?w=300" },
-            { name: "Pack Nouilles Importées", base: 21.87, img: "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=300" },
-            { name: "Montre Connectée Série 9", base: 40.18, img: "https://images.unsplash.com/photo-1508685096489-77a46807f0ec?w=300" },
-            { name: "Chaussures Sport Pro", base: 35.62, img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300" },
-            { name: "Enceinte Bluetooth", base: 16.74, img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300" }
+        const produits = [
+            {
+                nom: "iPhone 17 Pro Max (1 To)",
+                usine: "Shenzhen Factory",
+                prixUSD: 1600,
+                type: "Air",
+                image: "https://images.unsplash.com/photo-1633113088453-1217cec1b95a?q=80&w=300&h=300&fit=crop"
+            },
+            {
+                nom: "Air Jordan 17 Retro Luxe",
+                usine: "Putian LJR Batch",
+                prixUSD: 85,
+                type: "Mer",
+                image: "https://images.unsplash.com/photo-1597040634101-2248545a602a?q=80&w=300&h=300&fit=crop"
+            },
+            {
+                nom: "Kit Mèches Humaines Luxe",
+                usine: "Yiwu Premium",
+                prixUSD: 140,
+                type: "Air",
+                image: "https://images.unsplash.com/photo-1595475241949-0f02b2827304?q=80&w=300&h=300&fit=crop"
+            }
         ];
 
-        const grid = document.getElementById('product-grid');
-        products.forEach(p => {
-            const finalP = calcPrice(p.base);
-            grid.innerHTML += `
-                <div class="border rounded-2xl p-4 bg-white hover:shadow-2xl transition group flex flex-col">
-                    <div class="h-40 flex items-center justify-center mb-4 overflow-hidden rounded-xl">
-                        <img src="${p.img}" class="h-full object-contain group-hover:scale-110 transition">
+        function formaterGNF(val) {
+            return new Intl.NumberFormat('fr-FR').format(Math.ceil(val)) + " GNF";
+        }
+
+        function genererProduits() {
+            const container = document.getElementById('product-container');
+            
+            produits.forEach(p => {
+                let prixFinal = 0;
+                if(p.type === "Air") {
+                    prixFinal = (p.prixUSD * config.taux * config.marge) + (config.fraisAir * config.taux);
+                } else {
+                    prixFinal = (p.prixUSD * config.taux * config.marge) + config.fraisMer;
+                }
+
+                container.innerHTML += `
+                    <div class="product-card bg-white rounded-xl overflow-hidden">
+                        <img src="${p.image}" alt="${p.nom}" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <p class="text-xs text-orange-500 font-bold uppercase mb-1">${p.usine}</p>
+                            <h3 class="text-lg font-bold text-gray-800 mb-2">${p.nom}</h3>
+                            <p class="text-2xl font-black text-gray-900 mb-4">${formaterGNF(prixFinal)}</p>
+                            <p class="text-xs text-gray-400 mb-4 italic">Tout compris (Douane + Logistique + Taxe)</p>
+                            <a href="https://wa.me/224612073439?text=Bonjour Tata, je veux commander le ${encodeURIComponent(p.nom)}" 
+                               class="block text-center bg-gray-900 text-white py-3 rounded-lg font-bold hover:bg-black transition-colors">
+                               COMMANDER
+                            </a>
+                        </div>
                     </div>
-                    <h4 class="text-[10px] font-bold text-gray-700 h-8 line-clamp-2">${p.name}</h4>
-                    <p class="text-orange-600 font-black text-lg my-3">$${finalP}</p>
-                    <a href="https://wa.me/224612073439?text=Je commande : ${encodeURIComponent(p.name)} ($${finalP})" 
-                       class="orange-btn text-white text-[10px] font-black py-3 rounded-xl text-center uppercase shadow-md">Commander</a>
-                </div>
-            `;
-        });
+                `;
+            });
+        }
+
+        genererProduits();
     </script>
 </body>
 </html>
