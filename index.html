@@ -1,199 +1,120 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BILLY'S GLOBAL V20000 | Sourcing Haute Précision</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Outfit:wght@300;600;900&display=swap');
-        
-        :root { --billy-orange: #f15a24; --billy-black: #0a0a0a; }
-        body { font-family: 'Outfit', sans-serif; background-color: #ffffff; color: var(--billy-black); }
-        .font-mag { font-family: 'Syncopate', sans-serif; }
-        
-        .hero-v20000 { 
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1600&q=80');
-            background-size: cover; background-position: center;
-        }
-        .market-card { transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1); border: 1px solid #eee; }
-        .market-card:hover { transform: translateY(-15px); border-color: var(--billy-orange); box-shadow: 0 25px 50px -12px rgba(241, 90, 36, 0.2); }
-        .product-img-container img { transition: transform 0.8s ease; }
-        .market-card:hover .product-img-container img { transform: scale(1.1); }
-        .btn-tata { background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BILLY’S GLOBAL</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+    }
+  </style>
 </head>
+
 <body>
 
-    <nav class="bg-white/90 backdrop-blur-md border-b border-gray-100 sticky top-0 z-[1000]">
-        <div class="max-w-[1400px] mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-4">
-                <div class="w-14 h-14 bg-black rounded-full flex items-center justify-center text-white text-2xl font-black italic border-2 border-[#f15a24]">B</div>
-                <div>
-                    <h1 class="font-mag text-xl tracking-tighter leading-none">BILLY'S GLOBAL</h1>
-                    <p class="text-[9px] font-black text-[#f15a24] uppercase tracking-[0.3em]">Excellence Sourcing Chine</p>
-                </div>
-            </div>
+<!-- HEADER -->
+<header class="bg-slate-900 shadow p-4 flex justify-between items-center">
+  <h1 class="text-xl font-bold text-orange-500">BILLY’S GLOBAL</h1>
 
-            <div class="hidden lg:flex flex-1 mx-20">
-                <div class="relative w-full group">
-                    <input type="text" placeholder="Rechercher une usine, un modèle, un lot..." class="w-full bg-gray-100 border-none py-4 px-6 rounded-2xl outline-none focus:ring-2 focus:ring-[#f15a24] transition-all">
-                    <button class="absolute right-2 top-2 bottom-2 bg-black text-white px-8 rounded-xl font-bold hover:bg-[#f15a24] transition">RECHERCHER</button>
-                </div>
-            </div>
+  <input id="search" type="text" placeholder="Rechercher un produit..."
+    class="px-4 py-2 rounded-full text-black w-1/2">
 
-            <div class="flex items-center gap-8">
-                <div class="hidden sm:block text-right leading-none">
-                    <span class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Bureau Conakry</span>
-                    <p class="text-sm font-black">+224 612 07 34 39</p>
-                </div>
-                <div class="relative cursor-pointer">
-                    <i class="fa fa-shopping-bag text-2xl"></i>
-                    <span class="absolute -top-2 -right-2 bg-[#f15a24] text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
-                </div>
-            </div>
-        </div>
-    </nav>
+  <div>
+    🛒 <span id="cart-count">0</span>
+  </div>
+</header>
 
-    <section class="max-w-[1400px] mx-auto px-6 py-6">
-        <div class="hero-v20000 rounded-[40px] h-[600px] flex items-center px-16 relative overflow-hidden shadow-2xl">
-            <div class="relative z-10 max-w-4xl">
-                <div class="flex items-center gap-4 mb-8">
-                    <span class="h-[2px] w-12 bg-[#f15a24]"></span>
-                    <span class="text-[#f15a24] font-black uppercase tracking-[0.4em] text-xs">Sourcing Direct Usine</span>
-                </div>
-                <h2 class="text-white text-6xl md:text-8xl font-black uppercase italic leading-[0.85] mb-8">Votre vision <br><span class="text-white/40">Notre logistique</span></h2>
-                <p class="text-gray-300 text-xl font-light max-w-xl mb-12 border-l-4 border-[#f15a24] pl-6 italic">"Monsieur le DG, nous transformons le marché chinois en votre inventaire personnel. Billy's Global : Importation sans limites."</p>
-                <div class="flex gap-6">
-                    <button class="bg-[#f15a24] text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest shadow-xl hover:scale-105 transition-transform">Accéder aux Usines</button>
-                    <button class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-white hover:text-black transition">Tarifs Logistiques</button>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- HERO -->
+<section class="p-6">
+  <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600"
+       class="rounded-xl w-full h-60 object-cover">
+</section>
 
-    <section class="max-w-[1400px] mx-auto px-6 py-24">
-        <div class="flex flex-wrap justify-between items-end gap-6 mb-16">
-            <div>
-                <h3 class="font-mag text-3xl mb-2 italic">HUBS CHINOIS</h3>
-                <p class="text-gray-400 font-bold uppercase tracking-widest text-sm">Contrôle direct sur les 3 plus grands marchés</p>
-            </div>
-            <div class="flex gap-4">
-                <div class="p-4 rounded-full border border-gray-200 cursor-pointer hover:bg-black hover:text-white transition"><i class="fa fa-arrow-left"></i></div>
-                <div class="p-4 rounded-full border border-gray-200 cursor-pointer hover:bg-black hover:text-white transition"><i class="fa fa-arrow-right"></i></div>
-            </div>
-        </div>
+<!-- MARCHÉS -->
+<section class="p-6">
+  <h2 class="text-xl mb-4">Les 3 grands marchés</h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div class="market-card rounded-[3rem] bg-white p-4">
-                <div class="product-img-container h-64 rounded-[2.5rem] overflow-hidden mb-8">
-                    <img src="https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?w=800" class="w-full h-full object-cover">
-                </div>
-                <div class="px-6 pb-6">
-                    <h4 class="text-3xl font-black mb-2">YIWU</h4>
-                    <p class="text-gray-400 font-bold text-xs uppercase mb-8 tracking-tighter">Marché mondial du détail & gros</p>
-                    <button class="w-full py-4 rounded-2xl border-2 border-black font-black uppercase text-xs hover:bg-black hover:text-white transition">Voir Catalogue Yiwu</button>
-                </div>
-            </div>
-            <div class="market-card rounded-[3rem] bg-black p-4 text-white">
-                <div class="product-img-container h-64 rounded-[2.5rem] overflow-hidden mb-8">
-                    <img src="https://images.unsplash.com/photo-1543872084-c7bd3822856f?w=800" class="w-full h-full object-cover grayscale hover:grayscale-0">
-                </div>
-                <div class="px-6 pb-6">
-                    <h4 class="text-3xl font-black mb-2 italic">SHENZHEN</h4>
-                    <p class="text-[#f15a24] font-black text-xs uppercase mb-8 tracking-tighter">Électronique & High-Tech 2026</p>
-                    <button class="w-full py-4 rounded-2xl bg-[#f15a24] text-white font-black uppercase text-xs shadow-lg shadow-orange-900/40">Commander Tech</button>
-                </div>
-            </div>
-            <div class="market-card rounded-[3rem] bg-white p-4">
-                <div class="product-img-container h-64 rounded-[2.5rem] overflow-hidden mb-8">
-                    <img src="https://images.unsplash.com/photo-1533035353720-f1c6a75cd8ab?w=800" class="w-full h-full object-cover">
-                </div>
-                <div class="px-6 pb-6">
-                    <h4 class="text-3xl font-black mb-2">GUANGZHOU</h4>
-                    <p class="text-gray-400 font-bold text-xs uppercase mb-8 tracking-tighter">Mode & Cosmétique Premium</p>
-                    <button class="w-full py-4 rounded-2xl border-2 border-black font-black uppercase text-xs hover:bg-black hover:text-white transition">Explorer Guangzhou</button>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
-    <section class="bg-gray-50 py-32 rounded-[5rem]">
-        <div class="max-w-[1400px] mx-auto px-6">
-            <div class="flex justify-between items-center mb-16">
-                <h3 class="font-mag text-4xl italic uppercase">Sélection DG</h3>
-                <span class="bg-[#f15a24]/10 text-[#f15a24] px-6 py-2 rounded-full font-black text-xs">Arrivages du jour</span>
-            </div>
-            
-            <div id="v20000-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-                </div>
-        </div>
-    </section>
+    <div class="bg-slate-800 p-4 rounded">
+      <h3 class="text-lg font-bold">Yiwu</h3>
+      <p>Marché de gros</p>
+      <button onclick="filterMarket('yiwu')" class="bg-orange-500 w-full mt-2 py-2 rounded">Explorer</button>
+    </div>
 
-    <section class="max-w-[1400px] mx-auto px-6 py-32">
-        <div class="bg-black rounded-[4rem] p-16 flex flex-wrap items-center gap-20 relative overflow-hidden shadow-2xl">
-            <div class="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
-                <i class="fa fa-whatsapp text-[400px] -mr-20 -mt-20"></i>
-            </div>
-            
-            <div class="w-full md:w-[400px] relative z-10">
-                <div class="relative">
-                    <img src="https://i.ibb.co/qN9G02p/tata-bg.png" class="w-full rounded-[3rem] border-[12px] border-white/5 shadow-2xl scale-110">
-                    <div class="absolute bottom-4 right-4 bg-green-500 w-8 h-8 rounded-full border-4 border-black animate-pulse"></div>
-                </div>
-            </div>
+    <div class="bg-slate-800 p-4 rounded">
+      <h3 class="text-lg font-bold">Shenzhen</h3>
+      <p>Technologie</p>
+      <button onclick="filterMarket('shenzhen')" class="bg-orange-500 w-full mt-2 py-2 rounded">Explorer</button>
+    </div>
 
-            <div class="flex-1 relative z-10 text-white">
-                <span class="text-[#f15a24] font-black uppercase tracking-widest text-sm mb-4 block italic">Intelligence Humaine & Digitale</span>
-                <h2 class="text-6xl md:text-8xl font-black uppercase italic leading-none mb-10">Tata <br><span class="text-white/30">est là.</span></h2>
-                <p class="text-xl text-gray-400 mb-12 font-light italic">"Je suis l'interface entre vos clients et les usines de Putian et Shenzhen. Chaque détail est maîtrisé."</p>
-                <a href="https://wa.me/224612073439" class="btn-tata px-12 py-6 rounded-[2rem] font-black text-lg uppercase tracking-widest shadow-2xl flex items-center gap-4 w-fit hover:scale-105 transition-transform">
-                    <i class="fab fa-whatsapp text-3xl"></i> Parler à Tata en Direct
-                </a>
-            </div>
-        </div>
-    </section>
+    <div class="bg-slate-800 p-4 rounded">
+      <h3 class="text-lg font-bold">Guangzhou</h3>
+      <p>Commerce</p>
+      <button onclick="filterMarket('guangzhou')" class="bg-orange-500 w-full mt-2 py-2 rounded">Explorer</button>
+    </div>
 
-    <footer class="py-20 text-center text-gray-400 border-t border-gray-100">
-        <p class="font-mag text-black text-xl mb-4 tracking-tighter">BILLY'S GLOBAL</p>
-        <p class="text-xs font-bold uppercase tracking-widest">© 2026 Importation Intelligente ● Conakry ● Guangzhou</p>
-    </footer>
+  </div>
+</section>
 
-    <script>
-        const settings = {
-            taux: 8600,
-            PROFIT_FIXE: 20000, // VOTRE PROFIT V20000
-            air_kg: 15 * 8600,
-            mer_forfait: 100000
-        };
+<!-- PRODUITS -->
+<section class="p-6">
+  <h2 class="text-xl mb-4">Produits</h2>
 
-        const stocks = [
-            { nom: "iPhone 17 Pro Max 1To", type: "Air", usd: 1600, img: "https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=400" },
-            { nom: "Air Jordan 17 Metal Case", type: "Mer", usd: 85, img: "https://images.unsplash.com/photo-1597040634101-2248545a602a?w=400" },
-            { nom: "Mèches Raw Hair 24\"", type: "Air", usd: 140, img: "https://images.unsplash.com/photo-1595475241949-0f02b2827304?w=400" },
-            { nom: "Tesla Model Y 2026", type: "Mer", usd: 38000, img: "https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=400" },
-            { nom: "AirPods Max 2", type: "Air", usd: 110, img: "https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=400" },
-            { nom: "Sneakers Luxe Edition", type: "Mer", usd: 75, img: "https://images.unsplash.com/photo-1552066344-24632e509633?w=400" }
-        ];
+  <div id="products" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+</section>
 
-        const grid = document.getElementById('v20000-grid');
-        stocks.forEach(p => {
-            const transport = p.type === "Air" ? settings.air_kg : settings.mer_forfait;
-            const prixCalculé = (p.usd * settings.taux) + transport + settings.PROFIT_FIXE;
+<script>
 
-            grid.innerHTML += `
-                <div class="bg-white rounded-[2.5rem] p-5 shadow-sm border border-transparent hover:border-[#f15a24] transition-all group">
-                    <div class="h-44 rounded-[2rem] overflow-hidden mb-6 bg-gray-50">
-                        <img src="${p.img}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                    <span class="text-[8px] font-black text-[#f15a24] uppercase bg-orange-50 px-3 py-1 rounded-full">${p.type} EXPRESS</span>
-                    <h4 class="text-[11px] font-bold text-gray-800 mt-3 h-8 leading-tight">${p.nom}</h4>
-                    <p class="text-xl font-black text-black mt-2">${new Intl.NumberFormat('fr-FR').format(prixCalculé)} <span class="text-[9px] text-gray-400">GNF</span></p>
-                    <a href="https://wa.me/224612073439" class="block w-full text-center py-3 bg-black text-white text-[10px] font-black rounded-xl mt-6 uppercase tracking-widest hover:bg-[#f15a24] transition-colors">Acheter</a>
-                </div>
-            `;
-        });
-    </script>
+const products = [
+  {name:"Chaussures Nike", price:120000, market:"guangzhou"},
+  {name:"iPhone 13", price:5000000, market:"shenzhen"},
+  {name:"Casque Bluetooth", price:150000, market:"shenzhen"},
+  {name:"Sac Fashion", price:80000, market:"yiwu"},
+  {name:"Montre Luxe", price:300000, market:"yiwu"},
+];
+
+let cart = 0;
+
+function displayProducts(list) {
+  const container = document.getElementById("products");
+  container.innerHTML = "";
+
+  list.forEach(p => {
+    container.innerHTML += `
+      <div class="bg-slate-800 p-3 rounded">
+        <h3>${p.name}</h3>
+        <p>${p.price.toLocaleString()} GNF</p>
+        <button onclick="addToCart()" class="bg-green-500 w-full mt-2 py-1 rounded">Acheter</button>
+      </div>
+    `;
+  });
+}
+
+function addToCart() {
+  cart++;
+  document.getElementById("cart-count").innerText = cart;
+}
+
+function filterMarket(market) {
+  const filtered = products.filter(p => p.market === market);
+  displayProducts(filtered);
+}
+
+document.getElementById("search").addEventListener("input", e => {
+  const value = e.target.value.toLowerCase();
+  const filtered = products.filter(p => p.name.toLowerCase().includes(value));
+  displayProducts(filtered);
+});
+
+displayProducts(products);
+
+</script>
+
 </body>
 </html>
