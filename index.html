@@ -1,124 +1,183 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BILLY'S GLOBAL</title>
-
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
-<style>
-body { background:#f5f5f5; }
-.hero {
-  background: linear-gradient(to right, #ff6a00, #ff3c00);
-}
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billy's Global | Importation Chine-Afrique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .hero-gradient { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80'); background-size: cover; }
+        .accent-orange { color: #E65100; }
+        .bg-orange-billy { background-color: #E65100; }
+    </style>
 </head>
+<body class="bg-gray-50">
 
-<body>
+    <header class="bg-white border-b sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-orange-billy rounded-full flex items-center justify-center text-white font-bold text-xl">B</div>
+                <div>
+                    <h1 class="font-bold text-lg leading-none">BILLY'S GLOBAL</h1>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500">Importation Chine-Afrique</p>
+                </div>
+            </div>
 
-<!-- HEADER -->
-<header class="bg-white shadow p-4 flex justify-between items-center">
-  <h1 class="text-xl font-bold text-orange-600">BILLY'S GLOBAL</h1>
+            <div class="flex-1 max-w-xl mx-8">
+                <div class="relative flex">
+                    <input type="text" placeholder="iPhone 17 Pro Max..." class="w-full border rounded-l-lg px-4 py-2 focus:outline-none focus:ring-1 focus:ring-orange-500">
+                    <button class="bg-orange-billy text-white px-6 py-2 rounded-r-lg hover:bg-orange-600 transition">Rechercher</button>
+                </div>
+            </div>
 
-  <input type="text" placeholder="Rechercher un produit..." class="border p-2 rounded w-1/3">
+            <div class="flex items-center space-x-6 text-sm">
+                <div class="hidden lg:flex items-center space-x-2">
+                    <img src="https://flagcdn.com/w20/gn.png" alt="Guinée" class="w-5">
+                    <span class="font-semibold text-gray-700">+224 612 07 34 39</span>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-orange-600"><i class="fa-regular fa-user mr-1"></i> Connexion</a>
+                    <a href="#" class="relative hover:text-orange-600">
+                        <i class="fa-solid fa-cart-shopping mr-1"></i> Panier
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  <div>
-    <span class="mr-4">Connexion</span>
-    <span>Panier</span>
-  </div>
-</header>
+    <nav class="bg-white border-b py-2 hidden md:block">
+        <ul class="container mx-auto px-4 flex space-x-8 text-sm font-medium text-gray-600">
+            <li><a href="#" class="text-orange-600 border-b-2 border-orange-600 pb-2">Accueil</a></li>
+            <li><a href="#" class="hover:text-orange-600">Marchés</a></li>
+            <li><a href="#" class="hover:text-orange-600">Catégories</a></li>
+            <li><a href="#" class="hover:text-orange-600">Suivi Commande</a></li>
+            <li><a href="#" class="hover:text-orange-600">À propos</a></li>
+            <li><a href="#" class="hover:text-orange-600">Contact</a></li>
+        </ul>
+    </nav>
 
-<!-- HERO -->
-<section class="hero text-white p-10 text-center">
-  <h2 class="text-3xl font-bold">Votre passerelle vers la Chine</h2>
-  <p>Nous importons, vous gagnez !</p>
-</section>
+    <section class="hero-gradient h-[450px] flex items-center justify-center text-center text-white px-4">
+        <div class="max-w-3xl">
+            <h2 class="text-2xl uppercase tracking-wider mb-2">Votre passerelle</h2>
+            <h3 class="text-5xl font-bold mb-4">VERS LA CHINE <span class="text-orange-400">AVEC BILLY'S GLOBAL</span></h3>
+            <p class="text-xl mb-8">NOUS IMPORTONS, VOUS GAGNEZ !</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs uppercase tracking-tighter">
+                <div class="bg-white/10 backdrop-blur-md p-3 rounded">Meilleurs Prix</div>
+                <div class="bg-white/10 backdrop-blur-md p-3 rounded">Livraison Sécurisée</div>
+                <div class="bg-white/10 backdrop-blur-md p-3 rounded">Qualité Garantie</div>
+                <div class="bg-white/10 backdrop-blur-md p-3 rounded">Paiement Sécurisé</div>
+            </div>
+        </div>
+    </section>
 
-<!-- MARCHÉS -->
-<section class="p-6">
-  <h2 class="text-xl font-bold mb-4">Les grands marchés de Chine</h2>
+    <section class="container mx-auto px-4 py-12">
+        <div class="flex justify-between items-end mb-8">
+            <h4 class="text-2xl font-bold">LES <span class="text-orange-600">3 PLUS GRANDS MARCHÉS</span> DE CHINE</h4>
+            <a href="#" class="text-sm text-gray-500 hover:underline">Voir tous les marchés →</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="group relative overflow-hidden rounded-xl h-64 shadow-lg">
+                <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
+                    <h5 class="text-white text-xl font-bold">YIWU</h5>
+                    <p class="text-gray-300 text-sm mb-4">Le plus grand marché de gros du monde</p>
+                    <button class="bg-orange-billy text-white py-2 px-4 rounded text-sm w-max">Explorer Yiwu</button>
+                </div>
+            </div>
+            <div class="group relative overflow-hidden rounded-xl h-64 shadow-lg">
+                <img src="https://images.unsplash.com/photo-1542931287-023b922fa89b?auto=format&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
+                    <h5 class="text-white text-xl font-bold">SHENZHEN</h5>
+                    <p class="text-gray-300 text-sm mb-4">La capitale mondiale de la technologie</p>
+                    <button class="bg-orange-billy text-white py-2 px-4 rounded text-sm w-max">Explorer Shenzhen</button>
+                </div>
+            </div>
+            <div class="group relative overflow-hidden rounded-xl h-64 shadow-lg">
+                <img src="https://images.unsplash.com/photo-1543157145-f78c636d023d?auto=format&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
+                    <h5 class="text-white text-xl font-bold">GUANGZHOU</h5>
+                    <p class="text-gray-300 text-sm mb-4">Le centre névralgique du commerce</p>
+                    <button class="bg-orange-billy text-white py-2 px-4 rounded text-sm w-max">Explorer Guangzhou</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <section class="container mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div class="lg:col-span-3">
+            <h4 class="text-xl font-bold mb-6 pb-2 border-b">PRODUITS <span class="text-orange-600">POPULAIRES</span></h4>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="bg-white border rounded-lg p-3 hover:shadow-md transition">
+                    <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-1-202409?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1722541443657" class="w-full h-40 object-contain mb-3">
+                    <h6 class="text-sm font-semibold truncate">iPhone 17 Pro Max 1 To</h6>
+                    <p class="text-orange-600 font-bold my-2">19,000,000 GNF</p>
+                    <button class="w-full bg-black text-white py-2 text-xs rounded uppercase">Commander</button>
+                </div>
+                <div class="bg-white border rounded-lg p-3 hover:shadow-md transition">
+                    <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80" class="w-full h-40 object-cover mb-3 rounded">
+                    <h6 class="text-sm font-semibold truncate">Air Jordan 17 Luxe</h6>
+                    <p class="text-orange-600 font-bold my-2">2,500,000 GNF</p>
+                    <button class="w-full bg-black text-white py-2 text-xs rounded uppercase">Commander</button>
+                </div>
+                <div class="bg-white border rounded-lg p-3 hover:shadow-md transition">
+                    <img src="https://images.unsplash.com/photo-1588423770674-f2855ee476e7?auto=format&fit=crop&q=80" class="w-full h-40 object-contain mb-3">
+                    <h6 class="text-sm font-semibold truncate">AirPods Pro 3e Gén</h6>
+                    <p class="text-orange-600 font-bold my-2">1,450,000 GNF</p>
+                    <button class="w-full bg-black text-white py-2 text-xs rounded uppercase">Commander</button>
+                </div>
+            </div>
+        </div>
 
-    <div onclick="filterMarket('yiwu')" class="bg-white p-4 rounded shadow cursor-pointer hover:scale-105">
-      <h3 class="font-bold">Yiwu</h3>
-      <p>Marché de gros mondial</p>
-    </div>
+        <div class="bg-white border rounded-2xl p-6 shadow-sm flex flex-col items-center text-center h-fit">
+            <div class="w-40 h-40 rounded-full overflow-hidden mb-4 border-4 border-orange-100">
+                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&q=80" alt="Tata" class="w-full h-full object-cover">
+            </div>
+            <h5 class="text-2xl font-bold">Besoin d'aide ? <br> <span class="text-orange-600">Tata est là.</span></h5>
+            <p class="text-gray-500 text-sm mt-2 mb-6">Parlez à un conseiller client en direct pour vos commandes personnalisées.</p>
+            <a href="https://wa.me/224612073439" target="_blank" class="w-full bg-[#25D366] text-white py-3 rounded-full flex items-center justify-center font-bold hover:opacity-90 transition">
+                <i class="fa-brands fa-whatsapp mr-2 text-xl"></i> Démarrer la discussion
+            </a>
+        </div>
+    </section>
 
-    <div onclick="filterMarket('shenzhen')" class="bg-white p-4 rounded shadow cursor-pointer hover:scale-105">
-      <h3 class="font-bold">Shenzhen</h3>
-      <p>Technologie</p>
-    </div>
-
-    <div onclick="filterMarket('guangzhou')" class="bg-white p-4 rounded shadow cursor-pointer hover:scale-105">
-      <h3 class="font-bold">Guangzhou</h3>
-      <p>Commerce international</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- PRODUITS -->
-<section class="p-6">
-  <h2 class="text-xl font-bold mb-4">Produits</h2>
-
-  <div id="products" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-black text-white p-6 text-center">
-  <p>BILLY'S GLOBAL - Importation Chine Afrique</p>
-  <p>Contact WhatsApp : +224 XXX XXX XXX</p>
-</footer>
-
-<script>
-
-// PRODUITS SIMULÉS (tu peux connecter Firebase après)
-const products = [
-  { name: "iPhone 17", market: "shenzhen", price: 8000000, transport: 200000, img: "https://via.placeholder.com/200" },
-  { name: "Chaussures Nike", market: "yiwu", price: 500000, transport: 50000, img: "https://via.placeholder.com/200" },
-  { name: "Montre connectée", market: "shenzhen", price: 700000, transport: 50000, img: "https://via.placeholder.com/200" },
-  { name: "Sac luxe", market: "guangzhou", price: 1000000, transport: 80000, img: "https://via.placeholder.com/200" }
-];
-
-// CALCUL PRIX FINAL
-function calculPrix(p) {
-  const douane = p.price * 0.2;
-  const marge = p.price * 0.3;
-  return p.price + p.transport + douane + marge;
-}
-
-// AFFICHAGE PRODUITS
-function displayProducts(list) {
-  const container = document.getElementById("products");
-  container.innerHTML = "";
-
-  list.forEach(p => {
-    const prix = calculPrix(p);
-
-    container.innerHTML += `
-      <div class="bg-white p-3 rounded shadow">
-        <img src="${p.img}" class="w-full mb-2">
-        <h3 class="font-bold">${p.name}</h3>
-        <p class="text-orange-600">${prix.toLocaleString()} GNF</p>
-        <button class="bg-orange-500 text-white px-3 py-1 mt-2 w-full">Commander</button>
-      </div>
-    `;
-  });
-}
-
-// FILTRE PAR MARCHÉ
-function filterMarket(market) {
-  const filtered = products.filter(p => p.market === market);
-  displayProducts(filtered);
-}
-
-// INITIAL
-displayProducts(products);
-
-</script>
+    <footer class="bg-neutral-900 text-white pt-12 pb-6 mt-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h6 class="font-bold mb-4">BILLY'S GLOBAL</h6>
+                <p class="text-gray-400 text-sm">Votre partenaire de confiance pour sourcer les meilleurs produits directement depuis les usines chinoises vers la Guinée et toute l'Afrique.</p>
+            </div>
+            <div>
+                <h6 class="font-bold mb-4">LIENS RAPIDES</h6>
+                <ul class="text-gray-400 text-sm space-y-2">
+                    <li><a href="#" class="hover:text-white">Comment ça marche ?</a></li>
+                    <li><a href="#" class="hover:text-white">Frais de livraison</a></li>
+                    <li><a href="#" class="hover:text-white">Devenir Partenaire</a></li>
+                </ul>
+            </div>
+            <div>
+                <h6 class="font-bold mb-4">SUPPORT</h6>
+                <ul class="text-gray-400 text-sm space-y-2">
+                    <li>WhatsApp: +224 612 07 34 39</li>
+                    <li>Email: contact@billysglobal.com</li>
+                    <li>Disponibilité: 24/7</li>
+                </ul>
+            </div>
+            <div>
+                <h6 class="font-bold mb-4">NEWSLETTER</h6>
+                <div class="flex">
+                    <input type="email" placeholder="Votre email" class="bg-neutral-800 border-none rounded-l px-4 py-2 w-full text-sm">
+                    <button class="bg-orange-billy px-4 py-2 rounded-r">OK</button>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-neutral-800 mt-12 pt-6 text-center text-gray-500 text-xs">
+            © 2026 Billy's Global. Tous droits réservés. Design Pro Master.
+        </div>
+    </footer>
 
 </body>
 </html>
