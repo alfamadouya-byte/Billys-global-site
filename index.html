@@ -2,85 +2,121 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Billy's Global</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BILLY'S GLOBAL</title>
 
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
 <style>
-body { font-family: Arial; background:#f5f5f5; }
-.container { padding:20px; }
-button { padding:10px; margin:5px; background:orange; border:none; color:white; }
-.card { background:white; padding:10px; margin:10px; border-radius:10px; }
-img { border-radius:10px; }
+body { background:#f5f5f5; }
+.hero {
+  background: linear-gradient(to right, #ff6a00, #ff3c00);
+}
 </style>
+
 </head>
 
 <body>
 
-<div class="container">
-<h1>BILLY'S GLOBAL</h1>
+<!-- HEADER -->
+<header class="bg-white shadow p-4 flex justify-between items-center">
+  <h1 class="text-xl font-bold text-orange-600">BILLY'S GLOBAL</h1>
 
-<button onclick="loadMarket('yiwu')">Yiwu</button>
-<button onclick="loadMarket('shenzhen')">Shenzhen</button>
-<button onclick="loadMarket('guangzhou')">Guangzhou</button>
+  <input type="text" placeholder="Rechercher un produit..." class="border p-2 rounded w-1/3">
 
-<div id="products"></div>
-</div>
+  <div>
+    <span class="mr-4">Connexion</span>
+    <span>Panier</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero text-white p-10 text-center">
+  <h2 class="text-3xl font-bold">Votre passerelle vers la Chine</h2>
+  <p>Nous importons, vous gagnez !</p>
+</section>
+
+<!-- MARCHÉS -->
+<section class="p-6">
+  <h2 class="text-xl font-bold mb-4">Les grands marchés de Chine</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+    <div onclick="filterMarket('yiwu')" class="bg-white p-4 rounded shadow cursor-pointer hover:scale-105">
+      <h3 class="font-bold">Yiwu</h3>
+      <p>Marché de gros mondial</p>
+    </div>
+
+    <div onclick="filterMarket('shenzhen')" class="bg-white p-4 rounded shadow cursor-pointer hover:scale-105">
+      <h3 class="font-bold">Shenzhen</h3>
+      <p>Technologie</p>
+    </div>
+
+    <div onclick="filterMarket('guangzhou')" class="bg-white p-4 rounded shadow cursor-pointer hover:scale-105">
+      <h3 class="font-bold">Guangzhou</h3>
+      <p>Commerce international</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRODUITS -->
+<section class="p-6">
+  <h2 class="text-xl font-bold mb-4">Produits</h2>
+
+  <div id="products" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-black text-white p-6 text-center">
+  <p>BILLY'S GLOBAL - Importation Chine Afrique</p>
+  <p>Contact WhatsApp : +224 XXX XXX XXX</p>
+</footer>
 
 <script>
 
-// 🔥 CONFIG FIREBASE (REMPLACE)
-const firebaseConfig = {
-  apiKey: "TON_API_KEY",
-  authDomain: "TON_PROJECT.firebaseapp.com",
-  projectId: "TON_PROJECT"
-};
+// PRODUITS SIMULÉS (tu peux connecter Firebase après)
+const products = [
+  { name: "iPhone 17", market: "shenzhen", price: 8000000, transport: 200000, img: "https://via.placeholder.com/200" },
+  { name: "Chaussures Nike", market: "yiwu", price: 500000, transport: 50000, img: "https://via.placeholder.com/200" },
+  { name: "Montre connectée", market: "shenzhen", price: 700000, transport: 50000, img: "https://via.placeholder.com/200" },
+  { name: "Sac luxe", market: "guangzhou", price: 1000000, transport: 80000, img: "https://via.placeholder.com/200" }
+];
 
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-
-// 💰 CALCUL COMPLET
+// CALCUL PRIX FINAL
 function calculPrix(p) {
-  const douane = p.price * 0.15;
-  const transport = p.transport;
-  const marge = p.price * 0.25;
-
-  return p.price + transport + douane + marge;
+  const douane = p.price * 0.2;
+  const marge = p.price * 0.3;
+  return p.price + p.transport + douane + marge;
 }
 
-// 📦 CHARGER PRODUITS
-function loadMarket(market) {
+// AFFICHAGE PRODUITS
+function displayProducts(list) {
   const container = document.getElementById("products");
-  container.innerHTML = "Chargement...";
+  container.innerHTML = "";
 
-  db.collection("products")
-    .where("market", "==", market)
-    .get()
-    .then(snapshot => {
-      container.innerHTML = "";
+  list.forEach(p => {
+    const prix = calculPrix(p);
 
-      snapshot.forEach(doc => {
-        const p = doc.data();
-        const prixFinal = calculPrix(p);
-
-        const message = encodeURIComponent(
-          `Bonjour, je veux commander : ${p.name} à ${prixFinal} GNF`
-        );
-
-        container.innerHTML += `
-          <div class="card">
-            <img src="${p.image}" width="100%">
-            <h3>${p.name}</h3>
-            <p>Prix final : ${prixFinal.toLocaleString()} GNF</p>
-            <a href="https://wa.me/224XXXXXXXXX?text=${message}">
-              <button>Commander sur WhatsApp</button>
-            </a>
-          </div>
-        `;
-      });
-    });
+    container.innerHTML += `
+      <div class="bg-white p-3 rounded shadow">
+        <img src="${p.img}" class="w-full mb-2">
+        <h3 class="font-bold">${p.name}</h3>
+        <p class="text-orange-600">${prix.toLocaleString()} GNF</p>
+        <button class="bg-orange-500 text-white px-3 py-1 mt-2 w-full">Commander</button>
+      </div>
+    `;
+  });
 }
+
+// FILTRE PAR MARCHÉ
+function filterMarket(market) {
+  const filtered = products.filter(p => p.market === market);
+  displayProducts(filtered);
+}
+
+// INITIAL
+displayProducts(products);
 
 </script>
 
