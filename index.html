@@ -1,146 +1,88 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BILLY'S GLOBAL | Importation Chine-Afrique</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #f4f7f6; }
-        
-        /* BANNIÈRE IDENTIQUE À VOTRE IMAGE */
-        .hero-banner {
-            background: url('https://i.ibb.co/6P9mP3H/33641-banner.png'); /* Lien direct vers votre maquette */
-            background-size: cover;
-            background-position: center;
-            height: 450px;
-            position: relative;
-        }
+<meta charset="UTF-8">
+<title>Billy's Global</title>
 
-        .billy-orange { background-color: #f15a24; }
-        .text-billy { color: #f15a24; }
-        
-        .product-card { 
-            background: white; 
-            border-radius: 15px; 
-            overflow: hidden; 
-            transition: transform 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        .product-card:hover { transform: translateY(-5px); }
-    </style>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+
+<style>
+body { font-family: Arial; background:#f5f5f5; }
+.container { padding:20px; }
+button { padding:10px; margin:5px; background:orange; border:none; color:white; }
+.card { background:white; padding:10px; margin:10px; border-radius:10px; }
+img { border-radius:10px; }
+</style>
 </head>
+
 <body>
 
-    <nav class="bg-white py-4 border-b">
-        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <img src="https://i.ibb.co/hV6vY3G/logo-billy.png" alt="Billy Logo" class="h-12">
-                <div class="leading-none">
-                    <h1 class="text-xl font-black">BILLY'S GLOBAL</h1>
-                    <p class="text-[10px] font-bold text-gray-400">IMPORTATION CHINE-AFRIQUE</p>
-                </div>
-            </div>
-            <div class="hidden md:flex flex-1 mx-10 relative">
-                <input type="text" placeholder="iPhone 17 Pro Max" class="w-full border-2 border-gray-200 py-2 px-4 rounded-lg outline-none focus:border-[#f15a24]">
-                <button class="absolute right-0 top-0 bottom-0 bg-[#f15a24] text-white px-6 rounded-r-lg font-bold">Rechercher</button>
-            </div>
-            <div class="flex items-center gap-4 text-sm font-bold">
-                <img src="https://flagcdn.com/w40/gn.png" class="w-6">
-                <span>+224 612 07 34 39</span>
-            </div>
-        </div>
-    </nav>
+<div class="container">
+<h1>BILLY'S GLOBAL</h1>
 
-    <section class="hero-banner w-full flex items-center justify-center text-center text-white">
-        </section>
+<button onclick="loadMarket('yiwu')">Yiwu</button>
+<button onclick="loadMarket('shenzhen')">Shenzhen</button>
+<button onclick="loadMarket('guangzhou')">Guangzhou</button>
 
-    <section class="max-w-7xl mx-auto px-4 py-12">
-        <h2 class="text-2xl font-black mb-8 uppercase italic border-l-8 border-[#f15a24] pl-4">Les 3 plus grands marchés de Chine</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="product-card p-4 text-center">
-                <img src="https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?w=400" class="rounded-xl mb-4 h-40 w-full object-cover">
-                <h4 class="font-black text-xl text-[#f15a24]">YIWU</h4>
-                <p class="text-xs text-gray-500 mb-4 font-bold uppercase">Le plus grand marché de gros du monde</p>
-                <button class="w-full py-2 bg-[#f15a24] text-white rounded-lg font-bold">Explorer Yiwu</button>
-            </div>
-            <div class="product-card p-4 text-center border-2 border-[#f15a24]">
-                <img src="https://images.unsplash.com/photo-1543872084-c7bd3822856f?w=400" class="rounded-xl mb-4 h-40 w-full object-cover">
-                <h4 class="font-black text-xl text-blue-700">SHENZHEN</h4>
-                <p class="text-xs text-gray-500 mb-4 font-bold uppercase">La capitale mondiale de la technologie</p>
-                <button class="w-full py-2 bg-blue-700 text-white rounded-lg font-bold">Explorer Shenzhen</button>
-            </div>
-            <div class="product-card p-4 text-center">
-                <img src="https://images.unsplash.com/photo-1533035353720-f1c6a75cd8ab?w=400" class="rounded-xl mb-4 h-40 w-full object-cover">
-                <h4 class="font-black text-xl text-red-600">GUANGZHOU</h4>
-                <p class="text-xs text-gray-500 mb-4 font-bold uppercase">Le centre névralgique du commerce</p>
-                <button class="w-full py-2 bg-red-600 text-white rounded-lg font-bold">Explorer Guangzhou</button>
-            </div>
-        </div>
-    </section>
+<div id="products"></div>
+</div>
 
-    <section class="max-w-7xl mx-auto px-4 py-12">
-        <h2 class="text-2xl font-black mb-8 uppercase italic border-l-8 border-[#f15a24] pl-4">Produits Populaires</h2>
-        <div id="product-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-            </div>
-    </section>
+<script>
 
-    <section class="max-w-7xl mx-auto px-4 py-20">
-        <div class="bg-white rounded-3xl p-10 flex flex-wrap items-center gap-10 shadow-2xl">
-            <div class="w-full md:w-80">
-                <img src="https://i.ibb.co/qN9G02p/tata-bg.png" class="w-full rounded-2xl border-4 border-white shadow-lg">
-            </div>
-            <div class="flex-1">
-                <h2 class="text-5xl font-black leading-tight">Besoin d'aide ? <br><span class="text-billy">Tata est là.</span></h2>
-                <p class="text-lg text-gray-500 mt-4 mb-8">Parlez à un conseiller client en direct sur WhatsApp pour toutes vos commandes.</p>
-                <a href="https://wa.me/224612073439" class="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-black text-lg shadow-xl hover:scale-105 transition">
-                    <i class="fab fa-whatsapp text-2xl"></i> DÉMARRER LA DISCUSSION
-                </a>
-            </div>
-        </div>
-    </section>
+// 🔥 CONFIG FIREBASE (REMPLACE)
+const firebaseConfig = {
+  apiKey: "TON_API_KEY",
+  authDomain: "TON_PROJECT.firebaseapp.com",
+  projectId: "TON_PROJECT"
+};
 
-    <footer class="bg-zinc-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-2xl font-black italic mb-4">BILLY'S GLOBAL</p>
-            <p class="text-gray-400 text-xs">© 2026 Importation Chine-Afrique - Conakry, Guinée</p>
-        </div>
-    </footer>
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
-    <script>
-        const settings = {
-            taux: 8600,
-            PROFIT_FIXE: 20000, // VOTRE PROFIT DE 20 000 GNF
-            air: 15 * 8600,
-            mer: 100000
-        };
+// 💰 CALCUL COMPLET
+function calculPrix(p) {
+  const douane = p.price * 0.15;
+  const transport = p.transport;
+  const marge = p.price * 0.25;
 
-        const list = [
-            { id: 1, nom: "iPhone 17 Pro Max (1 To)", usd: 1600, type: "Air", img: "https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=400" },
-            { id: 2, nom: "Air Jordan 17 Retro Luxe", usd: 85, type: "Mer", img: "https://images.unsplash.com/photo-1597040634101-2248545a602a?w=400" },
-            { id: 3, nom: "AirPods Pro 3e Gén", usd: 55, type: "Air", img: "https://images.unsplash.com/photo-1588423770674-f2a96937ed52?w=400" },
-            { id: 4, nom: "Kit Mèches Humaines Luxe", usd: 120, type: "Air", img: "https://images.unsplash.com/photo-1595475241949-0f02b2827304?w=400" },
-            { id: 5, nom: "Montre Connectée Série 10", usd: 45, type: "Air", img: "https://images.unsplash.com/photo-1544117518-30df57809ca7?w=400" }
-        ];
+  return p.price + transport + douane + marge;
+}
 
-        const container = document.getElementById('product-grid');
-        list.forEach(p => {
-            const transport = p.type === "Air" ? settings.air : settings.mer;
-            const prixCalculé = (p.usd * settings.taux) + transport + settings.PROFIT_FIXE;
+// 📦 CHARGER PRODUITS
+function loadMarket(market) {
+  const container = document.getElementById("products");
+  container.innerHTML = "Chargement...";
 
-            container.innerHTML += `
-                <div class="product-card p-4">
-                    <img src="${p.img}" class="w-full h-40 object-cover rounded-xl mb-4">
-                    <p class="text-[9px] font-black text-gray-400 uppercase mb-1">${p.type} Sourcing</p>
-                    <h3 class="text-[11px] font-bold h-8 overflow-hidden mb-2">${p.nom}</h3>
-                    <p class="text-xl font-black text-black">${new Intl.NumberFormat('fr-FR').format(prixCalculé)} GNF</p>
-                    <p class="text-[8px] text-gray-400 font-bold mb-4 italic">Tout compris (Douane + Logistique)</p>
-                    <a href="https://wa.me/224612073439" class="block w-full text-center py-3 bg-[#f15a24] text-white text-[10px] font-black rounded-lg uppercase">Commander</a>
-                </div>
-            `;
-        });
-    </script>
+  db.collection("products")
+    .where("market", "==", market)
+    .get()
+    .then(snapshot => {
+      container.innerHTML = "";
+
+      snapshot.forEach(doc => {
+        const p = doc.data();
+        const prixFinal = calculPrix(p);
+
+        const message = encodeURIComponent(
+          `Bonjour, je veux commander : ${p.name} à ${prixFinal} GNF`
+        );
+
+        container.innerHTML += `
+          <div class="card">
+            <img src="${p.image}" width="100%">
+            <h3>${p.name}</h3>
+            <p>Prix final : ${prixFinal.toLocaleString()} GNF</p>
+            <a href="https://wa.me/224XXXXXXXXX?text=${message}">
+              <button>Commander sur WhatsApp</button>
+            </a>
+          </div>
+        `;
+      });
+    });
+}
+
+</script>
+
 </body>
 </html>
