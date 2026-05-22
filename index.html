@@ -1,183 +1,335 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Billy's Global | Importation Chine-Afrique</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .hero-gradient { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80'); background-size: cover; }
-        .accent-orange { color: #E65100; }
-        .bg-orange-billy { background-color: #E65100; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Billy's Global</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50">
+<body class="min-h-screen bg-slate-100 text-slate-900">
+  <header class="sticky top-0 z-20 border-b border-orange-200 bg-white/95 shadow-sm backdrop-blur">
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 md:flex-row md:items-center md:justify-between">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-orange-500">Import & sourcing</p>
+        <h1 class="text-2xl font-black tracking-tight text-orange-600">BILLY'S GLOBAL</h1>
+      </div>
+      <div class="flex w-full max-w-3xl gap-2">
+        <input id="search" class="w-full rounded-xl border border-orange-200 bg-orange-50 px-4 py-3 outline-none transition focus:border-orange-400 focus:ring-2 focus:ring-orange-200" placeholder="Rechercher un produit..." type="search" />
+        <button id="searchButton" class="rounded-xl bg-orange-500 px-5 py-3 font-semibold text-white transition hover:bg-orange-600" type="button">Search</button>
+      </div>
+    </div>
+  </header>
 
-    <header class="bg-white border-b sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <div class="w-10 h-10 bg-orange-billy rounded-full flex items-center justify-center text-white font-bold text-xl">B</div>
-                <div>
-                    <h1 class="font-bold text-lg leading-none">BILLY'S GLOBAL</h1>
-                    <p class="text-[10px] uppercase tracking-widest text-gray-500">Importation Chine-Afrique</p>
-                </div>
-            </div>
-
-            <div class="flex-1 max-w-xl mx-8">
-                <div class="relative flex">
-                    <input type="text" placeholder="iPhone 17 Pro Max..." class="w-full border rounded-l-lg px-4 py-2 focus:outline-none focus:ring-1 focus:ring-orange-500">
-                    <button class="bg-orange-billy text-white px-6 py-2 rounded-r-lg hover:bg-orange-600 transition">Rechercher</button>
-                </div>
-            </div>
-
-            <div class="flex items-center space-x-6 text-sm">
-                <div class="hidden lg:flex items-center space-x-2">
-                    <img src="https://flagcdn.com/w20/gn.png" alt="Guinée" class="w-5">
-                    <span class="font-semibold text-gray-700">+224 612 07 34 39</span>
-                </div>
-                <div class="flex space-x-4">
-                    <a href="#" class="hover:text-orange-600"><i class="fa-regular fa-user mr-1"></i> Connexion</a>
-                    <a href="#" class="relative hover:text-orange-600">
-                        <i class="fa-solid fa-cart-shopping mr-1"></i> Panier
-                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">0</span>
-                    </a>
-                </div>
-            </div>
+  <main>
+    <section class="bg-gradient-to-r from-orange-100 via-amber-50 to-white">
+      <div class="mx-auto grid max-w-7xl gap-8 px-4 py-12 md:grid-cols-[1.25fr_0.75fr] md:items-center">
+        <div>
+          <p class="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-orange-500">Direct Chine</p>
+          <h2 class="text-4xl font-black tracking-tight text-slate-900 md:text-5xl">Votre passerelle vers la Chine</h2>
+          <p class="mt-4 max-w-2xl text-lg text-slate-600">Nous importons, vous gagnez. Produits sélectionnés, prix compétitifs et gestion rapide de vos commandes.</p>
+          <div class="mt-6 flex flex-wrap gap-3 text-sm font-medium text-slate-700">
+            <span class="rounded-full bg-white px-4 py-2 shadow-sm">Sourcing rapide</span>
+            <span class="rounded-full bg-white px-4 py-2 shadow-sm">Électronique</span>
+            <span class="rounded-full bg-white px-4 py-2 shadow-sm">Mode & accessoires</span>
+          </div>
         </div>
-    </header>
-
-    <nav class="bg-white border-b py-2 hidden md:block">
-        <ul class="container mx-auto px-4 flex space-x-8 text-sm font-medium text-gray-600">
-            <li><a href="#" class="text-orange-600 border-b-2 border-orange-600 pb-2">Accueil</a></li>
-            <li><a href="#" class="hover:text-orange-600">Marchés</a></li>
-            <li><a href="#" class="hover:text-orange-600">Catégories</a></li>
-            <li><a href="#" class="hover:text-orange-600">Suivi Commande</a></li>
-            <li><a href="#" class="hover:text-orange-600">À propos</a></li>
-            <li><a href="#" class="hover:text-orange-600">Contact</a></li>
-        </ul>
-    </nav>
-
-    <section class="hero-gradient h-[450px] flex items-center justify-center text-center text-white px-4">
-        <div class="max-w-3xl">
-            <h2 class="text-2xl uppercase tracking-wider mb-2">Votre passerelle</h2>
-            <h3 class="text-5xl font-bold mb-4">VERS LA CHINE <span class="text-orange-400">AVEC BILLY'S GLOBAL</span></h3>
-            <p class="text-xl mb-8">NOUS IMPORTONS, VOUS GAGNEZ !</p>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs uppercase tracking-tighter">
-                <div class="bg-white/10 backdrop-blur-md p-3 rounded">Meilleurs Prix</div>
-                <div class="bg-white/10 backdrop-blur-md p-3 rounded">Livraison Sécurisée</div>
-                <div class="bg-white/10 backdrop-blur-md p-3 rounded">Qualité Garantie</div>
-                <div class="bg-white/10 backdrop-blur-md p-3 rounded">Paiement Sécurisé</div>
-            </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-orange-100">
+            <p class="text-sm text-slate-500">Produits</p>
+            <p id="productCount" class="mt-2 text-3xl font-black text-orange-600">0</p>
+          </div>
+          <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-orange-100">
+            <p class="text-sm text-slate-500">Panier</p>
+            <p id="cartCount" class="mt-2 text-3xl font-black text-orange-600">0</p>
+          </div>
+          <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-orange-100 sm:col-span-2">
+            <p class="text-sm text-slate-500">Statut catalogue</p>
+            <p id="status" class="mt-2 text-base font-semibold text-slate-800">Chargement du catalogue...</p>
+          </div>
         </div>
+      </div>
     </section>
 
-    <section class="container mx-auto px-4 py-12">
-        <div class="flex justify-between items-end mb-8">
-            <h4 class="text-2xl font-bold">LES <span class="text-orange-600">3 PLUS GRANDS MARCHÉS</span> DE CHINE</h4>
-            <a href="#" class="text-sm text-gray-500 hover:underline">Voir tous les marchés →</a>
+    <section class="mx-auto max-w-7xl px-4 py-10">
+      <div class="mb-6 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+        <div>
+          <h2 class="text-2xl font-black text-slate-900">Produits</h2>
+          <p class="text-slate-600">Un catalogue simple, filtrable et prêt pour une future persistance Firebase.</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="group relative overflow-hidden rounded-xl h-64 shadow-lg">
-                <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
-                    <h5 class="text-white text-xl font-bold">YIWU</h5>
-                    <p class="text-gray-300 text-sm mb-4">Le plus grand marché de gros du monde</p>
-                    <button class="bg-orange-billy text-white py-2 px-4 rounded text-sm w-max">Explorer Yiwu</button>
-                </div>
-            </div>
-            <div class="group relative overflow-hidden rounded-xl h-64 shadow-lg">
-                <img src="https://images.unsplash.com/photo-1542931287-023b922fa89b?auto=format&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
-                    <h5 class="text-white text-xl font-bold">SHENZHEN</h5>
-                    <p class="text-gray-300 text-sm mb-4">La capitale mondiale de la technologie</p>
-                    <button class="bg-orange-billy text-white py-2 px-4 rounded text-sm w-max">Explorer Shenzhen</button>
-                </div>
-            </div>
-            <div class="group relative overflow-hidden rounded-xl h-64 shadow-lg">
-                <img src="https://images.unsplash.com/photo-1543157145-f78c636d023d?auto=format&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
-                    <h5 class="text-white text-xl font-bold">GUANGZHOU</h5>
-                    <p class="text-gray-300 text-sm mb-4">Le centre névralgique du commerce</p>
-                    <button class="bg-orange-billy text-white py-2 px-4 rounded text-sm w-max">Explorer Guangzhou</button>
-                </div>
-            </div>
-        </div>
+        <p id="searchResult" class="text-sm font-medium text-slate-500">Catalogue complet affiché.</p>
+      </div>
+      <div id="products" class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4"></div>
     </section>
 
-    <section class="container mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
-        <div class="lg:col-span-3">
-            <h4 class="text-xl font-bold mb-6 pb-2 border-b">PRODUITS <span class="text-orange-600">POPULAIRES</span></h4>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <div class="bg-white border rounded-lg p-3 hover:shadow-md transition">
-                    <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-1-202409?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1722541443657" class="w-full h-40 object-contain mb-3">
-                    <h6 class="text-sm font-semibold truncate">iPhone 17 Pro Max 1 To</h6>
-                    <p class="text-orange-600 font-bold my-2">19,000,000 GNF</p>
-                    <button class="w-full bg-black text-white py-2 text-xs rounded uppercase">Commander</button>
-                </div>
-                <div class="bg-white border rounded-lg p-3 hover:shadow-md transition">
-                    <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80" class="w-full h-40 object-cover mb-3 rounded">
-                    <h6 class="text-sm font-semibold truncate">Air Jordan 17 Luxe</h6>
-                    <p class="text-orange-600 font-bold my-2">2,500,000 GNF</p>
-                    <button class="w-full bg-black text-white py-2 text-xs rounded uppercase">Commander</button>
-                </div>
-                <div class="bg-white border rounded-lg p-3 hover:shadow-md transition">
-                    <img src="https://images.unsplash.com/photo-1588423770674-f2855ee476e7?auto=format&fit=crop&q=80" class="w-full h-40 object-contain mb-3">
-                    <h6 class="text-sm font-semibold truncate">AirPods Pro 3e Gén</h6>
-                    <p class="text-orange-600 font-bold my-2">1,450,000 GNF</p>
-                    <button class="w-full bg-black text-white py-2 text-xs rounded uppercase">Commander</button>
-                </div>
-            </div>
+    <section class="border-t border-slate-200 bg-white">
+      <div class="mx-auto max-w-7xl px-4 py-10">
+        <div class="mb-6 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h2 class="text-2xl font-black text-slate-900">Panier</h2>
+            <p class="text-slate-600">Les articles restent en mémoire locale et peuvent aussi être envoyés vers Firestore si configuré.</p>
+          </div>
+          <button id="clearCart" class="w-fit rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50" type="button">Vider le panier</button>
         </div>
 
-        <div class="bg-white border rounded-2xl p-6 shadow-sm flex flex-col items-center text-center h-fit">
-            <div class="w-40 h-40 rounded-full overflow-hidden mb-4 border-4 border-orange-100">
-                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&q=80" alt="Tata" class="w-full h-full object-cover">
+        <div class="grid gap-6 lg:grid-cols-[1fr_340px]">
+          <div id="cart" class="space-y-4"></div>
+          <aside class="rounded-3xl bg-slate-900 p-6 text-white shadow-xl">
+            <p class="text-sm uppercase tracking-[0.2em] text-orange-300">Résumé</p>
+            <div class="mt-5 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-slate-300">Articles</span>
+                <span id="summaryItems" class="font-bold">0</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-slate-300">Total</span>
+                <span id="summaryTotal" class="text-2xl font-black text-orange-300">0 €</span>
+              </div>
             </div>
-            <h5 class="text-2xl font-bold">Besoin d'aide ? <br> <span class="text-orange-600">Tata est là.</span></h5>
-            <p class="text-gray-500 text-sm mt-2 mb-6">Parlez à un conseiller client en direct pour vos commandes personnalisées.</p>
-            <a href="https://wa.me/224612073439" target="_blank" class="w-full bg-[#25D366] text-white py-3 rounded-full flex items-center justify-center font-bold hover:opacity-90 transition">
-                <i class="fa-brands fa-whatsapp mr-2 text-xl"></i> Démarrer la discussion
-            </a>
+            <button id="checkoutButton" class="mt-6 w-full rounded-2xl bg-orange-500 px-4 py-3 font-bold text-white transition hover:bg-orange-600" type="button">Finaliser la commande</button>
+          </aside>
         </div>
+      </div>
     </section>
+  </main>
 
-    <footer class="bg-neutral-900 text-white pt-12 pb-6 mt-12">
-        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-                <h6 class="font-bold mb-4">BILLY'S GLOBAL</h6>
-                <p class="text-gray-400 text-sm">Votre partenaire de confiance pour sourcer les meilleurs produits directement depuis les usines chinoises vers la Guinée et toute l'Afrique.</p>
-            </div>
-            <div>
-                <h6 class="font-bold mb-4">LIENS RAPIDES</h6>
-                <ul class="text-gray-400 text-sm space-y-2">
-                    <li><a href="#" class="hover:text-white">Comment ça marche ?</a></li>
-                    <li><a href="#" class="hover:text-white">Frais de livraison</a></li>
-                    <li><a href="#" class="hover:text-white">Devenir Partenaire</a></li>
-                </ul>
-            </div>
-            <div>
-                <h6 class="font-bold mb-4">SUPPORT</h6>
-                <ul class="text-gray-400 text-sm space-y-2">
-                    <li>WhatsApp: +224 612 07 34 39</li>
-                    <li>Email: contact@billysglobal.com</li>
-                    <li>Disponibilité: 24/7</li>
-                </ul>
-            </div>
-            <div>
-                <h6 class="font-bold mb-4">NEWSLETTER</h6>
-                <div class="flex">
-                    <input type="email" placeholder="Votre email" class="bg-neutral-800 border-none rounded-l px-4 py-2 w-full text-sm">
-                    <button class="bg-orange-billy px-4 py-2 rounded-r">OK</button>
-                </div>
-            </div>
-        </div>
-        <div class="border-t border-neutral-800 mt-12 pt-6 text-center text-gray-500 text-xs">
-            © 2026 Billy's Global. Tous droits réservés. Design Pro Master.
-        </div>
-    </footer>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, getDocs, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+    const fallbackProducts = [
+      { id: "p1", name: "Montre connectée X9", price: 89, category: "Électronique", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80", description: "Montre connectée premium pour usage quotidien et revente rapide." },
+      { id: "p2", name: "Écouteurs Pro Max", price: 49, category: "Électronique", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=80", description: "Écouteurs sans fil au bon rapport qualité-prix." },
+      { id: "p3", name: "Sac Business Luxe", price: 72, category: "Mode", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80", description: "Sac tendance ciblé pour commerce retail ou cadeaux." },
+      { id: "p4", name: "Mini projecteur LED", price: 120, category: "Maison", image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=900&q=80", description: "Projecteur compact pour présentation, vidéo et vente promotionnelle." },
+      { id: "p5", name: "Power bank 20000mAh", price: 38, category: "Accessoires", image: "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=900&q=80", description: "Batterie externe grande capacité pour marché mobile." },
+      { id: "p6", name: "Lampe décor moderne", price: 55, category: "Maison", image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80", description: "Produit décoratif simple à importer et facile à exposer." }
+    ];
+
+    const firebaseConfig = window.BILLYS_FIREBASE_CONFIG || null;
+    const state = {
+      products: [],
+      filteredProducts: [],
+      cart: JSON.parse(localStorage.getItem("billys-global-cart") || "[]"),
+      firestoreEnabled: false,
+      db: null
+    };
+
+    const searchInput = document.getElementById("search");
+    const searchButton = document.getElementById("searchButton");
+    const productsEl = document.getElementById("products");
+    const cartEl = document.getElementById("cart");
+    const statusEl = document.getElementById("status");
+    const searchResultEl = document.getElementById("searchResult");
+    const productCountEl = document.getElementById("productCount");
+    const cartCountEls = [document.getElementById("cartCount"), document.getElementById("summaryItems")];
+    const summaryTotalEl = document.getElementById("summaryTotal");
+    const clearCartButton = document.getElementById("clearCart");
+    const checkoutButton = document.getElementById("checkoutButton");
+
+    function formatPrice(value) {
+      return new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(value);
+    }
+
+    function saveCart() {
+      localStorage.setItem("billys-global-cart", JSON.stringify(state.cart));
+    }
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+    }
+
+    function getCartTotals() {
+      const items = state.cart.reduce((sum, item) => sum + item.quantity, 0);
+      const total = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      return { items, total };
+    }
+
+    function renderProducts() {
+      productCountEl.textContent = String(state.filteredProducts.length);
+      if (state.filteredProducts.length === 0) {
+        productsEl.innerHTML = '<div class="col-span-full rounded-3xl border border-dashed border-slate-300 bg-white p-10 text-center text-slate-500">Aucun produit ne correspond à cette recherche.</div>';
+        return;
+      }
+
+      productsEl.innerHTML = state.filteredProducts.map((product) => `
+        <article class="overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-lg">
+          <img class="h-56 w-full object-cover" src="${product.image}" alt="${product.name}">
+          <div class="p-5">
+            <div class="mb-3 flex items-start justify-between gap-3">
+              <div>
+                <p class="text-xs font-bold uppercase tracking-[0.25em] text-orange-500">${product.category}</p>
+                <h3 class="mt-2 text-xl font-black text-slate-900">${product.name}</h3>
+              </div>
+              <span class="rounded-full bg-orange-100 px-3 py-1 text-sm font-bold text-orange-700">${formatPrice(product.price)}</span>
+            </div>
+            <p class="text-sm leading-6 text-slate-600">${product.description}</p>
+            <button class="mt-5 w-full rounded-2xl bg-slate-900 px-4 py-3 font-bold text-white transition hover:bg-slate-700" type="button" data-product-id="${product.id}">Ajouter au panier</button>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function renderCart() {
+      const { items, total } = getCartTotals();
+      cartCountEls.forEach((element) => {
+        element.textContent = String(items);
+      });
+      summaryTotalEl.textContent = formatPrice(total);
+
+      if (state.cart.length === 0) {
+        cartEl.innerHTML = '<div class="rounded-3xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center text-slate-500">Votre panier est vide.</div>';
+        return;
+      }
+
+      cartEl.innerHTML = state.cart.map((item) => `
+        <div class="flex flex-col gap-4 rounded-3xl border border-slate-200 bg-slate-50 p-5 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h3 class="text-lg font-black text-slate-900">${item.name}</h3>
+            <p class="mt-1 text-sm text-slate-500">${item.category}</p>
+            <p class="mt-2 text-sm font-semibold text-orange-600">${formatPrice(item.price)} x ${item.quantity}</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <button class="rounded-xl border border-slate-300 px-3 py-2 font-bold" type="button" data-action="decrease" data-product-id="${item.id}">-</button>
+            <span class="min-w-10 text-center font-bold">${item.quantity}</span>
+            <button class="rounded-xl border border-slate-300 px-3 py-2 font-bold" type="button" data-action="increase" data-product-id="${item.id}">+</button>
+            <button class="rounded-xl bg-red-50 px-3 py-2 font-semibold text-red-600" type="button" data-action="remove" data-product-id="${item.id}">Supprimer</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function updateSearchResult(query) {
+      if (!query) {
+        searchResultEl.textContent = "Catalogue complet affiché.";
+        return;
+      }
+      const count = state.filteredProducts.length;
+      if (count === 0) {
+        searchResultEl.textContent = `Aucun produit trouvé pour "${query}".`;
+        return;
+      }
+      searchResultEl.textContent = `${count} produit(s) trouvé(s) pour "${query}".`;
+    }
+
+    function searchProduct() {
+      const query = searchInput.value.trim().toLowerCase();
+      state.filteredProducts = state.products.filter((product) => [product.name, product.category, product.description].join(" ").toLowerCase().includes(query));
+      updateSearchResult(searchInput.value.trim());
+      renderProducts();
+    }
+
+    function addToCart(productId) {
+      const product = state.products.find((entry) => entry.id === productId);
+      if (!product) return;
+      const existing = state.cart.find((entry) => entry.id === productId);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        state.cart.push({ id: product.id, name: product.name, price: product.price, category: product.category, quantity: 1 });
+      }
+      saveCart();
+      renderCart();
+    }
+
+    function changeCartQuantity(productId, delta) {
+      const item = state.cart.find((entry) => entry.id === productId);
+      if (!item) return;
+      item.quantity += delta;
+      if (item.quantity <= 0) {
+        state.cart = state.cart.filter((entry) => entry.id !== productId);
+      }
+      saveCart();
+      renderCart();
+    }
+
+    function removeFromCart(productId) {
+      state.cart = state.cart.filter((entry) => entry.id !== productId);
+      saveCart();
+      renderCart();
+    }
+
+    async function loadProducts() {
+      if (!firebaseConfig) {
+        state.products = fallbackProducts;
+        state.filteredProducts = fallbackProducts;
+        setStatus("Catalogue local chargé. Ajoutez window.BILLYS_FIREBASE_CONFIG pour activer Firebase.");
+        return;
+      }
+
+      try {
+        const app = initializeApp(firebaseConfig);
+        state.db = getFirestore(app);
+        state.firestoreEnabled = true;
+        const snapshot = await getDocs(collection(state.db, "products"));
+        const firestoreProducts = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        state.products = firestoreProducts.length > 0 ? firestoreProducts : fallbackProducts;
+        state.filteredProducts = state.products;
+        setStatus(firestoreProducts.length > 0 ? "Catalogue Firebase chargé." : "Firebase actif, mais collection products vide. Catalogue local utilisé.");
+      } catch (error) {
+        console.error(error);
+        state.products = fallbackProducts;
+        state.filteredProducts = fallbackProducts;
+        setStatus("Erreur Firebase. Catalogue local utilisé.");
+      }
+    }
+
+    async function checkout() {
+      if (state.cart.length === 0) {
+        alert("Votre panier est vide.");
+        return;
+      }
+
+      const order = { items: state.cart, total: getCartTotals().total, createdAt: state.firestoreEnabled ? serverTimestamp() : new Date().toISOString() };
+      if (state.firestoreEnabled && state.db) {
+        try {
+          await addDoc(collection(state.db, "orders"), order);
+          alert("Commande enregistrée dans Firebase.");
+        } catch (error) {
+          console.error(error);
+          alert("Commande préparée, mais l'enregistrement Firebase a échoué.");
+        }
+      } else {
+        alert("Commande préparée en local. Configurez Firebase pour l'enregistrer en base.");
+      }
+
+      state.cart = [];
+      saveCart();
+      renderCart();
+    }
+
+    searchButton.addEventListener("click", searchProduct);
+    searchInput.addEventListener("input", searchProduct);
+    searchInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") searchProduct();
+    });
+
+    productsEl.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-product-id]");
+      if (!button) return;
+      addToCart(button.dataset.productId);
+    });
+
+    cartEl.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-action]");
+      if (!button) return;
+      const { action, productId } = button.dataset;
+      if (action === "increase") changeCartQuantity(productId, 1);
+      if (action === "decrease") changeCartQuantity(productId, -1);
+      if (action === "remove") removeFromCart(productId);
+    });
+
+    clearCartButton.addEventListener("click", () => {
+      state.cart = [];
+      saveCart();
+      renderCart();
+    });
+
+    checkoutButton.addEventListener("click", checkout);
+
+    await loadProducts();
+    renderProducts();
+    renderCart();
+    window.searchProduct = searchProduct;
+  </script>
 </body>
 </html>
