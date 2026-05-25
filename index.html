@@ -1,1407 +1,625 @@
 <!DOCTYPE html>
-  <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BILLY'S GLOBAL | Architecture 2025</title>
-    <style>
-      :root {
-        --bg: #050b16;
-        --bg-2: #0b1324;
-        --panel: rgba(11, 20, 38, 0.86);
-        --panel-2: rgba(15, 27, 49, 0.92);
-        --line: rgba(150, 189, 255, 0.14);
-        --text: #eef6ff;
-        --muted: #97afd4;
-        --blue: #48a5ff;
-        --purple: #9776ff;
-        --green: #49d69a;
-        --orange: #ff9c4a;
-        --gold: #f0c56a;
-        --danger: #ff6b6b;
-        --shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
-        --radius: 18px;
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BILLY'S GLOBAL | Plateforme Import-Export</title>
+  <style>
+    :root {
+      --bg: #060c18;
+      --panel: rgba(13, 24, 47, 0.95);
+      --panel-light: rgba(22, 38, 74, 0.8);
+      --text: #ffffff;
+      --muted: #8fa7cc;
+      --blue: #00ddff;
+      --purple: #9d4edd;
+      --green: #00f5d4;
+      --gold: #fee440;
+      --radius: 16px;
+      --border: rgba(0, 221, 255, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 221, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(157, 78, 221, 0.08) 0%, transparent 40%);
+      background-attachment: fixed;
+      padding-bottom: 60px;
+    }
+
+    /* En-tête / Navigation */
+    header {
+      background: rgba(6, 12, 24, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-area h1 {
+      font-size: 24px;
+      letter-spacing: 2px;
+      background: linear-gradient(45deg, var(--blue), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 900;
+    }
+
+    .tagline-nav {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Conteneur Principal */
+    .container {
+      max-width: 1400px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    /* Zone de Recherche Spéciale */
+    .search-hero {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(0, 221, 255, 0.1);
+      margin-bottom: 30px;
+    }
+
+    .search-hero h2 {
+      font-size: 26px;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    .search-hero h2 span {
+      color: var(--blue);
+    }
+
+    .search-wrapper {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto 15px;
+    }
+
+    .search-wrapper input {
+      width: 100%;
+      padding: 16px 50px 16px 20px;
+      border-radius: 30px;
+      border: 2px solid var(--border);
+      background: rgba(6, 12, 24, 0.8);
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+      transition: all 0.3s;
+    }
+
+    .search-wrapper input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 15px rgba(0, 221, 255, 0.3);
+    }
+
+    /* Configuration des Paramètres du DG */
+    .dg-config-bar {
+      background: rgba(0, 221, 255, 0.05);
+      border: 1px dashed var(--border);
+      padding: 12px;
+      border-radius: 10px;
+      display: inline-flex;
+      gap: 20px;
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .dg-config-bar span strong {
+      color: var(--gold);
+    }
+
+    /* Structure à deux colonnes */
+    .main-layout {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 25px;
+    }
+
+    /* Grille de Produits style e-commerce */
+    .products-title {
+      font-size: 20px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-left: 4px solid var(--blue);
+      padding-left: 10px;
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background: var(--panel);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--blue);
+      box-shadow: 0 10px 25px rgba(0, 221, 255, 0.15);
+    }
+
+    .product-image-placeholder {
+      height: 200px;
+      background: linear-gradient(135deg, var(--panel-light), #060c18);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .product-image-placeholder .icon {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--purple);
+      color: #fff;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .product-info {
+      padding: 15px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-info h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .supplier-info {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .price-breakdown {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      margin-bottom: 15px;
+      border-left: 2px solid var(--green);
+    }
+
+    .price-breakdown div {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 3px;
+    }
+
+    .final-cost-box {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 5px;
+      margin-top: 5px;
+      font-weight: bold;
+      color: var(--gold);
+      font-size: 14px;
+    }
+
+    .order-btn {
+      width: 100%;
+      background: linear-gradient(45deg, var(--blue), var(--purple));
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .order-btn:hover {
+      opacity: 0.9;
+    }
+
+    /* Colonne de droite : Calculateur interactif et Assistant Tata */
+    .sidebar-panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      height: fit-content;
+      position: sticky;
+      top: 90px;
+    }
+
+    .sidebar-panel h3 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: var(--blue);
+      border-bottom: 1px solid rgba(0, 221, 255, 0.2);
+      padding-bottom: 8px;
+    }
+
+    .calc-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: #fff;
+      outline: none;
+    }
+
+    .input-group input:focus {
+      border-color: var(--blue);
+    }
+
+    .live-calc-result {
+      background: rgba(0, 245, 212, 0.05);
+      border: 1px solid rgba(0, 245, 212, 0.2);
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+    }
+
+    .live-calc-result h4 {
+      color: var(--green);
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .live-calc-result p {
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--gold);
+    }
+
+    /* Bloc Assistant Tata */
+    .tata-box h4 {
+      font-size: 14px;
+      color: var(--purple);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tata-box h4::before {
+      content: "●";
+      color: var(--green);
+      animation: pulse 1.5s infinite;
+    }
+
+    .tata-dialog {
+      background: rgba(157, 78, 221, 0.08);
+      border: 1px solid rgba(157, 78, 221, 0.2);
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #e0d5ff;
+      min-height: 80px;
+    }
+
+    /* Bandeau de statistiques en bas */
+    .footer-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-top: 40px;
+      background: linear-gradient(90deg, rgba(13,24,47,0.8), rgba(6,12,24,0.8));
+      padding: 20px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      text-align: center;
+    }
+
+    .metric-item p {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--blue);
+    }
+
+    .metric-item span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.4; }
+      50% { opacity: 1; }
+      100% { opacity: 0.4; }
+    }
+
+    /* Mode Mobile */
+    @media (max-width: 900px) {
+      .main-layout {
+        grid-template-columns: 1fr;
       }
-
-      * {
-        box-sizing: border-box;
+      .footer-metrics {
+        grid-template-columns: repeat(2, 1fr);
       }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        color: var(--text);
-        background:
-          radial-gradient(circle at top left, rgba(72, 165, 255, 0.16), transparent 22%),
-          radial-gradient(circle at top right, rgba(151, 118, 255, 0.12), transparent 24%),
-          radial-gradient(circle at bottom right, rgba(73, 214, 154, 0.12), transparent 22%),
-          linear-gradient(180deg, #040914 0%, #07101d 100%);
-      }
-
-      .page {
-        width: min(1500px, calc(100% - 24px));
-        margin: 18px auto;
-        padding: 18px;
-        border: 1px solid var(--line);
-        border-radius: 28px;
-        background: linear-gradient(180deg, rgba(7, 15, 29, 0.96), rgba(5, 11, 22, 0.98));
-        box-shadow: var(--shadow);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .page::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        background:
-          linear-gradient(90deg, transparent 0 9.9%, rgba(255,255,255,0.025) 10% 10.1%, transparent 10.1% 19.9%,
-  rgba(255,255,255,0.025) 20% 20.1%, transparent 20.1% 100%),
-          linear-gradient(180deg, rgba(255,255,255,0.02), transparent 30%);
-      }
-
-      .hero {
-        position: relative;
-        z-index: 1;
-        text-align: center;
-        padding: 18px 10px 24px;
-      }
-
-      .eyebrow {
-        margin: 0;
-        color: var(--gold);
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.25em;
-        text-transform: uppercase;
-      }
-
-      h1 {
-        margin: 12px 0 10px;
-        font-size: clamp(2.1rem, 5vw, 4rem);
-        line-height: 1;
-        letter-spacing: 0.08em;
-      }
-
-      .tagline {
-        max-width: 1000px;
-        margin: 0 auto;
-        color: #d4e5ff;
-        font-size: 14px;
-        line-height: 1.7;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-      }
-
-      .top-stats {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 10px;
-        margin-top: 20px;
-      }
-
-      .mini-stat {
-        padding: 12px 14px;
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        background: rgba(255,255,255,0.03);
-        color: var(--muted);
-        font-size: 13px;
-      }
-
-      .mini-stat strong {
-        display: block;
-        margin-top: 6px;
-        color: var(--text);
-        font-size: 18px;
-      }
-
-      .board {
-        position: relative;
-        z-index: 1;
-        margin-top: 8px;
-        padding: 14px;
-        border: 1px solid rgba(142, 184, 255, 0.12);
-        border-radius: 22px;
-        background: rgba(8, 16, 31, 0.78);
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .card, .flow-card, .calculator, .assistant {
-        position: relative;
-        padding: 14px;
-        border-radius: var(--radius);
-        background: var(--panel);
-        border: 1px solid var(--line);
-        overflow: hidden;
-      }
-
-      .card::before, .flow-card::before, .calculator::before, .assistant::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, rgba(255,255,255,0.03), transparent 45%);
-        pointer-events: none;
-      }
-
-      .blue { box-shadow: inset 0 0 0 1px rgba(72,165,255,0.28); }
-      .purple { box-shadow: inset 0 0 0 1px rgba(151,118,255,0.28); }
-      .green { box-shadow: inset 0 0 0 1px rgba(73,214,154,0.28); }
-      .orange { box-shadow: inset 0 0 0 1px rgba(255,156,74,0.28); }
-
-      .num {
-        display: inline-block;
-        color: var(--gold);
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
-        margin-bottom: 8px;
-      }
-
-      h2 {
-        margin: 0 0 8px;
-        font-size: 20px;
-        line-height: 1.05;
-      }
-
-      .card p, .flow-card p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 14px;
-        line-height: 1.6;
-      }
-
-      .card ul {
-        margin: 8px 0 0;
-        padding-left: 18px;
-        color: var(--muted);
-        line-height: 1.6;
-        font-size: 14px;
-      }
-
-      .span-2 {
-        grid-column: span 2;
-      }
-
-      .flow-card {
-        min-height: 200px;
-        box-shadow: inset 0 0 0 1px rgba(240,197,106,0.22);
-      }
-
-      .flow-steps {
-        display: grid;
-        grid-template-columns: repeat(11, minmax(0, 1fr));
-        gap: 8px;
-        margin-top: 14px;
-      }
-
-      .step {
-        position: relative;
-        padding: 10px 6px;
-        border-radius: 12px;
-        text-align: center;
-        font-size: 11px;
-        font-weight: 700;
-        background: rgba(255,255,255,0.05);
-        color: var(--text);
-      }
-
-      .step::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        right: -8px;
-        width: 8px;
-        height: 2px;
-        background: rgba(72,165,255,0.8);
-        transform: translateY(-50%);
-      }
-
-      .step:last-child::after {
-        display: none;
-      }
-
-      .tool-row {
-        display: grid;
-        grid-template-columns: 1.4fr 1fr;
-        gap: 12px;
-        margin-top: 12px;
-      }
-
-      .calculator h3, .assistant h3 {
-        margin: 0 0 10px;
-        font-size: 20px;
-      }
-
-      .field-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-      }
-
-      label {
-        display: block;
-        font-size: 12px;
-        color: var(--muted);
-        margin-bottom: 6px;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-      }
-
-      input, button, textarea {
-        width: 100%;
-        border: 1px solid rgba(140, 180, 255, 0.18);
-        border-radius: 12px;
-        background: rgba(255,255,255,0.04);
-        color: var(--text);
-        padding: 12px;
-        font-size: 14px;
-        outline: none;
-      }
-
-      textarea {
-        min-height: 110px;
-        resize: vertical;
-      }
-
-      button {
-        cursor: pointer;
-        font-weight: 700;
-        transition: transform 160ms ease, background 160ms ease;
-      }
-
-      button:hover {
-        transform: translateY(-1px);
-      }
-
-      .btn-primary {
-        background: linear-gradient(135deg, var(--blue), #256bd8);
-        border-color: transparent;
-      }
-
-      .btn-secondary {
-        background: linear-gradient(135deg, var(--green), #1f9f6b);
-        border-color: transparent;
-      }
-
-      .result-box, .assistant-box {
-        margin-top: 12px;
-        padding: 14px;
-        border-radius: 14px;
-        background: var(--panel-2);
-        border: 1px solid rgba(255,255,255,0.06);
-      }
-
-      .result-box strong {
-        color: var(--gold);
-      }
-
-      .assistant-box {
-        min-height: 130px;
-        color: #d7e7ff;
-        line-height: 1.65;
-        white-space: pre-wrap;
-      }
-
-      .metrics {
-        position: relative;
-        z-index: 1;
-        display: grid;
-        grid-template-columns: repeat(6, minmax(0, 1fr));
-        gap: 10px;
-        margin-top: 14px;
-        padding: 14px;
-        border: 1px solid rgba(240,197,106,0.18);
-        border-radius: 20px;
-        background: linear-gradient(180deg, rgba(17, 31, 55, 0.96), rgba(8, 16, 31, 0.98));
-      }
-
-      .metric {
-        display: grid;
-        place-items: center;
-        min-height: 72px;
-        padding: 10px;
-        border-radius: 14px;
-        background: rgba(255,255,255,0.04);
-        text-align: center;
-        color: #fff4d0;
-        font-size: 13px;
-        font-weight: 800;
-        line-height: 1.5;
-      }
-
-      .footer {
-        position: relative;
-        z-index: 1;
-        display: flex;
-        justify-content: space-between;
-        gap: 12px;
-        margin-top: 12px;
-        color: #8ca6cd;
-        font-size: 13px;
-      }
-
-      @media (max-width: 1200px) {
-        .grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .tool-row {
-          grid-template-columns: 1fr;
-        }
-
-        .flow-steps {
-          grid-template-columns: repeat(6, minmax(0, 1fr));
-        }
-
-        .metrics {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-      }
-
-      @media (max-width: 760px) {
-        .page {
-          width: calc(100% - 12px);
-          padding: 12px;
-        }
-
-        .top-stats,
-        .grid,
-        .field-grid,
-        .flow-steps,
-        .metrics {
-          grid-template-columns: 1fr;
-        }
-
-        .span-2 {
-          grid-column: span 1;
-        }
-
-        .footer {
-          flex-direction: column;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <main class="page">
-      <header class="hero">
-        <p class="eyebrow">Master Platform Blueprint 2025</p>
-        <h1>BILLY'S GLOBAL</h1>
-        <p class="tagline">BILLY'S GLOBAL – CONNECTER LA CHINE À L'AFRIQUE AVEC LA TECHNOLOGIE, LA CONFIANCE ET L'INTELLIGENCE</p>
-
-        <div class="top-stats">
-          <div class="mini-stat">Architecture<strong>18 Sections</strong></div>
-          <div class="mini-stat">Stack<strong>Next.js / Firebase / IA</strong></div>
-          <div class="mini-stat">Réseau<strong>China → Afrique</strong></div>
-          <div class="mini-stat">Pilotage<strong>DG / Vendeurs / Clients</strong></div>
-        </div>
-      </header>
-
-      <section class="board">
-        <div class="grid">
-          <article class="card blue">
-            <span class="num">01</span>
-            <h2>FRONTEND / APPLICATIONS</h2>
-            <p>Next.js, Mobile Apps Android/iOS, Tailwind CSS</p>
-          </article>
-
-          <article class="card purple">
-            <span class="num">02</span>
-            <h2>PASSERELLE / API GATEWAY</h2>
-            <p>Routing, Authentication, GraphQL/REST</p>
-          </article>
-
-          <article class="card green">
-            <span class="num">03</span>
-            <h2>MICROSERVICES BACKEND</h2>
-            <p>Auth, User, Product, Order, Payment, Vendor, Shipping, Notification, Chat, Review</p>
-          </article>
-
-          <article class="card orange">
-            <span class="num">04</span>
-            <h2>BASES DE DONNÉES & STOCKAGE</h2>
-            <p>Firebase Firestore, Firebase Auth, Cloud Storage, Cache</p>
-          </article>
-
-          <article class="card purple">
-            <span class="num">05</span>
-            <h2>INTELLIGENCE ARTIFICIELLE ENGINE</h2>
-            <p>IA Recherche, Recommandation, Traduction, Pricing, Fournisseur, IA Assistant, Business Analytics</p>
-          </article>
-
-          <article class="card blue">
-            <span class="num">06</span>
-            <h2>INTÉGRATIONS EXTERNES</h2>
-            <p>Orange Money, MTN Money, Wave, DHL, Aramex, WhatsApp Business, Twilio</p>
-          </article>
-
-          <article class="card green">
-            <span class="num">07</span>
-            <h2>ÉVÉNEMENTS & MESSAGERIE</h2>
-            <p>Kafka / RabbitMQ</p>
-          </article>
-
-          <article class="card orange">
-            <span class="num">08</span>
-            <h2>SÉCURITÉ & CONFORMITÉ</h2>
-            <p>SSL/HTTPS, RGPD, Protection DDoS</p>
-          </article>
-
-          <article class="card blue">
-            <span class="num">09</span>
-            <h2>TABLEAU DE BORD ADMIN (DG)</h2>
-            <p>Vue d'ensemble, Gestion produits, Commandes</p>
-          </article>
-
-          <article class="card purple">
-            <span class="num">10</span>
-            <h2>SYSTÈME DE PAIEMENT</h2>
-            <p>Multi-devises, Escrow, Split Payments</p>
-          </article>
-
-          <section class="flow-card span-2">
-            <div class="flow-header">
-              <span class="num">11</span>
-              <h2>FLUX PRINCIPAL DE LA PLATEFORME</h2>
-            </div>
-            <p>Parcours client et opérationnel de bout en bout.</p>
-            <div class="flow-steps">
-              <div class="step">Inscription</div>
-              <div class="step">Validation</div>
-              <div class="step">Recherche</div>
-              <div class="step">Sélection</div>
-              <div class="step">Commande</div>
-              <div class="step">Paiement</div>
-              <div class="step">Fournisseur</div>
-              <div class="step">Expédition</div>
-              <div class="step">Livraison</div>
-              <div class="step">Support</div>
-              <div class="step">Analyse</div>
-            </div>
-          </section>
-
-          <article class="card green">
-            <span class="num">12</span>
-            <h2>INFRASTRUCTURE CLOUD</h2>
-            <p>AWS/Google Cloud, Load Balancer, CDN Cloudflare</p>
-          </article>
-
-          <article class="card orange">
-            <span class="num">13</span>
-            <h2>DEVOPS & OUTILS</h2>
-            <p>Docker, GitHub Actions, CI/CD</p>
-          </article>
-
-          <article class="card blue">
-            <span class="num">14</span>
-            <h2>ANALYTICS & REPORTING</h2>
-            <p>Google Analytics, Metabase</p>
-          </article>
-
-          <article class="card purple">
-            <span class="num">15</span>
-            <h2>SUPPORT & COMMUNICATION</h2>
-            <p>Centre d'aide, Chatbot IA, Live Chat</p>
-          </article>
-
-          <article class="card green">
-            <span class="num">16</span>
-            <h2>RÔLES & PERMISSIONS</h2>
-            <p>Client, Vendeur, Admin DG, Agent Logistique</p>
-          </article>
-
-          <article class="card orange">
-            <span class="num">17</span>
-            <h2>FONCTIONNALITÉS CLÉS MANQUANTES INTÉGRÉES</h2>
-            <ul>
-              <li>Escrow sécurisé</li>
-              <li>Pricing intelligent</li>
-              <li>Chat vendeur-client</li>
-              <li>Gestion logistique intégrée</li>
-            </ul>
-          </article>
-
-          <article class="card blue">
-            <span class="num">18</span>
-            <h2>MONÉTISATION</h2>
-            <p>Commissions, Abonnements, Services premium</p>
-          </article>
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-area">
+      <h1>BILLY'S GLOBAL</h1>
+      <div class="tagline-nav">Chine → Conakry / Labé</div>
+    </div>
+    <div style="color: var(--green); font-size: 13px; font-weight: bold;">
+      ● Moteur de Calcul Actif
+    </div>
+  </header>
+
+  <div class="container">
+    
+    <section class="search-hero">
+      <h2>Rechercher un produit et calculer le <span>Prix au Débarquement</span></h2>
+      <div class="search-wrapper">
+        <input type="text" id="mainSearch" placeholder="Tapez un produit (ex: iPhone 17 Pro Max, BYD Dolphin, Sneakers...)" oninput="filterProducts()" />
+      </div>
+      <div class="dg-config-bar">
+        <span>Taux de change : <strong>1 USD = 8 600 GNF</strong></span>
+        <span>Marge fixe DG Billy : <strong>+500 000 GNF / unité</strong></span>
+      </div>
+    </section>
+
+    <div class="main-layout">
+      
+      <main>
+        <div class="products-title">
+          <span>Catalogue Import Chine - Temps Réel</span>
+          <span style="font-size: 12px; color: var(--muted);" id="productCount">Affichage : 4 produits</span>
         </div>
 
-        <div class="tool-row">
-          <section class="calculator blue">
-            <span class="num">Outil DG</span>
-            <h3>Système de Calcul des Coûts</h3>
-            <div class="field-grid">
-              <div>
-                <label for="exw">Prix EXW (USD)</label>
-                <input id="exw" type="number" value="350" min="0" step="0.01" />
-              </div>
-              <div>
-                <label for="shipping">Transport (USD)</label>
-                <input id="shipping" type="number" value="100" min="0" step="0.01" />
-              </div>
-              <div>
-                <label for="customs">Douane (USD)</label>
-                <input id="customs" type="number" value="50" min="0" step="0.01" />
-              </div>
-              <div>
-                <label for="rate">Taux USD → GNF</label>
-                <input id="rate" type="number" value="8600" min="1" step="1" />
-              </div>
-            </div>
-            <div style="margin-top:10px;">
-              <button id="calcBtn" class="btn-primary" type="button">Calculer le Prix Final</button>
-            </div>
-            <div class="result-box" id="calcResult">
-              Marge DG fixe: <strong>500 000 GNF</strong><br />
-              Prix final client: <strong>0 GNF</strong>
-            </div>
-          </section>
+        <div class="catalog-grid" id="catalogGrid">
+          </div>
+      </main>
 
-          <section class="assistant purple">
-            <span class="num">Assistant Client</span>
-            <h3>Tata</h3>
-            <label for="assistantInput">Posez une question à Tata</label>
-            <textarea id="assistantInput" placeholder="Exemple : Comment fonctionne l'importation depuis la Chine ?"></textarea>
-            <div style="margin-top:10px;">
-              <button id="assistantBtn" class="btn-secondary" type="button">Demander à Tata</button>
-            </div>
-            <div class="assistant-box" id="assistantOutput">Bonjour, je suis Tata. Je peux vous aider sur les produits, le paiement, la
-  livraison, les fournisseurs et le fonctionnement de Billy's Global.</div>
-          </section>
+      <aside class="sidebar-panel">
+        <h3>Calculateur Global Direct</h3>
+        <div class="calc-inputs">
+          <div class="input-group">
+            <label>Prix Usine EXW (USD)</label>
+            <input type="number" id="customExw" value="850" oninput="runCustomCalculation()" />
+          </div>
+          <div class="input-group">
+            <label>Frais de Transport (USD)</label>
+            <input type="number" id="customShipping" value="120" oninput="runCustomCalculation()" />
+          </div>
+          <div class="input-group">
+            <label>Frais de Douane Guinée (USD)</label>
+            <input type="number" id="customCustoms" value="80" oninput="runCustomCalculation()" />
+          </div>
         </div>
-      </section>
 
-      <section class="metrics">
-        <div class="metric">+200,000 Produits disponibles</div>
-        <div class="metric">+10,000 Fournisseurs vérifiés</div>
-        <div class="metric">50+ Marchés en Chine</div>
-        <div class="metric">15 pays Livraison en Afrique</div>
-        <div class="metric">99.8% Commandes réussies</div>
-        <div class="metric">24/7 Support client</div>
-      </section>
+        <div class="live-calc-result">
+          <h4>PRIX FINAL ESTIMÉ (CONAKRY/LABÉ)</h4>
+          <p id="customResultTotal">0 GNF</p>
+        </div>
 
-      <footer class="footer">
-        <span>Architecture technique, calcul commercial et assistant client intégrés</span>
-        <span>&copy; <span id="year"></span> Billy's Global</span>
-      </footer>
-    </main>
+        <div class="tata-box">
+          <h4>ASSISTANTE COMMERCIALE TATA</h4>
+          <div class="tata-dialog" id="tataSidebarText">
+            Bonjour Monsieur le Directeur Général. Tapez un produit dans la barre de recherche ou modifiez les chiffres du calculateur pour voir les prix clients s'ajuster instantanément avec votre marge de 500 000 GNF !
+          </div>
+        </div>
+      </aside>
 
-    <script>
-      const yearNode = document.getElementById("year");
-      if (yearNode) {
-        yearNode.textContent = new Date().getFullYear();
+    </div>
+
+    <section class="footer-metrics">
+      <div class="metric-item">
+        <p>+200k</p>
+        <span>Produits Usine</span>
+      </div>
+      <div class="metric-item">
+        <p>100%</p>
+        <span>Prix Sécurisés</span>
+      </div>
+      <div class="metric-item">
+        <p>500k GNF</p>
+        <span>Marge DG Garantie</span>
+      </div>
+      <div class="metric-item">
+        <p>Guinée</p>
+        <span>Livraison Rapide</span>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // Configuration financière de base de Billy's Global
+    const TauxUSDtoGNF = 8600;
+    const MargeDG = 500000;
+
+    // Base de données des produits inspirée de vos visuels
+    const productsDatabase = [
+      {
+        id: "iphone17",
+        name: "iPhone 17 Pro Max (256 Go) - Premium Hub",
+        category: "Électronique",
+        icon: "📱",
+        exw: 950,
+        shipping: 40,
+        customs: 60,
+        supplier: "Guangzhou Electronics Co., Ltd."
+      },
+      {
+        id: "byd",
+        name: "Véhicule Électrique BYD Seagull 2026 Edition",
+        category: "Véhicules",
+        icon: "🚗",
+        exw: 8200,
+        shipping: 1500,
+        customs: 1200,
+        supplier: "Shenzhen EV Logistics Hub"
+      },
+      {
+        id: "jetour",
+        name: "SUV Jetour Dashing Haute Performance",
+        category: "Véhicules",
+        icon: "🚘",
+        exw: 14500,
+        shipping: 2200,
+        customs: 1800,
+        supplier: "Yiwu Automotive Export Group"
+      },
+      {
+        id: "sneakers",
+        name: "Lot de 50 Paires Sneakers Streetwear Style Urbain",
+        category: "Mode",
+        icon: "👟",
+        exw: 450,
+        shipping: 180,
+        customs: 90,
+        supplier: "Fujian Shoes Manufacturing"
+      }
+    ];
+
+    // Fonction de formatage monétaire guinéen
+    function formatToGNF(amount) {
+      return new Intl.NumberFormat("fr-FR").format(Math.round(amount)) + " GNF";
+    }
+
+    // Afficher dynamiquement les cartes de produits
+    function displayProducts(products) {
+      const grid = document.getElementById("catalogGrid");
+      grid.innerHTML = "";
+
+      if(products.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; padding: 40px; text-align: center; color: var(--muted);">Aucun produit trouvé pour cette recherche.</div>`;
+        return;
       }
 
-      function formatGNF(value) {
-        return new Intl.NumberFormat("fr-FR").format(Math.round(value)) + " GNF";
-      }
+      products.forEach(p => {
+        // Formule stricte demandée par le DG : (EXW + Shipping + Customs) * Taux + Marge DG
+        const costUSD = p.exw + p.shipping + p.customs;
+        const costGNF = costUSD * TauxUSDtoGNF;
+        const finalPriceClient = costGNF + MargeDG;
 
-      function calculateLandedCost(exwPriceUSD, shippingUSD, customsUSD, exchangeRate = 8600, profitMarginGNF = 500000) {
-        const totalUsd = exwPriceUSD + shippingUSD + customsUSD;
-        const baseCostGNF = totalUsd * exchangeRate;
-        const finalPriceGNF = baseCostGNF + profitMarginGNF;
-        return {
-          totalUsd,
-          baseCostGNF,
-          profitMarginGNF,
-          finalPriceGNF
-        };
-      }
-
-      const exwInput = document.getElementById("exw");
-      const shippingInput = document.getElementById("shipping");
-      const customsInput = document.getElementById("customs");
-      const rateInput = document.getElementById("rate");
-      const calcBtn = document.getElementById("calcBtn");
-      const calcResult = document.getElementById("calcResult");
-
-      function renderCalculation() {
-        const exw = Number(exwInput.value || 0);
-        const shipping = Number(shippingInput.value || 0);
-        const customs = Number(customsInput.value || 0);
-        const rate = Number(rateInput.value || 8600);
-
-        const result = calculateLandedCost(exw, shipping, customs, rate, 500000);
-
-        calcResult.innerHTML =
-          "Total achat + logistique: <strong>" + result.totalUsd.toFixed(2) + " USD</strong><br />" +
-          "Coût converti: <strong>" + formatGNF(result.baseCostGNF) + "</strong><br />" +
-          "Marge DG fixe: <strong>" + formatGNF(result.profitMarginGNF) + "</strong><br />" +
-          "Prix final client: <strong>" + formatGNF(result.finalPriceGNF) + "</strong>";
-      }
-
-      calcBtn.addEventListener("click", renderCalculation);
-      renderCalculation();
-
-      const assistantInput = document.getElementById("assistantInput");
-      const assistantBtn = document.getElementById("assistantBtn");
-      const assistantOutput = document.getElementById("assistantOutput");
-
-      function tataReply(message) {
-        const text = message.trim().toLowerCase();
-
-        if (!text) {
-          return "Je suis Tata. Posez-moi une question sur les produits, les paiements, la livraison, les fournisseurs ou les coûts.";
-        }
-
-        if (text.includes("prix") || text.includes("coût") || text.includes("cout") || text.includes("marge")) {
-          return "Billy's Global calcule le prix final à partir du prix EXW, du transport, de la douane, puis ajoute une marge DG fixe
-  de 500 000 GNF. Utilisez le calculateur à gauche pour obtenir un montant précis.";
-        }
-
-        if (text.includes("livraison") || text.includes("expédition") || text.includes("expedition") || text.includes("dhl") ||
-  text.includes("aramex")) {
-          return "La livraison suit un flux structuré : commande, paiement, validation fournisseur, expédition internationale, suivi
-  logistique, puis livraison finale en Afrique via les partenaires de transport.";
-        }
-
-        if (text.includes("paiement") || text.includes("orange money") || text.includes("mtn") || text.includes("wave")) {
-          return "La plateforme prévoit un système de paiement multi-devises avec Orange Money, MTN Money, Wave, escrow et split
-  payments pour sécuriser les transactions.";
-        }
-
-        if (text.includes("fournisseur") || text.includes("chine") || text.includes("produit")) {
-          return "Billy's Global connecte des fournisseurs vérifiés en Chine à des acheteurs et vendeurs africains grâce à la recherche
-  produit, la sélection fournisseur, la traduction et l'analyse IA.";
-        }
-
-        if (text.includes("tata") || text.includes("assistant") || text.includes("aide") || text.includes("support")) {
-          return "Je suis Tata, l'assistant client de Billy's Global. Je peux vous orienter sur le sourcing, les commandes, le
-  paiement, la logistique et le calcul des prix.";
-        }
-
-        return "Voici ma réponse: Billy's Global est une plateforme e-commerce et import-export qui centralise le sourcing, la
-  commande, le paiement, la logistique, l'IA et le support client dans une architecture sécurisée et pilotée par le tableau de bord
-  DG.";
-      }
-
-      assistantBtn.addEventListener("click", function () {
-        assistantOutput.textContent = tataReply(assistantInput.value);
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+          <div class="product-image-placeholder">
+            <span class="product-badge">${p.category}</span>
+            <span class="icon">${p.icon}</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <h3>${p.name}</h3>
+              <div class="supplier-info">Fournisseur : ${p.supplier}</div>
+              <div class="price-breakdown">
+                <div><span>Prix usine :</span> <span>${p.exw} USD</span></div>
+                <div><span>Logistique :</span> <span>${p.shipping} USD</span></div>
+                <div><span>Douane Guinée :</span> <span>${p.customs} USD</span></div>
+                <div class="final-cost-box"><span>Prix Total Final :</span> <span>${formatToGNF(finalPriceClient)}</span></div>
+              </div>
+            </div>
+            <button class="order-btn" onclick="triggerOrder('${p.name}', ${finalPriceClient})">Commander le produit</button>
+          </div>
+        `;
+        grid.appendChild(p.style ? null : card);
       });
 
-      assistantInput.addEventListener("keydown", function (event) {
-        if (event.key === "Enter" && !event.shiftKey) {
-          event.preventDefault();
-          assistantOutput.textContent = tataReply(assistantInput.value);
-        }
-      });
-    </script>
-  </body>
-  </html><!DOCTYPE html>
-  <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BILLY'S GLOBAL | Architecture 2025</title>
-    <style>
-      :root {
-        --bg: #050b16;
-        --bg-2: #0b1324;
-        --panel: rgba(11, 20, 38, 0.86);
-        --panel-2: rgba(15, 27, 49, 0.92);
-        --line: rgba(150, 189, 255, 0.14);
-        --text: #eef6ff;
-        --muted: #97afd4;
-        --blue: #48a5ff;
-        --purple: #9776ff;
-        --green: #49d69a;
-        --orange: #ff9c4a;
-        --gold: #f0c56a;
-        --danger: #ff6b6b;
-        --shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
-        --radius: 18px;
+      document.getElementById("productCount").textContent = `Affichage : ${products.length} produit(s)`;
+    }
+
+    // Moteur de recherche en temps réel
+    function filterProducts() {
+      const query = document.getElementById("mainSearch").value.toLowerCase();
+      const filtered = productsDatabase.filter(p => p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
+      displayProducts(filtered);
+
+      // Interaction dynamique de Tata lors de la recherche
+      const sidebarText = document.getElementById("tataSidebarText");
+      if(query.length > 0) {
+        sidebarText.textContent = `Je filtre actuellement notre base de données de rechargement en Chine pour "${query}". Le prix calculé inclut directement vos frais logistiques et votre marge nette DG de 500 000 GNF !`;
+      } else {
+        sidebarText.textContent = `Bonjour Monsieur le Directeur Général. Tapez un produit dans la barre de recherche ou modifiez les chiffres du calculateur pour voir les prix clients s'ajuster instantanément !`;
       }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        color: var(--text);
-        background:
-          radial-gradient(circle at top left, rgba(72, 165, 255, 0.16), transparent 22%),
-          radial-gradient(circle at top right, rgba(151, 118, 255, 0.12), transparent 24%),
-          radial-gradient(circle at bottom right, rgba(73, 214, 154, 0.12), transparent 22%),
-          linear-gradient(180deg, #040914 0%, #07101d 100%);
-      }
-
-      .page {
-        width: min(1500px, calc(100% - 24px));
-        margin: 18px auto;
-        padding: 18px;
-        border: 1px solid var(--line);
-        border-radius: 28px;
-        background: linear-gradient(180deg, rgba(7, 15, 29, 0.96), rgba(5, 11, 22, 0.98));
-        box-shadow: var(--shadow);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .page::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        background:
-          linear-gradient(90deg, transparent 0 9.9%, rgba(255,255,255,0.025) 10% 10.1%, transparent 10.1% 19.9%,
-  rgba(255,255,255,0.025) 20% 20.1%, transparent 20.1% 100%),
-          linear-gradient(180deg, rgba(255,255,255,0.02), transparent 30%);
-      }
-
-      .hero {
-        position: relative;
-        z-index: 1;
-        text-align: center;
-        padding: 18px 10px 24px;
-      }
-
-      .eyebrow {
-        margin: 0;
-        color: var(--gold);
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.25em;
-        text-transform: uppercase;
-      }
-
-      h1 {
-        margin: 12px 0 10px;
-        font-size: clamp(2.1rem, 5vw, 4rem);
-        line-height: 1;
-        letter-spacing: 0.08em;
-      }
-
-      .tagline {
-        max-width: 1000px;
-        margin: 0 auto;
-        color: #d4e5ff;
-        font-size: 14px;
-        line-height: 1.7;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-      }
-
-      .top-stats {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 10px;
-        margin-top: 20px;
-      }
-
-      .mini-stat {
-        padding: 12px 14px;
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        background: rgba(255,255,255,0.03);
-        color: var(--muted);
-        font-size: 13px;
-      }
-
-      .mini-stat strong {
-        display: block;
-        margin-top: 6px;
-        color: var(--text);
-        font-size: 18px;
-      }
-
-      .board {
-        position: relative;
-        z-index: 1;
-        margin-top: 8px;
-        padding: 14px;
-        border: 1px solid rgba(142, 184, 255, 0.12);
-        border-radius: 22px;
-        background: rgba(8, 16, 31, 0.78);
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .card, .flow-card, .calculator, .assistant {
-        position: relative;
-        padding: 14px;
-        border-radius: var(--radius);
-        background: var(--panel);
-        border: 1px solid var(--line);
-        overflow: hidden;
-      }
-
-      .card::before, .flow-card::before, .calculator::before, .assistant::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, rgba(255,255,255,0.03), transparent 45%);
-        pointer-events: none;
-      }
-
-      .blue { box-shadow: inset 0 0 0 1px rgba(72,165,255,0.28); }
-      .purple { box-shadow: inset 0 0 0 1px rgba(151,118,255,0.28); }
-      .green { box-shadow: inset 0 0 0 1px rgba(73,214,154,0.28); }
-      .orange { box-shadow: inset 0 0 0 1px rgba(255,156,74,0.28); }
-
-      .num {
-        display: inline-block;
-        color: var(--gold);
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
-        margin-bottom: 8px;
-      }
-
-      h2 {
-        margin: 0 0 8px;
-        font-size: 20px;
-        line-height: 1.05;
-      }
-
-      .card p, .flow-card p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 14px;
-        line-height: 1.6;
-      }
-
-      .card ul {
-        margin: 8px 0 0;
-        padding-left: 18px;
-        color: var(--muted);
-        line-height: 1.6;
-        font-size: 14px;
-      }
-
-      .span-2 {
-        grid-column: span 2;
-      }
-
-      .flow-card {
-        min-height: 200px;
-        box-shadow: inset 0 0 0 1px rgba(240,197,106,0.22);
-      }
-
-      .flow-steps {
-        display: grid;
-        grid-template-columns: repeat(11, minmax(0, 1fr));
-        gap: 8px;
-        margin-top: 14px;
-      }
-
-      .step {
-        position: relative;
-        padding: 10px 6px;
-        border-radius: 12px;
-        text-align: center;
-        font-size: 11px;
-        font-weight: 700;
-        background: rgba(255,255,255,0.05);
-        color: var(--text);
-      }
-
-      .step::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        right: -8px;
-        width: 8px;
-        height: 2px;
-        background: rgba(72,165,255,0.8);
-        transform: translateY(-50%);
-      }
-
-      .step:last-child::after {
-        display: none;
-      }
-
-      .tool-row {
-        display: grid;
-        grid-template-columns: 1.4fr 1fr;
-        gap: 12px;
-        margin-top: 12px;
-      }
-
-      .calculator h3, .assistant h3 {
-        margin: 0 0 10px;
-        font-size: 20px;
-      }
-
-      .field-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-      }
-
-      label {
-        display: block;
-        font-size: 12px;
-        color: var(--muted);
-        margin-bottom: 6px;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-      }
-
-      input, button, textarea {
-        width: 100%;
-        border: 1px solid rgba(140, 180, 255, 0.18);
-        border-radius: 12px;
-        background: rgba(255,255,255,0.04);
-        color: var(--text);
-        padding: 12px;
-        font-size: 14px;
-        outline: none;
-      }
-
-      textarea {
-        min-height: 110px;
-        resize: vertical;
-      }
-
-      button {
-        cursor: pointer;
-        font-weight: 700;
-        transition: transform 160ms ease, background 160ms ease;
-      }
-
-      button:hover {
-        transform: translateY(-1px);
-      }
-
-      .btn-primary {
-        background: linear-gradient(135deg, var(--blue), #256bd8);
-        border-color: transparent;
-      }
-
-      .btn-secondary {
-        background: linear-gradient(135deg, var(--green), #1f9f6b);
-        border-color: transparent;
-      }
-
-      .result-box, .assistant-box {
-        margin-top: 12px;
-        padding: 14px;
-        border-radius: 14px;
-        background: var(--panel-2);
-        border: 1px solid rgba(255,255,255,0.06);
-      }
-
-      .result-box strong {
-        color: var(--gold);
-      }
-
-      .assistant-box {
-        min-height: 130px;
-        color: #d7e7ff;
-        line-height: 1.65;
-        white-space: pre-wrap;
-      }
-
-      .metrics {
-        position: relative;
-        z-index: 1;
-        display: grid;
-        grid-template-columns: repeat(6, minmax(0, 1fr));
-        gap: 10px;
-        margin-top: 14px;
-        padding: 14px;
-        border: 1px solid rgba(240,197,106,0.18);
-        border-radius: 20px;
-        background: linear-gradient(180deg, rgba(17, 31, 55, 0.96), rgba(8, 16, 31, 0.98));
-      }
-
-      .metric {
-        display: grid;
-        place-items: center;
-        min-height: 72px;
-        padding: 10px;
-        border-radius: 14px;
-        background: rgba(255,255,255,0.04);
-        text-align: center;
-        color: #fff4d0;
-        font-size: 13px;
-        font-weight: 800;
-        line-height: 1.5;
-      }
-
-      .footer {
-        position: relative;
-        z-index: 1;
-        display: flex;
-        justify-content: space-between;
-        gap: 12px;
-        margin-top: 12px;
-        color: #8ca6cd;
-        font-size: 13px;
-      }
-
-      @media (max-width: 1200px) {
-        .grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .tool-row {
-          grid-template-columns: 1fr;
-        }
-
-        .flow-steps {
-          grid-template-columns: repeat(6, minmax(0, 1fr));
-        }
-
-        .metrics {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-      }
-
-      @media (max-width: 760px) {
-        .page {
-          width: calc(100% - 12px);
-          padding: 12px;
-        }
-
-        .top-stats,
-        .grid,
-        .field-grid,
-        .flow-steps,
-        .metrics {
-          grid-template-columns: 1fr;
-        }
-
-        .span-2 {
-          grid-column: span 1;
-        }
-
-        .footer {
-          flex-direction: column;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <main class="page">
-      <header class="hero">
-        <p class="eyebrow">Master Platform Blueprint 2025</p>
-        <h1>BILLY'S GLOBAL</h1>
-        <p class="tagline">BILLY'S GLOBAL – CONNECTER LA CHINE À L'AFRIQUE AVEC LA TECHNOLOGIE, LA CONFIANCE ET L'INTELLIGENCE</p>
-
-        <div class="top-stats">
-          <div class="mini-stat">Architecture<strong>18 Sections</strong></div>
-          <div class="mini-stat">Stack<strong>Next.js / Firebase / IA</strong></div>
-          <div class="mini-stat">Réseau<strong>China → Afrique</strong></div>
-          <div class="mini-stat">Pilotage<strong>DG / Vendeurs / Clients</strong></div>
-        </div>
-      </header>
-
-      <section class="board">
-        <div class="grid">
-          <article class="card blue">
-            <span class="num">01</span>
-            <h2>FRONTEND / APPLICATIONS</h2>
-            <p>Next.js, Mobile Apps Android/iOS, Tailwind CSS</p>
-          </article>
-
-          <article class="card purple">
-            <span class="num">02</span>
-            <h2>PASSERELLE / API GATEWAY</h2>
-            <p>Routing, Authentication, GraphQL/REST</p>
-          </article>
-
-          <article class="card green">
-            <span class="num">03</span>
-            <h2>MICROSERVICES BACKEND</h2>
-            <p>Auth, User, Product, Order, Payment, Vendor, Shipping, Notification, Chat, Review</p>
-          </article>
-
-          <article class="card orange">
-            <span class="num">04</span>
-            <h2>BASES DE DONNÉES & STOCKAGE</h2>
-            <p>Firebase Firestore, Firebase Auth, Cloud Storage, Cache</p>
-          </article>
-
-          <article class="card purple">
-            <span class="num">05</span>
-            <h2>INTELLIGENCE ARTIFICIELLE ENGINE</h2>
-            <p>IA Recherche, Recommandation, Traduction, Pricing, Fournisseur, IA Assistant, Business Analytics</p>
-          </article>
-
-          <article class="card blue">
-            <span class="num">06</span>
-            <h2>INTÉGRATIONS EXTERNES</h2>
-            <p>Orange Money, MTN Money, Wave, DHL, Aramex, WhatsApp Business, Twilio</p>
-          </article>
-
-          <article class="card green">
-            <span class="num">07</span>
-            <h2>ÉVÉNEMENTS & MESSAGERIE</h2>
-            <p>Kafka / RabbitMQ</p>
-          </article>
-
-          <article class="card orange">
-            <span class="num">08</span>
-            <h2>SÉCURITÉ & CONFORMITÉ</h2>
-            <p>SSL/HTTPS, RGPD, Protection DDoS</p>
-          </article>
-
-          <article class="card blue">
-            <span class="num">09</span>
-            <h2>TABLEAU DE BORD ADMIN (DG)</h2>
-            <p>Vue d'ensemble, Gestion produits, Commandes</p>
-          </article>
-
-          <article class="card purple">
-            <span class="num">10</span>
-            <h2>SYSTÈME DE PAIEMENT</h2>
-            <p>Multi-devises, Escrow, Split Payments</p>
-          </article>
-
-          <section class="flow-card span-2">
-            <div class="flow-header">
-              <span class="num">11</span>
-              <h2>FLUX PRINCIPAL DE LA PLATEFORME</h2>
-            </div>
-            <p>Parcours client et opérationnel de bout en bout.</p>
-            <div class="flow-steps">
-              <div class="step">Inscription</div>
-              <div class="step">Validation</div>
-              <div class="step">Recherche</div>
-              <div class="step">Sélection</div>
-              <div class="step">Commande</div>
-              <div class="step">Paiement</div>
-              <div class="step">Fournisseur</div>
-              <div class="step">Expédition</div>
-              <div class="step">Livraison</div>
-              <div class="step">Support</div>
-              <div class="step">Analyse</div>
-            </div>
-          </section>
-
-          <article class="card green">
-            <span class="num">12</span>
-            <h2>INFRASTRUCTURE CLOUD</h2>
-            <p>AWS/Google Cloud, Load Balancer, CDN Cloudflare</p>
-          </article>
-
-          <article class="card orange">
-            <span class="num">13</span>
-            <h2>DEVOPS & OUTILS</h2>
-            <p>Docker, GitHub Actions, CI/CD</p>
-          </article>
-
-          <article class="card blue">
-            <span class="num">14</span>
-            <h2>ANALYTICS & REPORTING</h2>
-            <p>Google Analytics, Metabase</p>
-          </article>
-
-          <article class="card purple">
-            <span class="num">15</span>
-            <h2>SUPPORT & COMMUNICATION</h2>
-            <p>Centre d'aide, Chatbot IA, Live Chat</p>
-          </article>
-
-          <article class="card green">
-            <span class="num">16</span>
-            <h2>RÔLES & PERMISSIONS</h2>
-            <p>Client, Vendeur, Admin DG, Agent Logistique</p>
-          </article>
-
-          <article class="card orange">
-            <span class="num">17</span>
-            <h2>FONCTIONNALITÉS CLÉS MANQUANTES INTÉGRÉES</h2>
-            <ul>
-              <li>Escrow sécurisé</li>
-              <li>Pricing intelligent</li>
-              <li>Chat vendeur-client</li>
-              <li>Gestion logistique intégrée</li>
-            </ul>
-          </article>
-
-          <article class="card blue">
-            <span class="num">18</span>
-            <h2>MONÉTISATION</h2>
-            <p>Commissions, Abonnements, Services premium</p>
-          </article>
-        </div>
-
-        <div class="tool-row">
-          <section class="calculator blue">
-            <span class="num">Outil DG</span>
-            <h3>Système de Calcul des Coûts</h3>
-            <div class="field-grid">
-              <div>
-                <label for="exw">Prix EXW (USD)</label>
-                <input id="exw" type="number" value="350" min="0" step="0.01" />
-              </div>
-              <div>
-                <label for="shipping">Transport (USD)</label>
-                <input id="shipping" type="number" value="100" min="0" step="0.01" />
-              </div>
-              <div>
-                <label for="customs">Douane (USD)</label>
-                <input id="customs" type="number" value="50" min="0" step="0.01" />
-              </div>
-              <div>
-                <label for="rate">Taux USD → GNF</label>
-                <input id="rate" type="number" value="8600" min="1" step="1" />
-              </div>
-            </div>
-            <div style="margin-top:10px;">
-              <button id="calcBtn" class="btn-primary" type="button">Calculer le Prix Final</button>
-            </div>
-            <div class="result-box" id="calcResult">
-              Marge DG fixe: <strong>500 000 GNF</strong><br />
-              Prix final client: <strong>0 GNF</strong>
-            </div>
-          </section>
-
-          <section class="assistant purple">
-            <span class="num">Assistant Client</span>
-            <h3>Tata</h3>
-            <label for="assistantInput">Posez une question à Tata</label>
-            <textarea id="assistantInput" placeholder="Exemple : Comment fonctionne l'importation depuis la Chine ?"></textarea>
-            <div style="margin-top:10px;">
-              <button id="assistantBtn" class="btn-secondary" type="button">Demander à Tata</button>
-            </div>
-            <div class="assistant-box" id="assistantOutput">Bonjour, je suis Tata. Je peux vous aider sur les produits, le paiement, la
-  livraison, les fournisseurs et le fonctionnement de Billy's Global.</div>
-          </section>
-        </div>
-      </section>
-
-      <section class="metrics">
-        <div class="metric">+200,000 Produits disponibles</div>
-        <div class="metric">+10,000 Fournisseurs vérifiés</div>
-        <div class="metric">50+ Marchés en Chine</div>
-        <div class="metric">15 pays Livraison en Afrique</div>
-        <div class="metric">99.8% Commandes réussies</div>
-        <div class="metric">24/7 Support client</div>
-      </section>
-
-      <footer class="footer">
-        <span>Architecture technique, calcul commercial et assistant client intégrés</span>
-        <span>&copy; <span id="year"></span> Billy's Global</span>
-      </footer>
-    </main>
-
-    <script>
-      const yearNode = document.getElementById("year");
-      if (yearNode) {
-        yearNode.textContent = new Date().getFullYear();
-      }
-
-      function formatGNF(value) {
-        return new Intl.NumberFormat("fr-FR").format(Math.round(value)) + " GNF";
-      }
-
-      function calculateLandedCost(exwPriceUSD, shippingUSD, customsUSD, exchangeRate = 8600, profitMarginGNF = 500000) {
-        const totalUsd = exwPriceUSD + shippingUSD + customsUSD;
-        const baseCostGNF = totalUsd * exchangeRate;
-        const finalPriceGNF = baseCostGNF + profitMarginGNF;
-        return {
-          totalUsd,
-          baseCostGNF,
-          profitMarginGNF,
-          finalPriceGNF
-        };
-      }
-
-      const exwInput = document.getElementById("exw");
-      const shippingInput = document.getElementById("shipping");
-      const customsInput = document.getElementById("customs");
-      const rateInput = document.getElementById("rate");
-      const calcBtn = document.getElementById("calcBtn");
-      const calcResult = document.getElementById("calcResult");
-
-      function renderCalculation() {
-        const exw = Number(exwInput.value || 0);
-        const shipping = Number(shippingInput.value || 0);
-        const customs = Number(customsInput.value || 0);
-        const rate = Number(rateInput.value || 8600);
-
-        const result = calculateLandedCost(exw, shipping, customs, rate, 500000);
-
-        calcResult.innerHTML =
-          "Total achat + logistique: <strong>" + result.totalUsd.toFixed(2) + " USD</strong><br />" +
-          "Coût converti: <strong>" + formatGNF(result.baseCostGNF) + "</strong><br />" +
-          "Marge DG fixe: <strong>" + formatGNF(result.profitMarginGNF) + "</strong><br />" +
-          "Prix final client: <strong>" + formatGNF(result.finalPriceGNF) + "</strong>";
-      }
-
-      calcBtn.addEventListener("click", renderCalculation);
-      renderCalculation();
-
-      const assistantInput = document.getElementById("assistantInput");
-      const assistantBtn = document.getElementById("assistantBtn");
-      const assistantOutput = document.getElementById("assistantOutput");
-
-      function tataReply(message) {
-        const text = message.trim().toLowerCase();
-
-        if (!text) {
-          return "Je suis Tata. Posez-moi une question sur les produits, les paiements, la livraison, les fournisseurs ou les coûts.";
-        }
-
-        if (text.includes("prix") || text.includes("coût") || text.includes("cout") || text.includes("marge")) {
-          return "Billy's Global calcule le prix final à partir du prix EXW, du transport, de la douane, puis ajoute une marge DG fixe
-  de 500 000 GNF. Utilisez le calculateur à gauche pour obtenir un montant précis.";
-        }
-
-        if (text.includes("livraison") || text.includes("expédition") || text.includes("expedition") || text.includes("dhl") ||
-  text.includes("aramex")) {
-          return "La livraison suit un flux structuré : commande, paiement, validation fournisseur, expédition internationale, suivi
-  logistique, puis livraison finale en Afrique via les partenaires de transport.";
-        }
-
-        if (text.includes("paiement") || text.includes("orange money") || text.includes("mtn") || text.includes("wave")) {
-          return "La plateforme prévoit un système de paiement multi-devises avec Orange Money, MTN Money, Wave, escrow et split
-  payments pour sécuriser les transactions.";
-        }
-
-        if (text.includes("fournisseur") || text.includes("chine") || text.includes("produit")) {
-          return "Billy's Global connecte des fournisseurs vérifiés en Chine à des acheteurs et vendeurs africains grâce à la recherche
-  produit, la sélection fournisseur, la traduction et l'analyse IA.";
-        }
-
-        if (text.includes("tata") || text.includes("assistant") || text.includes("aide") || text.includes("support")) {
-          return "Je suis Tata, l'assistant client de Billy's Global. Je peux vous orienter sur le sourcing, les commandes, le
-  paiement, la logistique et le calcul des prix.";
-        }
-
-        return "Voici ma réponse: Billy's Global est une plateforme e-commerce et import-export qui centralise le sourcing, la
-  commande, le paiement, la logistique, l'IA et le support client dans une architecture sécurisée et pilotée par le tableau de bord
-  DG.";
-      }
-
-      assistantBtn.addEventListener("click", function () {
-        assistantOutput.textContent = tataReply(assistantInput.value);
-      });
-
-      assistantInput.addEventListener("keydown", function (event) {
-        if (event.key === "Enter" && !event.shiftKey) {
-          event.preventDefault();
-          assistantOutput.textContent = tataReply(assistantInput.value);
-        }
-      });
-    </script>
-  </body>
-  </html>
+    }
+
+    // Calculateur manuel pour le panneau de droite
+    function runCustomCalculation() {
+      const exw = parseFloat(document.getElementById("customExw").value) || 0;
+      const shipping = parseFloat(document.getElementById("customShipping").value) || 0;
+      const customs = parseFloat(document.getElementById("customCustoms").value) || 0;
+
+      const totalUSD = exw + shipping + customs;
+      const totalGNF = (totalUSD * TauxUSDtoGNF) + MargeDG;
+
+      document.getElementById("customResultTotal").textContent = formatToGNF(totalGNF);
+    }
+
+    // Notification simulée de commande
+    function triggerOrder(productName, price) {
+      alert(`[Billy's Global Gateway] \n\nDemande d'achat enregistrée pour :\n${productName}\n\nMontant final sécurisé à collecter : ${formatToGNF(price)} (Marge DG incluse).`);
+    }
+
+    // Initialisation au démarrage
+    displayProducts(productsDatabase);
+    runCustomCalculation();
+  </script>
+</body>
+</html>
