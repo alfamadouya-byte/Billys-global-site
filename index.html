@@ -1,1079 +1,397 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>BILLY'S GLOBAL — MASTER PLATFORM 2025</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
-<script>
-tailwind.config = {
-theme: {
-extend: {
-colors: {
-darkBg: "#050816",
-cardBg: "#0f172a",
-neonBlue: "#00d2ff",
-neonPurple: "#8b5cf6",
-accentOrange: "#ff7b00",
-neonGreen: "#00ff99"
-}
-}
-}
-}
-</script>
-
-<style>
-
-html{
-scroll-behavior:smooth;
-}
-
-body{
-background:#050816;
-overflow-x:hidden;
-}
-
-.glass{
-background:rgba(255,255,255,0.04);
-backdrop-filter:blur(10px);
-border:1px solid rgba(255,255,255,0.08);
-}
-
-.neon-border{
-border:1px solid rgba(0,210,255,0.25);
-box-shadow:0 0 25px rgba(0,210,255,0.08);
-}
-
-.gradient-btn{
-background:linear-gradient(90deg,#00d2ff,#8b5cf6);
-}
-
-.hero-bg{
-background:
-linear-gradient(to right,rgba(0,0,0,0.8),rgba(0,0,0,0.5)),
-url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=2070&auto=format&fit=crop');
-background-size:cover;
-background-position:center;
-}
-
-.glow{
-box-shadow:0 0 20px rgba(0,210,255,0.2);
-}
-
-.card-hover:hover{
-transform:translateY(-5px);
-transition:0.3s;
-border-color:rgba(0,210,255,0.3);
-}
-
-.tech-grid{
-background-image:
-linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-background-size:40px 40px;
-}
-
-</style>
-</head>
-
-<body class="text-white font-sans tech-grid">
-
-<!-- NAVBAR -->
-
-<header class="fixed top-0 left-0 w-full z-50 glass border-b border-gray-800">
-
-<div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-
-<div>
-<h1 class="text-2xl font-black tracking-widest">
-<span class="text-neonBlue">BILLY'S</span> GLOBAL
-</h1>
-<p class="text-xs text-gray-400 uppercase tracking-[3px]">
-Importation Chine → Afrique
-</p>
-</div>
-
-<nav class="hidden lg:flex items-center gap-8 text-sm font-semibold">
-<a href="#architecture" class="hover:text-neonBlue transition">Architecture</a>
-<a href="#marketplace" class="hover:text-neonBlue transition">Marketplace</a>
-<a href="#dashboard" class="hover:text-neonBlue transition">Dashboard DG</a>
-<a href="#ai" class="hover:text-neonBlue transition">IA</a>
-<a href="#stats" class="hover:text-neonBlue transition">Statistiques</a>
-</nav>
-
-<button class="gradient-btn px-5 py-2 rounded-xl text-sm font-bold shadow-lg">
-Lancer la plateforme
-</button>
-
-</div>
-
-</header>
-
-<!-- HERO -->
-
-<section class="hero-bg min-h-screen flex items-center pt-24">
-
-<div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-
-<div class="space-y-8">
-
-<div class="inline-flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/30 px-4 py-2 rounded-full">
-<span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-<span class="text-sm text-emerald-300">
-Infrastructure Active 2025
-</span>
-</div>
-
-<h1 class="text-5xl lg:text-7xl font-black leading-tight">
-La Marketplace IA
-<span class="text-neonBlue">Chine → Afrique</span>
-Nouvelle Génération
-</h1>
-
-<p class="text-gray-300 text-lg leading-relaxed max-w-xl">
-Billy's Global connecte les fournisseurs chinois, les paiements africains,
-la logistique internationale et l'intelligence artificielle dans une seule plateforme.
-</p>
-
-<div class="flex flex-wrap gap-4">
-
-<button class="gradient-btn px-8 py-4 rounded-2xl font-bold shadow-xl">
-Explorer les Produits
-</button>
-
-<button class="border border-gray-700 px-8 py-4 rounded-2xl font-bold hover:border-neonBlue transition">
-Voir l'Architecture
-</button>
-
-</div>
-
-</div>
-
-<!-- RIGHT PANEL -->
-
-<div class="glass neon-border rounded-3xl p-8 space-y-6">
-
-<div class="flex justify-between items-center">
-<h3 class="text-xl font-black">
-Moteur IA Global
-</h3>
-
-<div class="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 px-3 py-1 rounded-full text-xs">
-ONLINE
-</div>
-</div>
-
-<div class="grid grid-cols-2 gap-4">
-
-<div class="bg-cardBg p-5 rounded-2xl border border-gray-800">
-<i class="fa-solid fa-robot text-neonBlue text-2xl"></i>
-<h4 class="mt-3 font-bold">IA Produits</h4>
-<p class="text-xs text-gray-400 mt-2">
-Recherche intelligente & recommandations.
-</p>
-</div>
-
-<div class="bg-cardBg p-5 rounded-2xl border border-gray-800">
-<i class="fa-solid fa-language text-neonPurple text-2xl"></i>
-<h4 class="mt-3 font-bold">Traduction IA</h4>
-<p class="text-xs text-gray-400 mt-2">
-Chinois → Français → Anglais.
-</p>
-</div>
-
-<div class="bg-cardBg p-5 rounded-2xl border border-gray-800">
-<i class="fa-solid fa-truck-fast text-accentOrange text-2xl"></i>
-<h4 class="mt-3 font-bold">Logistique</h4>
-<p class="text-xs text-gray-400 mt-2">
-Suivi colis & livraison Afrique.
-</p>
-</div>
-
-<div class="bg-cardBg p-5 rounded-2xl border border-gray-800">
-<i class="fa-solid fa-wallet text-neonGreen text-2xl"></i>
-<h4 class="mt-3 font-bold">Paiements</h4>
-<p class="text-xs text-gray-400 mt-2">
-Wave, Orange Money, MTN.
-</p>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ARCHITECTURE -->
-
-<section id="architecture" class="py-24">
-
-<div class="max-w-7xl mx-auto px-6">
-
-<div class="text-center mb-16">
-
-<h2 class="text-5xl font-black">
-Architecture Complète
-</h2>
-
-<p class="text-gray-400 mt-5 max-w-3xl mx-auto">
-Le moteur central de Billy's Global combine Frontend, Backend,
-Firebase, IA et APIs mondiales.
-</p>
-
-</div>
-
-<div class="grid lg:grid-cols-4 gap-6">
-
-<!-- FRONTEND -->
-
-<div class="glass rounded-3xl p-6 neon-border card-hover">
-
-<div class="flex items-center justify-between">
-<h3 class="font-black text-xl">Frontend</h3>
-<i class="fa-solid fa-laptop-code text-neonBlue text-3xl"></i>
-</div>
-
-<ul class="mt-6 space-y-3 text-sm text-gray-300">
-<li>✔ Next.js 15</li>
-<li>✔ Tailwind CSS</li>
-<li>✔ TypeScript</li>
-<li>✔ App Router</li>
-<li>✔ Responsive Design</li>
-<li>✔ Mobile App</li>
-</ul>
-
-</div>
-
-<!-- BACKEND -->
-
-<div class="glass rounded-3xl p-6 neon-border card-hover">
-
-<div class="flex items-center justify-between">
-<h3 class="font-black text-xl">Backend API</h3>
-<i class="fa-solid fa-server text-neonPurple text-3xl"></i>
-</div>
-
-<ul class="mt-6 space-y-3 text-sm text-gray-300">
-<li>✔ Node.js</li>
-<li>✔ Express.js</li>
-<li>✔ REST APIs</li>
-<li>✔ Middleware</li>
-<li>✔ Auth Service</li>
-<li>✔ Payments API</li>
-</ul>
-
-</div>
-
-<!-- DATABASE -->
-
-<div class="glass rounded-3xl p-6 neon-border card-hover">
-
-<div class="flex items-center justify-between">
-<h3 class="font-black text-xl">Database</h3>
-<i class="fa-solid fa-database text-neonGreen text-3xl"></i>
-</div>
-
-<ul class="mt-6 space-y-3 text-sm text-gray-300">
-<li>✔ Firebase Auth</li>
-<li>✔ Firestore</li>
-<li>✔ Cloud Storage</li>
-<li>✔ Notifications</li>
-<li>✔ Vendors</li>
-<li>✔ Orders</li>
-</ul>
-
-</div>
-
-<!-- AI -->
-
-<div id="ai" class="glass rounded-3xl p-6 neon-border card-hover">
-
-<div class="flex items-center justify-between">
-<h3 class="font-black text-xl">Intelligence IA</h3>
-<i class="fa-solid fa-brain text-accentOrange text-3xl"></i>
-</div>
-
-<ul class="mt-6 space-y-3 text-sm text-gray-300">
-<li>✔ Recherche Image</li>
-<li>✔ Traduction IA</li>
-<li>✔ Analyse Fournisseurs</li>
-<li>✔ Estimation Prix</li>
-<li>✔ Chatbot IA</li>
-<li>✔ Automatisation</li>
-</ul>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- MARKETPLACE -->
-
-<section id="marketplace" class="py-24 bg-black/30">
-
-<div class="max-w-7xl mx-auto px-6">
-
-<div class="flex flex-col lg:flex-row justify-between items-center mb-16 gap-6">
-
-<div>
-<h2 class="text-5xl font-black">
-Marketplace Chine → Afrique
-</h2>
-<p class="text-gray-400 mt-4">
-Produits, fournisseurs, paiements et logistique connectés.
-</p>
-</div>
-
-<button class="gradient-btn px-6 py-3 rounded-xl font-bold">
-Voir Tous les Produits
-</button>
-
-</div>
-
-<!-- PRODUCTS -->
-
-<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-<!-- PRODUCT -->
-
-<div class="glass rounded-3xl overflow-hidden card-hover">
-
-<img
-src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=800&auto=format&fit=crop"
-class="h-52 w-full object-cover"
-/>
-
-<div class="p-5">
-
-<div class="flex justify-between items-start">
-
-<div>
-<h3 class="font-black text-lg">
-iPhone 17 Pro Max
-</h3>
-
-<p class="text-xs text-gray-400 mt-1">
-Guangzhou Electronics
-</p>
-</div>
-
-<div class="bg-neonBlue/10 text-neonBlue text-xs px-2 py-1 rounded-full">
-Tech
-</div>
-
-</div>
-
-<div class="mt-5 space-y-2 text-sm">
-
-<div class="flex justify-between">
-<span class="text-gray-400">Prix Usine</span>
-<span>950 USD</span>
-</div>
-
-<div class="flex justify-between">
-<span class="text-gray-400">Transport</span>
-<span>40 USD</span>
-</div>
-
-<div class="flex justify-between">
-<span class="text-gray-400">Douane</span>
-<span>60 USD</span>
-</div>
-
-</div>
-
-<div class="mt-5 pt-5 border-t border-gray-800 flex justify-between items-center">
-
-<div>
-<p class="text-xs text-gray-400">
-Prix Final
-</p>
-
-<p class="text-yellow-400 text-xl font-black">
-9 530 000 GNF
-</p>
-</div>
-
-<button class="gradient-btn px-4 py-2 rounded-xl text-sm font-bold">
-Commander
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- PRODUCT -->
-
-<div class="glass rounded-3xl overflow-hidden card-hover">
-
-<img
-src="https://images.unsplash.com/photo-1549924231-f129b911e442?q=80&w=800&auto=format&fit=crop"
-class="h-52 w-full object-cover"
-/>
-
-<div class="p-5">
-
-<div class="flex justify-between items-start">
-
-<div>
-<h3 class="font-black text-lg">
-BYD Dolphin EV
-</h3>
-
-<p class="text-xs text-gray-400 mt-1">
-Shenzhen Auto Group
-</p>
-</div>
-
-<div class="bg-accentOrange/10 text-accentOrange text-xs px-2 py-1 rounded-full">
-EV
-</div>
-
-</div>
-
-<div class="mt-5 space-y-2 text-sm">
-
-<div class="flex justify-between">
-<span class="text-gray-400">Prix Usine</span>
-<span>8 200 USD</span>
-</div>
-
-<div class="flex justify-between">
-<span class="text-gray-400">Transport</span>
-<span>1 500 USD</span>
-</div>
-
-<div class="flex justify-between">
-<span class="text-gray-400">Douane</span>
-<span>1 200 USD</span>
-</div>
-
-</div>
-
-<div class="mt-5 pt-5 border-t border-gray-800 flex justify-between items-center">
-
-<div>
-<p class="text-xs text-gray-400">
-Prix Final
-</p>
-
-<p class="text-yellow-400 text-xl font-black">
-94 240 000 GNF
-</p>
-</div>
-
-<button class="gradient-btn px-4 py-2 rounded-xl text-sm font-bold">
-Commander
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- DASHBOARD -->
-
-<section id="dashboard" class="py-24">
-
-<div class="max-w-7xl mx-auto px-6">
-
-<div class="text-center mb-16">
-
-<h2 class="text-5xl font-black">
-Dashboard Directeur Général
-</h2>
-
-<p class="text-gray-400 mt-5">
-Contrôle total des ventes, fournisseurs, commandes et revenus.
-</p>
-
-</div>
-
-<div class="grid lg:grid-cols-4 gap-6">
-
-<div class="glass rounded-3xl p-6 neon-border">
-
-<p class="text-gray-400 text-sm">Commandes</p>
-<h3 class="text-4xl font-black mt-3">12,458</h3>
-
-<div class="mt-4 text-emerald-400 text-sm">
-+18.5% ce mois
-</div>
-
-</div>
-
-<div class="glass rounded-3xl p-6 neon-border">
-
-<p class="text-gray-400 text-sm">Revenus</p>
-<h3 class="text-4xl font-black mt-3">$782,430</h3>
-
-<div class="mt-4 text-emerald-400 text-sm">
-+25.7% ce mois
-</div>
-
-</div>
-
-<div class="glass rounded-3xl p-6 neon-border">
-
-<p class="text-gray-400 text-sm">Vendeurs</p>
-<h3 class="text-4xl font-black mt-3">2,356</h3>
-
-<div class="mt-4 text-emerald-400 text-sm">
-+9.4% ce mois
-</div>
-
-</div>
-
-<div class="glass rounded-3xl p-6 neon-border">
-
-<p class="text-gray-400 text-sm">Clients</p>
-<h3 class="text-4xl font-black mt-3">18,752</h3>
-
-<div class="mt-4 text-emerald-400 text-sm">
-+19.3% ce mois
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- STATS -->
-
-<section id="stats" class="py-20 bg-black/40">
-
-<div class="max-w-7xl mx-auto px-6">
-
-<div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-
-<div class="glass rounded-3xl p-6 text-center neon-border">
-<h3 class="text-4xl font-black text-neonBlue">
-+200K
-</h3>
-<p class="text-sm text-gray-400 mt-2">
-Produits disponibles
-</p>
-</div>
-
-<div class="glass rounded-3xl p-6 text-center neon-border">
-<h3 class="text-4xl font-black text-neonPurple">
-+10K
-</h3>
-<p class="text-sm text-gray-400 mt-2">
-Fournisseurs vérifiés
-</p>
-</div>
-
-<div class="glass rounded-3xl p-6 text-center neon-border">
-<h3 class="text-4xl font-black text-accentOrange">
-50+
-</h3>
-<p class="text-sm text-gray-400 mt-2">
-Marchés partenaires Chine
-</p>
-</div>
-
-<div class="glass rounded-3xl p-6 text-center neon-border">
-<h3 class="text-4xl font-black text-neonGreen">
-15
-</h3>
-<p class="text-sm text-gray-400 mt-2">
-Pays Afrique
-</p>
-</div>
-
-<div class="glass rounded-3xl p-6 text-center neon-border">
-<h3 class="text-4xl font-black text-yellow-400">
-99.8%
-</h3>
-<p class="text-sm text-gray-400 mt-2">
-Commandes réussies
-</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer class="border-t border-gray-800 py-12">
-
-<div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-4 gap-10">
-
-<div>
-
-<h3 class="text-2xl font-black">
-<span class="text-neonBlue">BILLY'S</span> GLOBAL
-</h3>
-
-<p class="text-gray-400 text-sm mt-4 leading-relaxed">
-La plateforme intelligente d'importation Chine → Afrique
-alimentée par l'IA, la logistique et les paiements modernes.
-</p>
-
-</div>
-
-<div>
-
-<h4 class="font-bold mb-4">
-Plateforme
-</h4>
-
-<ul class="space-y-3 text-sm text-gray-400">
-<li>Produits</li>
-<li>Fournisseurs</li>
-<li>Logistique</li>
-<li>Paiements</li>
-</ul>
-
-</div>
-
-<div>
-
-<h4 class="font-bold mb-4">
-Technologies
-</h4>
-
-<ul class="space-y-3 text-sm text-gray-400">
-<li>Next.js</li>
-<li>Firebase</li>
-<li>Node.js</li>
-<li>OpenClaw IA</li>
-</ul>
-
-</div>
-
-<div>
-
-<h4 class="font-bold mb-4">
-Support
-</h4>
-
-<ul class="space-y-3 text-sm text-gray-400">
-<li>Support 24/7</li>
-<li>Centre d'aide</li>
-<li>Documentation</li>
-<li>API & Intégrations</li>
-</ul>
-
-</div>
-
-</div>
-
-<div class="text-center text-gray-500 text-sm mt-12">
-© 2025 Billy's Global — Tous droits réservés.
-</div>
-
-</footer>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>BILLY'S GLOBAL — MASTER PLATFORM 2026</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        darkBg: "#050816",
-                        cardBg: "#0f172a",
-                        neonBlue: "#00d2ff",
-                        neonPurple: "#8b5cf6",
-                        accentOrange: "#ff7b00",
-                        neonGreen: "#00ff99",
-                        panelLight: "#1e293b"
-                    }
-                }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billy's Global - Core Engine & Database Monitor</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --bg-main: #0d1117;
+            --bg-card: #161b22;
+            --bg-input: #21262d;
+            --border-color: #30363d;
+            --text-main: #c9d1d9;
+            --text-bright: #ffffff;
+            --accent-orange: #ff9900;
+            --accent-blue: #58a6ff;
+            --accent-green: #238636;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Top Platform Header */
+        .platform-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .brand h1 {
+            color: var(--accent-orange);
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        .brand p {
+            color: #8b949e;
+            margin: 5px 0 0 0;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .status-badge {
+            background-color: rgba(35, 134, 54, 0.15);
+            color: var(--accent-green);
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--accent-green);
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        /* Main Grid Layout */
+        .engine-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 25px;
+        }
+
+        @media (max-width: 992px) {
+            .engine-grid {
+                grid-template-columns: 1fr;
             }
         }
-    </script>
 
-    <style>
-        html { scroll-behavior: smooth; }
-        body { background: #050816; overflow-x: hidden; }
-        .glass {
-            background: rgba(15, 23, 42, 0.65);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .panel {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
         }
-        .neon-border {
-            border: 1px solid rgba(0, 210, 255, 0.25);
-            box-shadow: 0 0 25px rgba(0, 210, 255, 0.08);
+
+        .panel-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--text-bright);
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
         }
-        .gradient-btn { background: linear-gradient(90deg, #00d2ff, #8b5cf6); }
-        .hero-bg {
-            background: linear-gradient(to right, rgba(5, 8, 22, 0.9), rgba(5, 8, 22, 0.7)),
-            url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
+
+        .panel-title i {
+            color: var(--accent-blue);
         }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            transition: 0.3s ease;
-            border-color: rgba(0, 210, 255, 0.4);
+
+        /* Form Controls */
+        .form-group {
+            margin-bottom: 15px;
         }
-        .tech-grid {
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 40px 40px;
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #8b949e;
+            font-size: 13px;
+        }
+
+        input, select {
+            width: 100%;
+            background-color: var(--bg-input);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 10px;
+            color: var(--text-bright);
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .btn-calc {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-orange), #ff5500);
+            color: var(--text-bright);
+            border: none;
+            border-radius: 6px;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn-calc:hover {
+            opacity: 0.9;
+        }
+
+        /* Database & Flow Display */
+        .flow-wizard {
+            display: flex;
+            justify-content: space-between;
+            background-color: #1f242c;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+        }
+
+        .flow-step {
+            text-align: center;
+            flex: 1;
+            font-size: 11px;
+            color: #8b949e;
+            position: relative;
+        }
+
+        .flow-step.active {
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+
+        .flow-step i {
+            font-size: 16px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Data Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th {
+            background-color: #1f242c;
+            color: var(--accent-blue);
+            text-align: left;
+            padding: 12px;
+            font-size: 12px;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 13px;
+        }
+
+        tr:hover {
+            background-color: rgba(56, 139, 253, 0.05);
+        }
+
+        .badge-stock {
+            background-color: rgba(56, 139, 253, 0.1);
+            color: var(--accent-blue);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            border: 1px solid rgba(56, 139, 253, 0.2);
+        }
+
+        /* Tata Assistant Output Component */
+        .tata-box {
+            background-color: #131c26;
+            border-left: 4px solid var(--accent-orange);
+            padding: 15px;
+            border-radius: 0 6px 6px 0;
+            margin-top: 20px;
+        }
+
+        .tata-box h4 {
+            margin: 0 0 5px 0;
+            color: var(--accent-orange);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
     </style>
 </head>
+<body>
 
-<body class="text-white font-sans tech-grid">
-
-    <header class="fixed top-0 left-0 w-full z-50 glass border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <div>
-                <h1 class="text-2xl font-black tracking-widest">
-                    <span class="text-neonBlue">BILLY'S</span> GLOBAL
-                </h1>
-                <p class="text-xs text-gray-400 uppercase tracking-[3px]">Importation Chine → Afrique</p>
-            </div>
-            <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold">
-                <a href="#architecture" class="hover:text-neonBlue transition">Architecture</a>
-                <a href="#marketplace" class="hover:text-neonBlue transition">Marketplace</a>
-                <a href="#dashboard" class="hover:text-neonBlue transition">Dashboard DG</a>
-                <a href="#ai" class="hover:text-neonBlue transition">IA</a>
-            </nav>
-            <div class="flex items-center gap-4">
-                <span class="flex items-center gap-2 text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1.5 rounded-full border border-emerald-500/30">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    Moteur de Calcul Actif
-                </span>
-            </div>
+<div class="container">
+    <header class="platform-header">
+        <div class="brand">
+            <h1>BILLY'S GLOBAL</h1>
+            <p>Moteur Back-End & Architecture Réseau de Distribution</p>
+        </div>
+        <div class="status-badge">
+            <i class="fa-solid fa-server"></i> MOTEUR CENTRAL OPERATIONNEL
         </div>
     </header>
 
-    <section class="hero-bg min-h-screen flex items-center pt-32 pb-16">
-        <div class="max-w-7xl mx-auto px-6 w-full space-y-12">
+    <div class="flow-wizard">
+        <div class="flow-step"><i class="fa-solid fa-user-plus"></i>1. Client</div>
+        <div class="flow-step"><i class="fa-solid fa-magnifying-glass"></i>2. Recherche</div>
+        <div class="flow-step"><i class="fa-solid fa-file-invoice"></i>3. Demande/Devis</div>
+        <div class="flow-step active"><i class="fa-solid fa-comments"></i>4. Négociation</div>
+        <div class="flow-step"><i class="fa-solid fa-cart-shopping"></i>5. Commande</div>
+        <div class="flow-step"><i class="fa-solid fa-shield-halved"></i>6. Paiement</div>
+        <div class="flow-step"><i class="fa-solid fa-ship"></i>7. Expédition</div>
+        <div class="flow-step"><i class="fa-solid fa-truck-ramp-box"></i>8. Livraison</div>
+    </div>
+
+    <div class="engine-grid">
+        <div class="panel">
+            <div class="panel-title">
+                <i class="fa-solid fa-calculator"></i> Calculateur de Coût de Revient
+            </div>
             
-            <div class="text-center space-y-4 max-w-3xl mx-auto">
-                <div class="inline-flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/30 px-4 py-1.5 rounded-full">
-                    <span class="text-sm text-emerald-300 font-medium">Système Opérationnel Direct-Usine</span>
-                </div>
-                <h1 class="text-4xl lg:text-6xl font-black leading-tight">
-                    Moteur de Sourcing <span class="text-neonBlue">Chine → Afrique</span>
-                </h1>
-                <p class="text-gray-300 text-base">
-                    Recherchez vos produits. Le système calcule automatiquement le prix débarqué final à destination en incluant le fret, la douane guinéenne et la marge nette du Directeur Général.
-                </p>
+            <div class="form-group">
+                <label for="prodSelect">Produit Référencé (Catalogue Usine)</label>
+                <select id="prodSelect" onchange="updateDefaultPrice()">
+                    <option value="battery_slim">Batterie HHS12200 Slim Lithium 12V 200Ah</option>
+                    <option value="battery_basic">Batterie Standard LiFePO4 24V 100Ah</option>
+                    <option value="inverter_5kw">Onduleur Solaire Pure Sinus 5kW</option>
+                </select>
             </div>
 
-            <div class="glass neon-border rounded-3xl p-6 max-w-4xl mx-auto space-y-4 shadow-2xl">
-                <div class="relative">
-                    <i class="fa-solid fa-magnifying-glass absolute left-5 top-4.5 text-neonBlue text-lg"></i>
-                    <input type="text" id="mainSearch" oninput="filterProducts()" placeholder="Rechercher un modèle (ex: iPhone 17 Pro Max, BYD, Jetour, Sneakers...)" 
-                           class="w-full bg-darkBg/90 border border-gray-700 rounded-2xl py-4 pl-14 pr-6 text-base text-white placeholder-gray-500 focus:outline-none focus:border-neonBlue focus:ring-2 focus:ring-neonBlue/20 transition-all" />
-                </div>
-                <div class="flex flex-wrap justify-center gap-6 text-xs font-semibold text-gray-400 pt-1">
-                    <div><i class="fa-solid fa-chart-line text-neonGreen mr-2"></i>Taux d'Échange Fictif : <span class="text-white">1 USD = 8 600 GNF</span></div>
-                    <div><i class="fa-solid fa-user-tie text-neonPurple mr-2"></i>Marge Bénéficiaire DG : <span class="text-white">500 000 GNF / article</span></div>
-                </div>
+            <div class="form-group">
+                <label for="exwPrice">Prix d'Achat Usine (USD)</label>
+                <input type="number" id="exwPrice" value="320">
             </div>
 
+            <div class="form-group">
+                <label for="qty">Quantité Commandée</label>
+                <input type="number" id="qty" value="2">
+            </div>
+
+            <div class="form-group">
+                <label for="exchangeRate">Taux de Change (1 USD en GNF)</label>
+                <input type="number" id="exchangeRate" value="8600">
+            </div>
+
+            <div class="form-group">
+                <label for="logistics">Fret International & Logistique Globale (GNF)</label>
+                <input type="number" id="logistics" value="500000">
+            </div>
+
+            <button class="btn-calc" onclick="calculateLandedCost()">Exécuter le Calcul Logistique</button>
+
+            <div class="tata-box" id="tataNotification">
+                <h4><i class="fa-solid fa-robot"></i> Assistant Virtuel : Tata</h4>
+                <p id="tataMessage">En attente de l'exécution des calculs de marge du Directeur Général...</p>
+            </div>
         </div>
-    </section>
 
-    <section id="marketplace" class="py-16 max-w-7xl mx-auto px-6">
-        <div class="grid lg:grid-cols-3 gap-8">
+        <div class="panel">
+            <div class="panel-title">
+                <i class="fa-solid fa-database"></i> Collections Firebase Firestore - Données Produits
+            </div>
             
-            <div class="lg:col-span-2 space-y-6">
-                <div class="flex justify-between items-center border-b border-gray-800 pb-4">
-                    <h2 class="text-2xl font-black tracking-wide flex items-center gap-3">
-                        <i class="fa-solid fa-store text-neonBlue"></i> Offres Usines Disponibles
-                    </h2>
-                    <span id="productCount" class="text-xs bg-panelLight px-3 py-1 rounded-full text-gray-400">4 produits trouvés</span>
-                </div>
-
-                <div id="catalogGrid" class="grid md:grid-cols-2 gap-6">
-                    </div>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Produit</th>
+                            <th>Désignation de l'Équipement</th>
+                            <th>Config Stock</th>
+                            <th>Prix d'Origine (Usine)</th>
+                            <th>Marge Fixe DG</th>
+                            <th>Statut Distribution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-family: monospace;">BG-BAT-SLIM</td>
+                            <td style="font-weight: bold; color: var(--text-bright);">HHS12200 Slim Lithium 12V 200Ah</td>
+                            <td><span class="badge-stock">Rept 104 / IP67</span></td>
+                            <td>$320.00 USD</td>
+                            <td style="color: var(--accent-orange);">500 000 GNF</td>
+                            <td style="color: var(--accent-green); font-weight: bold;">Actif (Guinée)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-family: monospace;">BG-BAT-24V</td>
+                            <td style="font-weight: bold; color: var(--text-bright);">Standard LiFePO4 24V 100Ah</td>
+                            <td><span class="badge-stock">6000+ Cycles</span></td>
+                            <td>$278.40 USD</td>
+                            <td style="color: var(--accent-orange);">500 000 GNF</td>
+                            <td style="color: var(--accent-green); font-weight: bold;">Actif (Guinée)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-family: monospace;">BG-INV-5KW</td>
+                            <td style="font-weight: bold; color: var(--text-bright);">Onduleur Pure Sinus Haute Fréquence</td>
+                            <td><span class="badge-stock">5kW Hardware</span></td>
+                            <td>$150.00 USD</td>
+                            <td style="color: var(--accent-orange);">500 000 GNF</td>
+                            <td style="color: var(--accent-green); font-weight: bold;">Actif (Guinée)</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <div class="space-y-6">
-                
-                <div class="glass neon-border rounded-3xl p-6 space-y-4 sticky top-28">
-                    <h3 class="text-lg font-black tracking-wider text-neonBlue flex items-center gap-2">
-                        <i class="fa-solid fa-calculator"></i> Calculateur Global Direct
-                    </h3>
-                    <p class="text-xs text-gray-400">Entrez des montants personnalisés hors catalogue pour effectuer des simulations de coûts immédiates :</p>
-                    
-                    <div class="space-y-3 pt-2">
-                        <div>
-                            <label class="block text-xs font-bold text-gray-400 mb-1">Prix unitaire EXW (USD)</label>
-                            <input type="number" id="customExw" value="850" oninput="runCustomCalculation()" class="w-full bg-darkBg border border-gray-700 rounded-xl p-3 text-sm text-white font-mono focus:outline-none focus:border-neonBlue" />
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-gray-400 mb-1">Frais de Transport International (USD)</label>
-                            <input type="number" id="customShipping" value="120" oninput="runCustomCalculation()" class="w-full bg-darkBg border border-gray-700 rounded-xl p-3 text-sm text-white font-mono focus:outline-none focus:border-neonBlue" />
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-gray-400 mb-1">Frais d'Entrée Douane (USD)</label>
-                            <input type="number" id="customCustoms" value="80" oninput="runCustomCalculation()" class="w-full bg-darkBg border border-gray-700 rounded-xl p-3 text-sm text-white font-mono focus:outline-none focus:border-neonBlue" />
-                        </div>
-                    </div>
-
-                    <div class="bg-darkBg/90 border border-gray-800 rounded-2xl p-4 text-center space-y-1">
-                        <span class="text-[10px] uppercase font-black tracking-widest text-neonGreen">Prix Client Final Débarqué</span>
-                        <div id="customResultTotal" class="text-2xl font-black text-yellow-400">0 GNF</div>
-                    </div>
-
-                    <div class="border-t border-gray-800 pt-4 space-y-2">
-                        <div class="flex items-center gap-2">
-                            <span class="w-2 h-2 bg-neonPurple rounded-full animate-ping"></span>
-                            <span class="text-xs font-black text-neonPurple uppercase tracking-wider">Interface Tata Client</span>
-                        </div>
-                        <div class="bg-darkBg/40 border border-gray-800 rounded-xl p-3.5 text-xs text-gray-300 leading-relaxed" id="tataSidebarText">
-                            Bonjour Monsieur le Directeur Général. Tapez un mot-clé dans la barre de recherche ou manipulez les entrées de ce calculateur pour voir s'appliquer notre structure tarifaire automatiquement.
-                        </div>
-                    </div>
-                </div>
-
+            <div class="panel-title" style="margin-top: 30px;">
+                <i class="fa-solid fa-file-invoice-dollar"></i> Résultat des Coûts Globaux Générés
+            </div>
+            <div style="background-color: var(--bg-input); padding: 15px; border-radius: 6px; border: 1px solid var(--border-color);">
+                <p style="margin: 5px 0;">Coût Total de l'Achat Usine en GNF : <span id="resFactory" style="color: var(--text-bright); font-weight: bold;">0 GNF</span></p>
+                <p style="margin: 5px 0;">Frais Logistiques Généraux : <span id="resLog" style="color: var(--text-bright); font-weight: bold;">0 GNF</span></p>
+                <p style="margin: 5px 0;">Marge Cumulative Sécurisée : <span id="resMargin" style="color: var(--accent-orange); font-weight: bold;">0 GNF</span></p>
+                <h3 style="margin: 15px 0 0 0; border-top: 1px solid var(--border-color); padding-top: 10px; color: var(--accent-blue);">PRIX COMPLET CLÉS EN MAIN : <span id="resTotal" style="color: var(--text-bright);">0 GNF</span></h3>
             </div>
         </div>
-    </section>
+    </div>
+</div>
 
-    <section id="architecture" class="py-16 border-t border-gray-900 bg-black/20">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-black tracking-wider">Architecture d'Intégration Centrale</h2>
-                <p class="text-gray-400 text-sm mt-2">Distribution des requêtes applicatives, bases de données et passerelles.</p>
-            </div>
-            <div class="grid md:grid-cols-4 gap-6">
-                <div class="glass rounded-2xl p-5 card-hover">
-                    <div class="flex justify-between items-center mb-4">
-                        <h4 class="font-bold text-base">Structure Client</h4>
-                        <i class="fa-solid fa-display text-neonBlue text-xl"></i>
-                    </div>
-                    <p class="text-xs text-gray-400 leading-relaxed">Framework Next.js, interfaces mobiles réactives et modules Tailwind CSS optimisés.</p>
-                </div>
-                <div class="glass rounded-2xl p-5 card-hover">
-                    <div class="flex justify-between items-center mb-4">
-                        <h4 class="font-bold text-base">Passerelle API</h4>
-                        <i class="fa-solid fa-network-wired text-neonPurple text-xl"></i>
-                    </div>
-                    <p class="text-xs text-gray-400 leading-relaxed">Routage central des commandes, sécurisation des requêtes et traitements asynchrones.</p>
-                </div>
-                <div class="glass rounded-2xl p-5 card-hover">
-                    <div class="flex justify-between items-center mb-4">
-                        <h4 class="font-bold text-base">Données Firebase</h4>
-                        <i class="fa-solid fa-database text-neonGreen text-xl"></i>
-                    </div>
-                    <p class="text-xs text-gray-400 leading-relaxed">Synchronisation des stocks en temps réel sur Firestore et gestion sécurisée des profils clients.</p>
-                </div>
-                <div class="glass rounded-2xl p-5 card-hover">
-                    <div class="flex justify-between items-center mb-4">
-                        <h4 class="font-bold text-base">Passerelle FinTech</h4>
-                        <i class="fa-solid fa-wallet text-accentOrange text-xl"></i>
-                    </div>
-                    <p class="text-xs text-gray-400 leading-relaxed">Connexion directe API pour la réception des flux Orange Money, MTN et Wave.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<script>
+    function updateDefaultPrice() {
+        const product = document.getElementById("prodSelect").value;
+        const priceInput = document.getElementById("exwPrice");
+        if (product === "battery_slim") priceInput.value = 320;
+        else if (product === "battery_basic") priceInput.value = 278.40;
+        else if (product === "inverter_5kw") priceInput.value = 150;
+    }
 
-    <section id="dashboard" class="py-16 max-w-7xl mx-auto px-6">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-black tracking-wider">Suivi d'Activité Directeur Général</h2>
-            <p class="text-gray-400 text-sm mt-2">Statistiques globales consolidées de la holding Billy's Global.</p>
-        </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="glass rounded-2xl p-6 border-l-4 border-neonBlue">
-                <span class="text-xs text-gray-400 font-bold uppercase block">Flux de Commandes</span>
-                <div class="text-3xl font-black mt-2">12 458</div>
-                <span class="text-xs text-emerald-400 mt-1 block"><i class="fa-solid fa-arrow-trend-up mr-1"></i> +18.5% ce mois</span>
-            </div>
-            <div class="glass rounded-2xl p-6 border-l-4 border-neonPurple">
-                <span class="text-xs text-gray-400 font-bold uppercase block">Volume d'Affaires</span>
-                <div class="text-3xl font-black mt-2">$782 430</div>
-                <span class="text-xs text-emerald-400 mt-1 block"><i class="fa-solid fa-arrow-trend-up mr-1"></i> +25.7% ce mois</span>
-            </div>
-            <div class="glass rounded-2xl p-6 border-l-4 border-neonGreen">
-                <span class="text-xs text-gray-400 font-bold uppercase block">Vendeurs Certifiés</span>
-                <div class="text-3xl font-black mt-2">2 356</div>
-                <span class="text-xs text-emerald-400 mt-1 block"><i class="fa-solid fa-arrow-trend-up mr-1"></i> +9.4% ce mois</span>
-            </div>
-            <div class="glass rounded-2xl p-6 border-l-4 border-accentOrange">
-                <span class="text-xs text-gray-400 font-bold uppercase block">Utilisateurs Enregistrés</span>
-                <div class="text-3xl font-black mt-2">18 752</div>
-                <span class="text-xs text-emerald-400 mt-1 block"><i class="fa-solid fa-arrow-trend-up mr-1"></i> +19.3% ce mois</span>
-            </div>
-        </div>
-    </section>
+    function calculateLandedCost() {
+        const exw = parseFloat(document.getElementById("exwPrice").value);
+        const qty = parseInt(document.getElementById("qty").value);
+        const rate = parseFloat(document.getElementById("exchangeRate").value);
+        const log = parseFloat(document.getElementById("logistics").value);
+        
+        // Calculs basés sur les règles de gestion Billy's Global
+        const factoryCostGNF = exw * qty * rate;
+        const totalMargin = 500000 * qty; // 500 000 GNF de bénéfice net par unité pour le DG
+        const totalLandedCost = factoryCostGNF + log + totalMargin;
 
-    <section class="py-12 bg-black/40 border-y border-gray-900 text-center">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-5 gap-6">
-            <div><h5 class="text-3xl font-black text-neonBlue">+200K</h5><p class="text-xs text-gray-500 mt-1">Produits Usine</p></div>
-            <div><h5 class="text-3xl font-black text-neonPurple">+10K</h5><p class="text-xs text-gray-500 mt-1">Fournisseurs Agréés</p></div>
-            <div><h5 class="text-3xl font-black text-accentOrange">50+</h5><p class="text-xs text-gray-500 mt-1">Marchés Partenaires</p></div>
-            <div><h5 class="text-3xl font-black text-neonGreen">15</h5><p class="text-xs text-gray-500 mt-1">Pays Connectés</p></div>
-            <div><h5 class="text-3xl font-black text-yellow-400">99.8%</h5><p class="text-xs text-gray-500 mt-1">Taux de Succès</p></div>
-        </div>
-    </section>
+        // Rendu dans l'interface
+        document.getElementById("resFactory").innerText = factoryCostGNF.toLocaleString() + " GNF";
+        document.getElementById("resLog").innerText = log.toLocaleString() + " GNF";
+        document.getElementById("resMargin").innerText = totalMargin.toLocaleString() + " GNF";
+        document.getElementById("resTotal").innerText = totalLandedCost.toLocaleString() + " GNF";
 
-    <footer class="max-w-7xl mx-auto px-6 py-12 text-sm text-gray-500 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div class="text-center sm:text-left">
-            <span class="text-white font-bold tracking-wider">BILLY'S GLOBAL</span> — Infrastructure Commerciale Intégrée.
-        </div>
-        <div>&copy; 2026 Billy's Global — Tous droits réservés.</div>
-    </footer>
+        // Message de validation dynamique de Tata
+        document.getElementById("tataMessage").innerHTML = "Monsieur le Directeur Général, les calculs sont validés pour " + qty + " unité(s). Le coût de revient total intègre parfaitement votre bénéfice net de " + totalMargin.toLocaleString() + " GNF. La commande est prête à être émise.";
+    }
 
-    <script>
-        const TauxUSD = 8600;
-        const MargeNetteDG = 500000;
+    // Exécution initiale automatique au chargement
+    window.onload = calculateLandedCost;
+</script>
 
-        // Base de données structurée selon vos marchés cibles
-        const database = [
-            {
-                name: "iPhone 17 Pro Max (256 Go) Titanium - Premium Hub",
-                category: "Tech",
-                icon: "fa-solid fa-mobile-screen-button text-neonBlue",
-                exw: 950, shipping: 40, customs: 60,
-                supplier: "Guangzhou Digital Electronics Ltd."
-            },
-            {
-                name: "Véhicule Électrique BYD Seagull SUV Urban Edition",
-                category: "EV",
-                icon: "fa-solid fa-car-side text-accentOrange",
-                exw: 8200, shipping: 1500, customs: 1200,
-                supplier: "Shenzhen EV Automotive Grid"
-            },
-            {
-                name: "SUV Premium Jetour Dashing Performance Confort",
-                category: "EV",
-                icon: "fa-solid fa-car text-neonGreen",
-                exw: 14500, shipping: 2200, customs: 1800,
-                supplier: "Zhejiang Export Vehicles Co."
-            },
-            {
-                name: "Lot de 50 Paires Sneakers Streetwear & Mode Urbaine",
-                category: "Mode",
-                icon: "fa-solid fa-shoe-prints text-neonPurple",
-                exw: 450, shipping: 180, customs: 90,
-                supplier: "Quanzhou Footwear Industrial Complex"
-            }
-        ];
-
-        function formatCurrency(amount) {
-            return new Intl.NumberFormat("fr-FR").format(Math.round(amount)) + " GNF";
-        }
-
-        // Rendu dynamique de la vitrine
-        function renderVitrine(products) {
-            const grid = document.getElementById("catalogGrid");
-            grid.innerHTML = "";
-
-            if (products.length === 0) {
-                grid.innerHTML = `<div class="col-span-2 text-center py-12 text-gray-500 text-sm">Aucun résultat ne correspond à votre recherche.</div>`;
-                return;
-            }
-
-            products.forEach(product => {
-                const totalUSD = product.exw + product.shipping + product.customs;
-                const finalClientPrice = (totalUSD * TauxUSD) + MargeNetteDG;
-
-                const itemHtml = `
-                    <div class="glass rounded-3xl overflow-hidden card-hover border border-gray-800/80 flex flex-col justify-between">
-                        <div class="p-6 space-y-4">
-                            <div class="flex justify-between items-start">
-                                <div class="w-12 h-12 bg-darkBg rounded-2xl flex items-center justify-center border border-gray-800">
-                                    <i class="${product.icon} text-2xl"></i>
-                                </div>
-                                <span class="bg-gray-800 text-gray-300 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full">${product.category}</span>
-                            </div>
-                            <div>
-                                <h3 class="font-black text-lg text-white line-clamp-1">${product.name}</h3>
-                                <p class="text-xs text-gray-500 mt-0.5">Usine : ${product.supplier}</p>
-                            </div>
-                            <div class="space-y-1.5 pt-2 border-t border-gray-800/50 text-xs text-gray-400 font-mono">
-                                <div class="flex justify-between"><span>Prix Départ Usine :</span><span class="text-gray-200">${product.exw} USD</span></div>
-                                <div class="flex justify-between"><span>Logistique Fret :</span><span class="text-gray-200">${product.shipping} USD</span></div>
-                                <div class="flex justify-between"><span>Droits de Douane :</span><span class="text-gray-200">${product.customs} USD</span></div>
-                            </div>
-                        </div>
-                        <div class="p-6 bg-darkBg/40 border-t border-gray-800/80 flex items-center justify-between gap-4">
-                            <div>
-                                <span class="text-[10px] font-bold text-gray-400 block uppercase tracking-wider">Prix Débarqué</span>
-                                <span class="text-lg font-black text-yellow-400">${formatCurrency(finalClientPrice)}</span>
-                            </div>
-                            <button onclick="executeOrderSim('${product.name}', ${finalClientPrice})" class="gradient-btn text-xs font-bold px-4 py-2.5 rounded-xl transition hover:opacity-90">Commander</button>
-                        </div>
-                    </div>
-                `;
-                grid.insertAdjacentHTML("beforeend", itemHtml);
-            });
-
-            document.getElementById("productCount").textContent = `${products.length} produit(s) trouvé(s)`;
-        }
-
-        // Script de recherche interactive
-        function filterProducts() {
-            const query = document.getElementById("mainSearch").value.toLowerCase().trim();
-            const filtered = database.filter(item => 
-                item.name.toLowerCase().includes(query) || 
-                item.category.toLowerCase().includes(query)
-            );
-            renderVitrine(filtered);
-
-            const commentBox = document.getElementById("tataSidebarText");
-            if (query.length > 0) {
-                commentBox.innerHTML = `Analyse en cours... Je trie nos fiches logistiques pour <span class="text-neonBlue font-bold">"${query}"</span>. Tous les totaux affichent la conversion à 8 600 GNF intégrant vos 500 000 GNF de gain fixe.`;
-            } else {
-                commentBox.textContent = "Bonjour Monsieur le Directeur Général. Tapez un mot-clé dans la barre de recherche ou manipulez les entrées de ce calculateur pour voir s'appliquer notre structure tarifaire automatiquement.";
-            }
-        }
-
-        // Script du calculateur manuel latéral
-        function runCustomCalculation() {
-            const exw = parseFloat(document.getElementById("customExw").value) || 0;
-            const shipping = parseFloat(document.getElementById("customShipping").value) || 0;
-            const customs = parseFloat(document.getElementById("customCustoms").value) || 0;
-
-            const totalUSD = exw + shipping + customs;
-            const totalGNF = (totalUSD * TauxUSD) + MargeNetteDG;
-
-            document.getElementById("customResultTotal").textContent = formatCurrency(totalGNF);
-        }
-
-        function executeOrderSim(name, price) {
-            alert(`[Passerelle Billy's Global]\n\nValidation requise pour l'article :\n${name}\n\nFonds clients estimés : ${formatCurrency(price)}\n(Marge nette de 500 000 GNF allouée au DG).`);
-        }
-
-        // Lancement initial
-        renderVitrine(database);
-        runCustomCalculation();
-    </script>
 </body>
 </html>
