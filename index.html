@@ -1,397 +1,704 @@
+BILLY’S GLOBAL — MASTER HTML SYSTEM (Architecture Unifiée)
+
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Billy's Global - Core Engine & Database Monitor</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-    <style>
-        :root {
-            --bg-main: #0d1117;
-            --bg-card: #161b22;
-            --bg-input: #21262d;
-            --border-color: #30363d;
-            --text-main: #c9d1d9;
-            --text-bright: #ffffff;
-            --accent-orange: #ff9900;
-            --accent-blue: #58a6ff;
-            --accent-green: #238636;
-        }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            margin: 0;
-            padding: 20px;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+<title>BILLY'S GLOBAL — AI METAVERSE SYSTEM</title>
 
-        /* Top Platform Header */
-        .platform-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 20px;
-            margin-bottom: 25px;
-        }
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
 
-        .brand h1 {
-            color: var(--accent-orange);
-            margin: 0;
-            font-size: 24px;
-            letter-spacing: 1px;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-        .brand p {
-            color: #8b949e;
-            margin: 5px 0 0 0;
-            font-size: 14px;
-            text-transform: uppercase;
-        }
+<style>
 
-        .status-badge {
-            background-color: rgba(35, 134, 54, 0.15);
-            color: var(--accent-green);
-            padding: 8px 16px;
-            border-radius: 20px;
-            border: 1px solid var(--accent-green);
-            font-weight: bold;
-            font-size: 13px;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
-        /* Main Grid Layout */
-        .engine-grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 25px;
-        }
+body{
+background:#030712;
+color:white;
+overflow-x:hidden;
+}
 
-        @media (max-width: 992px) {
-            .engine-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+.sidebar{
+position:fixed;
+left:0;
+top:0;
+width:300px;
+height:100vh;
+background:#08111f;
+border-right:1px solid rgba(255,255,255,.05);
+overflow-y:auto;
+z-index:999;
+}
 
-        .panel {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-        }
+.main{
+margin-left:300px;
+padding:30px;
+}
 
-        .panel-title {
-            font-size: 16px;
-            font-weight: bold;
-            color: var(--text-bright);
-            margin-top: 0;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-        }
+.glass{
+background:rgba(255,255,255,.04);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.06);
+}
 
-        .panel-title i {
-            color: var(--accent-blue);
-        }
+.orange{
+color:#ff8c00;
+}
 
-        /* Form Controls */
-        .form-group {
-            margin-bottom: 15px;
-        }
+.bg-orange{
+background:#ff8c00;
+}
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #8b949e;
-            font-size: 13px;
-        }
+.card{
+border-radius:24px;
+padding:24px;
+}
 
-        input, select {
-            width: 100%;
-            background-color: var(--bg-input);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 10px;
-            color: var(--text-bright);
-            font-size: 14px;
-            box-sizing: border-box;
-        }
+.hero{
+height:520px;
+border-radius:30px;
+background:
+linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+url('https://images.unsplash.com/photo-1529074963764-98f45c47344b?q=80&w=1920');
+background-size:cover;
+background-position:center;
+}
 
-        input:focus, select:focus {
-            outline: none;
-            border-color: var(--accent-blue);
-        }
+.live-dot{
+width:10px;
+height:10px;
+background:#00ff88;
+border-radius:50%;
+animation:blink 1s infinite;
+}
 
-        .btn-calc {
-            width: 100%;
-            background: linear-gradient(135deg, var(--accent-orange), #ff5500);
-            color: var(--text-bright);
-            border: none;
-            border-radius: 6px;
-            padding: 12px;
-            font-weight: bold;
-            font-size: 14px;
-            cursor: pointer;
-            transition: opacity 0.2s;
-            margin-top: 10px;
-        }
+@keyframes blink{
+0%{opacity:1;}
+50%{opacity:.2;}
+100%{opacity:1;}
+}
 
-        .btn-calc:hover {
-            opacity: 0.9;
-        }
+.avatar{
+animation:float 4s ease-in-out infinite;
+}
 
-        /* Database & Flow Display */
-        .flow-wizard {
-            display: flex;
-            justify-content: space-between;
-            background-color: #1f242c;
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 25px;
-            border: 1px solid var(--border-color);
-        }
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+}
 
-        .flow-step {
-            text-align: center;
-            flex: 1;
-            font-size: 11px;
-            color: #8b949e;
-            position: relative;
-        }
+.market-card img{
+height:230px;
+width:100%;
+object-fit:cover;
+}
 
-        .flow-step.active {
-            color: var(--accent-orange);
-            font-weight: bold;
-        }
+button{
+transition:.4s;
+}
 
-        .flow-step i {
-            font-size: 16px;
-            display: block;
-            margin-bottom: 5px;
-        }
+button:hover{
+transform:translateY(-2px);
+}
 
-        /* Data Tables */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
+</style>
 
-        th {
-            background-color: #1f242c;
-            color: var(--accent-blue);
-            text-align: left;
-            padding: 12px;
-            font-size: 12px;
-            text-transform: uppercase;
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        td {
-            padding: 12px;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 13px;
-        }
-
-        tr:hover {
-            background-color: rgba(56, 139, 253, 0.05);
-        }
-
-        .badge-stock {
-            background-color: rgba(56, 139, 253, 0.1);
-            color: var(--accent-blue);
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            border: 1px solid rgba(56, 139, 253, 0.2);
-        }
-
-        /* Tata Assistant Output Component */
-        .tata-box {
-            background-color: #131c26;
-            border-left: 4px solid var(--accent-orange);
-            padding: 15px;
-            border-radius: 0 6px 6px 0;
-            margin-top: 20px;
-        }
-
-        .tata-box h4 {
-            margin: 0 0 5px 0;
-            color: var(--accent-orange);
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-    </style>
 </head>
+
 <body>
 
-<div class="container">
-    <header class="platform-header">
-        <div class="brand">
-            <h1>BILLY'S GLOBAL</h1>
-            <p>Moteur Back-End & Architecture Réseau de Distribution</p>
-        </div>
-        <div class="status-badge">
-            <i class="fa-solid fa-server"></i> MOTEUR CENTRAL OPERATIONNEL
-        </div>
-    </header>
+<!-- SIDEBAR ENGINE -->
 
-    <div class="flow-wizard">
-        <div class="flow-step"><i class="fa-solid fa-user-plus"></i>1. Client</div>
-        <div class="flow-step"><i class="fa-solid fa-magnifying-glass"></i>2. Recherche</div>
-        <div class="flow-step"><i class="fa-solid fa-file-invoice"></i>3. Demande/Devis</div>
-        <div class="flow-step active"><i class="fa-solid fa-comments"></i>4. Négociation</div>
-        <div class="flow-step"><i class="fa-solid fa-cart-shopping"></i>5. Commande</div>
-        <div class="flow-step"><i class="fa-solid fa-shield-halved"></i>6. Paiement</div>
-        <div class="flow-step"><i class="fa-solid fa-ship"></i>7. Expédition</div>
-        <div class="flow-step"><i class="fa-solid fa-truck-ramp-box"></i>8. Livraison</div>
-    </div>
+<div class="sidebar p-6">
 
-    <div class="engine-grid">
-        <div class="panel">
-            <div class="panel-title">
-                <i class="fa-solid fa-calculator"></i> Calculateur de Coût de Revient
-            </div>
-            
-            <div class="form-group">
-                <label for="prodSelect">Produit Référencé (Catalogue Usine)</label>
-                <select id="prodSelect" onchange="updateDefaultPrice()">
-                    <option value="battery_slim">Batterie HHS12200 Slim Lithium 12V 200Ah</option>
-                    <option value="battery_basic">Batterie Standard LiFePO4 24V 100Ah</option>
-                    <option value="inverter_5kw">Onduleur Solaire Pure Sinus 5kW</option>
-                </select>
-            </div>
+<div class="flex items-center gap-4 mb-10">
 
-            <div class="form-group">
-                <label for="exwPrice">Prix d'Achat Usine (USD)</label>
-                <input type="number" id="exwPrice" value="320">
-            </div>
-
-            <div class="form-group">
-                <label for="qty">Quantité Commandée</label>
-                <input type="number" id="qty" value="2">
-            </div>
-
-            <div class="form-group">
-                <label for="exchangeRate">Taux de Change (1 USD en GNF)</label>
-                <input type="number" id="exchangeRate" value="8600">
-            </div>
-
-            <div class="form-group">
-                <label for="logistics">Fret International & Logistique Globale (GNF)</label>
-                <input type="number" id="logistics" value="500000">
-            </div>
-
-            <button class="btn-calc" onclick="calculateLandedCost()">Exécuter le Calcul Logistique</button>
-
-            <div class="tata-box" id="tataNotification">
-                <h4><i class="fa-solid fa-robot"></i> Assistant Virtuel : Tata</h4>
-                <p id="tataMessage">En attente de l'exécution des calculs de marge du Directeur Général...</p>
-            </div>
-        </div>
-
-        <div class="panel">
-            <div class="panel-title">
-                <i class="fa-solid fa-database"></i> Collections Firebase Firestore - Données Produits
-            </div>
-            
-            <div style="overflow-x: auto;">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID Produit</th>
-                            <th>Désignation de l'Équipement</th>
-                            <th>Config Stock</th>
-                            <th>Prix d'Origine (Usine)</th>
-                            <th>Marge Fixe DG</th>
-                            <th>Statut Distribution</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="font-family: monospace;">BG-BAT-SLIM</td>
-                            <td style="font-weight: bold; color: var(--text-bright);">HHS12200 Slim Lithium 12V 200Ah</td>
-                            <td><span class="badge-stock">Rept 104 / IP67</span></td>
-                            <td>$320.00 USD</td>
-                            <td style="color: var(--accent-orange);">500 000 GNF</td>
-                            <td style="color: var(--accent-green); font-weight: bold;">Actif (Guinée)</td>
-                        </tr>
-                        <tr>
-                            <td style="font-family: monospace;">BG-BAT-24V</td>
-                            <td style="font-weight: bold; color: var(--text-bright);">Standard LiFePO4 24V 100Ah</td>
-                            <td><span class="badge-stock">6000+ Cycles</span></td>
-                            <td>$278.40 USD</td>
-                            <td style="color: var(--accent-orange);">500 000 GNF</td>
-                            <td style="color: var(--accent-green); font-weight: bold;">Actif (Guinée)</td>
-                        </tr>
-                        <tr>
-                            <td style="font-family: monospace;">BG-INV-5KW</td>
-                            <td style="font-weight: bold; color: var(--text-bright);">Onduleur Pure Sinus Haute Fréquence</td>
-                            <td><span class="badge-stock">5kW Hardware</span></td>
-                            <td>$150.00 USD</td>
-                            <td style="color: var(--accent-orange);">500 000 GNF</td>
-                            <td style="color: var(--accent-green); font-weight: bold;">Actif (Guinée)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="panel-title" style="margin-top: 30px;">
-                <i class="fa-solid fa-file-invoice-dollar"></i> Résultat des Coûts Globaux Générés
-            </div>
-            <div style="background-color: var(--bg-input); padding: 15px; border-radius: 6px; border: 1px solid var(--border-color);">
-                <p style="margin: 5px 0;">Coût Total de l'Achat Usine en GNF : <span id="resFactory" style="color: var(--text-bright); font-weight: bold;">0 GNF</span></p>
-                <p style="margin: 5px 0;">Frais Logistiques Généraux : <span id="resLog" style="color: var(--text-bright); font-weight: bold;">0 GNF</span></p>
-                <p style="margin: 5px 0;">Marge Cumulative Sécurisée : <span id="resMargin" style="color: var(--accent-orange); font-weight: bold;">0 GNF</span></p>
-                <h3 style="margin: 15px 0 0 0; border-top: 1px solid var(--border-color); padding-top: 10px; color: var(--accent-blue);">PRIX COMPLET CLÉS EN MAIN : <span id="resTotal" style="color: var(--text-bright);">0 GNF</span></h3>
-            </div>
-        </div>
-    </div>
+<div class="w-16 h-16 rounded-full bg-orange flex items-center justify-center font-bold text-black text-2xl">
+BG
 </div>
 
+<div>
+
+<h1 class="text-2xl font-bold orange">
+BILLY'S GLOBAL
+</h1>
+
+<p class="text-sm text-gray-400">
+MASTER POMPE ENGINE
+</p>
+
+</div>
+
+</div>
+
+<!-- SERVICES -->
+
+<div class="space-y-5">
+
+<div class="glass p-5 rounded-2xl">
+
+<h2 class="orange font-bold mb-4">
+FRONTEND SYSTEM
+</h2>
+
+<ul class="space-y-3 text-gray-300 text-sm">
+
+<li>✔ Next.js</li>
+<li>✔ TailwindCSS</li>
+<li>✔ Three.js</li>
+<li>✔ React Native</li>
+<li>✔ PWA Mobile</li>
+
+</ul>
+
+</div>
+
+<div class="glass p-5 rounded-2xl">
+
+<h2 class="orange font-bold mb-4">
+MICROSERVICES
+</h2>
+
+<ul class="space-y-3 text-gray-300 text-sm">
+
+<li>✔ Auth Service</li>
+<li>✔ Product Service</li>
+<li>✔ Order Service</li>
+<li>✔ Payment Service</li>
+<li>✔ Shipping Service</li>
+<li>✔ Notification Service</li>
+<li>✔ Chat Service</li>
+
+</ul>
+
+</div>
+
+<div class="glass p-5 rounded-2xl">
+
+<h2 class="orange font-bold mb-4">
+AI SYSTEM
+</h2>
+
+<ul class="space-y-3 text-gray-300 text-sm">
+
+<li>✔ OpenAI</li>
+<li>✔ AI Translation</li>
+<li>✔ AI Search</li>
+<li>✔ AI Analytics</li>
+<li>✔ Avatar Tata</li>
+
+</ul>
+
+</div>
+
+<div class="glass p-5 rounded-2xl">
+
+<h2 class="orange font-bold mb-4">
+METAVERSE
+</h2>
+
+<ul class="space-y-3 text-gray-300 text-sm">
+
+<li>✔ Virtual Market</li>
+<li>✔ 3D Products</li>
+<li>✔ VR Commerce</li>
+<li>✔ Virtual Showroom</li>
+
+</ul>
+
+</div>
+
+<div class="glass p-5 rounded-2xl">
+
+<h2 class="orange font-bold mb-4">
+REALTIME ENGINE
+</h2>
+
+<ul class="space-y-3 text-gray-300 text-sm">
+
+<li>✔ Socket.io</li>
+<li>✔ Kafka</li>
+<li>✔ Redis</li>
+<li>✔ Live Sync</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<!-- TOPBAR -->
+
+<div class="flex justify-between items-center mb-8">
+
+<div>
+
+<h1 class="text-5xl font-bold">
+BILLY'S GLOBAL PLATFORM
+</h1>
+
+<p class="text-gray-400 mt-2">
+Commerce IA + Metaverse + Temps Réel
+</p>
+
+</div>
+
+<div class="glass px-6 py-4 rounded-2xl flex items-center gap-3">
+
+<div class="live-dot"></div>
+
+<span>
+MASTER ENGINE CONNECTED
+</span>
+
+</div>
+
+</div>
+
+<!-- HERO -->
+
+<div class="hero p-12 flex items-center justify-between">
+
+<div class="max-w-2xl">
+
+<h1 class="text-7xl font-extrabold leading-tight">
+
+IMPORTATION DIRECTE
+<span class="orange">
+CHINE → AFRIQUE
+</span>
+
+</h1>
+
+<p class="text-xl text-gray-300 mt-8 leading-10">
+
+Plateforme intelligente connectée à :
+l’IA,
+l’avatar numérique,
+le dashboard DG,
+et le Metaverse Commerce temps réel.
+
+</p>
+
+<div class="flex gap-5 mt-10">
+
+<button class="bg-orange text-black px-8 py-4 rounded-2xl font-bold">
+Explorer le Metaverse
+</button>
+
+<button class="glass px-8 py-4 rounded-2xl">
+Parler à Tata
+</button>
+
+</div>
+
+</div>
+
+<!-- AVATAR -->
+
+<div class="glass p-8 rounded-3xl max-w-md">
+
+<div class="flex justify-between items-center">
+
+<h2 class="text-3xl font-bold orange">
+AVATAR TATA
+</h2>
+
+<div class="flex items-center gap-2">
+
+<div class="live-dot"></div>
+
+<span class="text-sm">
+EN LIGNE
+</span>
+
+</div>
+
+</div>
+
+<img
+src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png"
+class="w-72 mx-auto mt-6 avatar"
+/>
+
+<p class="text-gray-300 leading-8 mt-6">
+
+Bonjour 👋
+Je suis Tata,
+votre assistant IA commerce.
+
+Je peux :
+rechercher des produits,
+traduire,
+suivre vos commandes,
+négocier avec les fournisseurs
+et afficher les produits 3D.
+
+</p>
+
+<button class="w-full mt-8 bg-orange text-black py-4 rounded-2xl font-bold">
+ACTIVER TATA
+</button>
+
+</div>
+
+</div>
+
+<!-- DASHBOARD DG -->
+
+<div class="grid md:grid-cols-5 gap-6 mt-10">
+
+<div class="glass card">
+<p class="text-gray-400">Commandes</p>
+<h1 class="text-5xl font-bold orange mt-4">12,458</h1>
+</div>
+
+<div class="glass card">
+<p class="text-gray-400">Produits</p>
+<h1 class="text-5xl font-bold orange mt-4">25,430</h1>
+</div>
+
+<div class="glass card">
+<p class="text-gray-400">Fournisseurs</p>
+<h1 class="text-5xl font-bold orange mt-4">10,540</h1>
+</div>
+
+<div class="glass card">
+<p class="text-gray-400">Utilisateurs</p>
+<h1 class="text-5xl font-bold orange mt-4">85,900</h1>
+</div>
+
+<div class="glass card">
+<p class="text-gray-400">Revenus</p>
+<h1 class="text-5xl font-bold orange mt-4">$782K</h1>
+</div>
+
+</div>
+
+<!-- METAVERSE -->
+
+<div class="glass rounded-3xl p-8 mt-14">
+
+<div class="flex justify-between items-center">
+
+<div>
+
+<h1 class="text-5xl font-bold">
+METAVERSE MARKET
+</h1>
+
+<p class="text-gray-400 mt-2">
+Marchés chinois virtuels synchronisés
+</p>
+
+</div>
+
+<div class="glass px-6 py-3 rounded-2xl flex items-center gap-3">
+
+<div class="live-dot"></div>
+
+<span>LIVE MARKET</span>
+
+</div>
+
+</div>
+
+<div
+id="metaverse"
+class="h-[600px] rounded-3xl bg-black mt-8">
+</div>
+
+</div>
+
+<!-- PRODUITS -->
+
+<div class="mt-16">
+
+<h1 class="text-5xl font-bold mb-10">
+PRODUITS TEMPS RÉEL
+</h1>
+
+<div class="grid md:grid-cols-4 gap-8">
+
+<div class="glass rounded-3xl overflow-hidden market-card">
+
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200"/>
+
+<div class="p-6">
+
+<h2 class="text-2xl font-bold">
+iPhone Pro Max
+</h2>
+
+<p class="orange text-xl mt-4">
+14,500,000 GNF
+</p>
+
+<button class="w-full mt-6 bg-orange text-black py-4 rounded-2xl font-bold">
+VOIR EN 3D
+</button>
+
+</div>
+
+</div>
+
+<div class="glass rounded-3xl overflow-hidden market-card">
+
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200"/>
+
+<div class="p-6">
+
+<h2 class="text-2xl font-bold">
+Air Jordan
+</h2>
+
+<p class="orange text-xl mt-4">
+1,650,000 GNF
+</p>
+
+<button class="w-full mt-6 bg-orange text-black py-4 rounded-2xl font-bold">
+VOIR EN 3D
+</button>
+
+</div>
+
+</div>
+
+<div class="glass rounded-3xl overflow-hidden market-card">
+
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200"/>
+
+<div class="p-6">
+
+<h2 class="text-2xl font-bold">
+AirPods Pro
+</h2>
+
+<p class="orange text-xl mt-4">
+950,000 GNF
+</p>
+
+<button class="w-full mt-6 bg-orange text-black py-4 rounded-2xl font-bold">
+VOIR EN 3D
+</button>
+
+</div>
+
+</div>
+
+<div class="glass rounded-3xl overflow-hidden market-card">
+
+<img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?q=80&w=1200"/>
+
+<div class="p-6">
+
+<h2 class="text-2xl font-bold">
+Montre Connectée
+</h2>
+
+<p class="orange text-xl mt-4">
+450,000 GNF
+</p>
+
+<button class="w-full mt-6 bg-orange text-black py-4 rounded-2xl font-bold">
+VOIR EN 3D
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- REALTIME EVENTS -->
+
+<div class="grid md:grid-cols-3 gap-8 mt-16">
+
+<div class="glass card">
+
+<h2 class="text-3xl font-bold orange">
+SOCKET ENGINE
+</h2>
+
+<p class="text-gray-300 mt-6 leading-9">
+
+Synchronisation temps réel entre :
+les clients,
+les fournisseurs,
+les paiements,
+l’avatar Tata
+et le Metaverse.
+
+</p>
+
+</div>
+
+<div class="glass card">
+
+<h2 class="text-3xl font-bold orange">
+MASTER POMPE
+</h2>
+
+<p class="text-gray-300 mt-6 leading-9">
+
+Cerveau principal :
+API Gateway,
+Realtime Engine,
+AI Router,
+Cloud Connector
+et Metaverse Sync.
+
+</p>
+
+</div>
+
+<div class="glass card">
+
+<h2 class="text-3xl font-bold orange">
+DG DASHBOARD
+</h2>
+
+<p class="text-gray-300 mt-6 leading-9">
+
+Monitoring global :
+revenus,
+produits,
+commandes,
+utilisateurs,
+activité IA
+et analytics.
+
+</p>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="border-t border-gray-800 mt-20 pt-10 text-center text-gray-500">
+
+© 2025 BILLY’S GLOBAL — AI METAVERSE ENGINE
+
+</div>
+
+</div>
+
+<!-- SOCKET -->
+
 <script>
-    function updateDefaultPrice() {
-        const product = document.getElementById("prodSelect").value;
-        const priceInput = document.getElementById("exwPrice");
-        if (product === "battery_slim") priceInput.value = 320;
-        else if (product === "battery_basic") priceInput.value = 278.40;
-        else if (product === "inverter_5kw") priceInput.value = 150;
-    }
 
-    function calculateLandedCost() {
-        const exw = parseFloat(document.getElementById("exwPrice").value);
-        const qty = parseInt(document.getElementById("qty").value);
-        const rate = parseFloat(document.getElementById("exchangeRate").value);
-        const log = parseFloat(document.getElementById("logistics").value);
-        
-        // Calculs basés sur les règles de gestion Billy's Global
-        const factoryCostGNF = exw * qty * rate;
-        const totalMargin = 500000 * qty; // 500 000 GNF de bénéfice net par unité pour le DG
-        const totalLandedCost = factoryCostGNF + log + totalMargin;
+const socket = io("http://localhost:3001", {
+transports:['websocket']
+});
 
-        // Rendu dans l'interface
-        document.getElementById("resFactory").innerText = factoryCostGNF.toLocaleString() + " GNF";
-        document.getElementById("resLog").innerText = log.toLocaleString() + " GNF";
-        document.getElementById("resMargin").innerText = totalMargin.toLocaleString() + " GNF";
-        document.getElementById("resTotal").innerText = totalLandedCost.toLocaleString() + " GNF";
+socket.on('connect', () => {
 
-        // Message de validation dynamique de Tata
-        document.getElementById("tataMessage").innerHTML = "Monsieur le Directeur Général, les calculs sont validés pour " + qty + " unité(s). Le coût de revient total intègre parfaitement votre bénéfice net de " + totalMargin.toLocaleString() + " GNF. La commande est prête à être émise.";
-    }
+console.log("MASTER ENGINE CONNECTED");
 
-    // Exécution initiale automatique au chargement
-    window.onload = calculateLandedCost;
+});
+
+socket.on('NEW_PRODUCT', (data) => {
+
+console.log("PRODUCT :", data);
+
+});
+
+socket.on('NEW_ORDER', (data) => {
+
+console.log("ORDER :", data);
+
+});
+
+socket.on('AVATAR_MESSAGE', (data) => {
+
+console.log("TATA :", data);
+
+});
+
+socket.on('METAVERSE_SYNC', (data) => {
+
+console.log("METAVERSE :", data);
+
+});
+
+</script>
+
+<!-- THREE JS -->
+
+<script type="module">
+
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(
+75,
+window.innerWidth / 600,
+0.1,
+1000
+);
+
+const renderer = new THREE.WebGLRenderer({
+antialias:true
+});
+
+renderer.setSize(
+document.getElementById('metaverse').offsetWidth,
+600
+);
+
+document.getElementById('metaverse')
+.appendChild(renderer.domElement);
+
+const geometry = new THREE.BoxGeometry();
+
+const material = new THREE.MeshBasicMaterial({
+color:0xff8c00,
+wireframe:true
+});
+
+const cube = new THREE.Mesh(geometry,material);
+
+scene.add(cube);
+
+camera.position.z = 5;
+
+function animate(){
+
+requestAnimationFrame(animate);
+
+cube.rotation.x += 0.01;
+cube.rotation.y += 0.01;
+
+renderer.render(scene,camera);
+
+}
+
+animate();
+
 </script>
 
 </body>
-</html>
+    </html>
